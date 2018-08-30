@@ -1,2 +1,3 @@
-###Marten Application
+Marten Application
+============
 TODO: Full readme.

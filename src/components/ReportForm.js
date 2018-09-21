@@ -151,7 +151,7 @@ class ReportForm extends React.Component {
     return (
       <form className={classes.container} autoComplete="off" method='GET'>
         <Grid container spacing={8}>
-                <Grid item xs={5} xl={2}>
+                <Grid item xs={12} xl={2}>
                     <TextField
                     id="select-sighting-type"
                     select
@@ -176,7 +176,7 @@ class ReportForm extends React.Component {
                     </TextField>
                 </Grid>
 
-                <Grid item xs={5} xl={2}>
+                <Grid item xs={12} xl={2}>
                     <TextField
                     id="select-confidence"
                     select

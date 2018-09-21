@@ -125,8 +125,8 @@ class ReportForm extends React.Component {
   state = {
     date: formatDate(new Date()),
     time: '00:00',
-    type: '',
-    confidence: ''
+    type: 'visual',
+    confidence: '1'
   };
 
   /**
@@ -149,7 +149,7 @@ class ReportForm extends React.Component {
      * The actual form.
      */
     return (
-      <form className={classes.container} noValidate autoComplete="off" method='GET'>
+      <form className={classes.container} autoComplete="off" method='GET'>
         <Grid container spacing={8}>
                 <Grid item xs={5} xl={2}>
                     <TextField

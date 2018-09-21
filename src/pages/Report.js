@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 class Report extends Component {
     render() {
         return (
-            <Typography variant='display1' align='center' gutterBottom>
+            <Typography variant='display1' align='left' gutterBottom>
             <ReportForm/>
             </Typography>
         );

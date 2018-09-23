@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import firebase from '../firebase.js';
 
 /**
  * Styles that the different
@@ -116,9 +117,19 @@ const confidenceLevels = [
   ];
 
 /**
- * The form compnent.
+ * The form component.
  */
 class ReportForm extends React.Component {
+  /**
+   * Component contructor. Currently
+   * only used to bind event
+   * handlers.
+   */
+  constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   /**
    * State of form components.
    */
@@ -126,7 +137,8 @@ class ReportForm extends React.Component {
     date: formatDate(new Date()),
     time: '00:00',
     type: 'visual',
-    confidence: '1'
+    confidence: '1',
+    desc: ''
   };
 
   /**
@@ -140,6 +152,33 @@ class ReportForm extends React.Component {
   };
 
   /**
+   * Event listener for form.
+   * When the form is submitted,
+   * this function passes the
+   * data along to Firebase.
+   */
+  handleSubmit(e) {
+    e.preventDefault();
+    const sightingsRef = firebase.database().ref('sightings');
+    const sighting = {
+      type: this.state.type,
+      confidence: this.state.confidence,
+      date: this.state.date,
+      time: this.state.time,
+      desc: this.state.desc
+    }
+    sightingsRef.push(sighting);
+    this.setState({
+      date: formatDate(new Date()),
+      time: '00:00',
+      type: 'visual',
+      confidence: '1',
+      desc: ''
+    });
+  };
+  
+
+  /**
    * The render method for this component.
    */
   render() {
@@ -149,7 +188,7 @@ class ReportForm extends React.Component {
      * The actual form.
      */
     return (
-      <form className={classes.container} autoComplete="off" method='GET'>
+      <form className={classes.container} autoComplete="off" onSubmit={this.handleSubmit}>
         <Grid container spacing={8}>
                 <Grid item xs={12} xl={2}>
                     <TextField
@@ -243,8 +282,9 @@ class ReportForm extends React.Component {
                     multiline
                     rows="5"
                     placeholder="Describe the sighting to the best of your ability."
-                    defaultValue=""
+                    value={this.state.desc}
                     className={classes.textField}
+                    onChange={this.handleChange('desc')}
                     margin="normal"
                     variant="outlined"
                     InputLabelProps={{
@@ -261,7 +301,7 @@ class ReportForm extends React.Component {
         </Grid>
       </form>
     );
-  }
+  }  
 }
 
 ReportForm.propTypes = {

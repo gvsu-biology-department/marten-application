@@ -40,27 +40,27 @@ class SimpleTabs extends React.Component {
     };
 
     render() {
-    const { classes } = this.props;
-    const { value } = this.state;
+        const { classes } = this.props;
+        const { value } = this.state;
 
-    return (
-    <div className={classes.root}>
-        <AppBar position="static">
-            <Tabs value={value} onChange={this.handleChange} centered>
-                <Tab label="Home" />
-                <Tab label="Sightings" />
-                <Tab label="Trail-Cam Quiz" />
-                <Tab label="View Map" />
-                <Tab label="Marten Info" />
-            </Tabs>
-        </AppBar>
-        {value === 0 && <Home/>}
-        {value === 1 && <Sighting/>}
-        {value === 2 && <Quiz/>}
-        {value === 3 && <Map/>}
-        {value === 4 && <Info/>}
-    </div>
-    );
+        return (
+        <div className={classes.root}>
+            <AppBar position="static">
+                <Tabs value={value} onChange={this.handleChange} centered>
+                    <Tab label="Home" />
+                    <Tab label="Sightings" />
+                    <Tab label="Trail-Cam Quiz" />
+                    <Tab label="View Map" />
+                    <Tab label="Marten Info" />
+                </Tabs>
+            </AppBar>
+            {value === 0 && <Home/>}
+            {value === 1 && <Sighting/>}
+            {value === 2 && <Quiz/>}
+            {value === 3 && <Map/>}
+            {value === 4 && <Info/>}
+        </div>
+        );
     }
 }
 

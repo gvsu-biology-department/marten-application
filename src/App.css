@@ -1,3 +1,7 @@
 body {
     margin: 0;
 }
+
+header + div > div {
+    height: 92% !important;
+}

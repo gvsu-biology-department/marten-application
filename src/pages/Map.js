@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import Typography from '@material-ui/core/Typography';
 
@@ -55,13 +55,20 @@ export class MapContainer extends Component {
     
     // When the user clicks on the map, if a info window is visible then close it
     // and 'unactive' that marker
-    onMapClick = () => {
-            if (this.state.showingInfoWindow) {
-                this.setState({
+    onMapClick = (props, map, e) => {
+        if (this.state.showingInfoWindow) {
+            this.setState({
                 showingInfoWindow: false,
                 activeMarker: null
             });
         }
+
+        let lat = e.latLng.lat();
+        let lng = e.latLng.lng();
+        console.log(`
+            latitude: ${lat}
+            longitude: ${lng}
+        `);
     }
 
     // Set the state of the component to contain user coordinates and initial 
@@ -77,38 +84,53 @@ export class MapContainer extends Component {
     }
 
     render() {
+
+        // TODO: This line is used by the custom marker icon
+        //const { google } = this.props;
+
         return (
             // Render the Google Map, Marker, and InfoWindow components
             <Map
-                style={ style }
-                google={ this.props.google }
-                initialCenter={ this.state.myLatLng }
-                center={ this.state.myLatLng }
-                defaultZoom={ 15 }
+                style = { style }
+                google = { this.props.google }
+                initialCenter = { this.state.myLatLng }
+                center = { this.state.myLatLng }
+                defaultZoom = { 15 }
                 onClick = { this.onMapClick } >
 
                 <Marker 
-                    position={ this.state.myLatLng }
+                    position = { this.state.myLatLng }
                     onClick = { this.onMarkerClick }
-                    title = { 'Title 1!' }
-                    name = { 'Name 1!' } 
+                    title = { 'Sighting Type: Roadkill' }
+                    name = { 'blah blah blah' } 
+                    // FIXME: fix custom icon
+                    // icon={{
+                    //     url: "../images/marten-icon.png",
+                    //     anchor: new google.maps.Point(32,32),
+                    //     scaledSize: new google.maps.Size(64,64)
+                    // }}
                 />
+
                 <Marker 
-                    position={{ lat: 46.5089994, lng: -122.8543421 }}
+                    position = {{ lat: 46.5089994, lng: -122.8543421 }}
                     onClick = { this.onMarkerClick }
-                    title = { 'Title 2!' }
-                    name = { 'Name 2!' } 
+                    title = { 'Sighting Type: Alive' }
+                    name = { 'blah' } 
                 />
 
                 <InfoWindow
                     marker = { this.state.activeMarker }
                     visible = { this.state.showingInfoWindow } >
-                    <Typography variant="display1" gutterBottom>
-                        { this.state.selectedPlace.title }
-                    </Typography>
-                    <Typography variant="subheading" gutterBottom>
-                        { this.state.selectedPlace.name }
-                    </Typography>
+
+                    <Fragment>
+                        <Typography variant = "display1" gutterBottom>
+                            { this.state.selectedPlace.title }
+                        </Typography>
+                        <Typography variant = "subheading" gutterBottom>
+                            { this.state.selectedPlace.name }
+                        </Typography>
+                    </Fragment>
+
                 </InfoWindow>
             </Map>
         );

@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 const API_KEY = 'AIzaSyAZ_0J01bA6wCbIPK4UBq2RUBC-hIqG4mM';
 
 // Map container styles
-const style = {
+const mapStyles = {
     width: '100%',
     height: '100%'
 }
@@ -90,49 +90,64 @@ export class MapContainer extends Component {
 
         return (
             // Render the Google Map, Marker, and InfoWindow components
-            <Map
-                style = { style }
-                google = { this.props.google }
-                initialCenter = { this.state.myLatLng }
-                center = { this.state.myLatLng }
-                defaultZoom = { 15 }
-                onClick = { this.onMapClick } >
+            <div className = "google-map-container">
+                <Map
+                    style = { mapStyles }
+                    google = { this.props.google }
+                    initialCenter = { this.state.myLatLng }
+                    center = { this.state.myLatLng }
+                    defaultZoom = { 15 }
+                    onClick = { this.onMapClick } >
 
-                <Marker 
-                    position = { this.state.myLatLng }
-                    onClick = { this.onMarkerClick }
-                    title = { 'Sighting Type: Roadkill' }
-                    name = { 'blah blah blah' } 
-                    // FIXME: fix custom icon
-                    // icon={{
-                    //     url: "../images/marten-icon.png",
-                    //     anchor: new google.maps.Point(32,32),
-                    //     scaledSize: new google.maps.Size(64,64)
-                    // }}
-                />
+                    <Marker 
+                        position = { this.state.myLatLng }
+                        onClick = { this.onMarkerClick }
+                        title = { 'Marker One' }
+                        name = { 'blah blah blah' } 
+                        // FIXME: fix custom icon
+                        // icon={{
+                        //     url: "../images/marten-icon.png",
+                        //     anchor: new google.maps.Point(32,32),
+                        //     scaledSize: new google.maps.Size(64,64)
+                        // }}
+                    />
 
-                <Marker 
-                    position = {{ lat: 46.5089994, lng: -122.8543421 }}
-                    onClick = { this.onMarkerClick }
-                    title = { 'Sighting Type: Alive' }
-                    name = { 'blah' } 
-                />
+                    <Marker 
+                        position = {{ lat: 42.755011162859724, lng: -84.57320350394787 }}
+                        onClick = { this.onMarkerClick }
+                        title = { 'Marker Two' }
+                        name = { 'yay another marker' } 
+                    />
 
-                <InfoWindow
-                    marker = { this.state.activeMarker }
-                    visible = { this.state.showingInfoWindow } >
+                    <Marker 
+                        position = {{ lat: 43.548480610783194, lng: -84.28206580863537 }}
+                        onClick = { this.onMarkerClick }
+                        title = { 'Marker Three' }
+                        name = { 'three markers :D' } 
+                    />
 
-                    <Fragment>
-                        <Typography variant = "display1" gutterBottom>
-                            { this.state.selectedPlace.title }
-                        </Typography>
-                        <Typography variant = "subheading" gutterBottom>
-                            { this.state.selectedPlace.name }
-                        </Typography>
-                    </Fragment>
+                    <Marker 
+                        position = {{ lat: 42.24878276258738, lng: -85.72127479301037 }}
+                        onClick = { this.onMarkerClick }
+                        title = { 'Marker Four' }
+                        name = { 'YEET' } 
+                    />
 
-                </InfoWindow>
-            </Map>
+                    <InfoWindow
+                        marker = { this.state.activeMarker }
+                        visible = { this.state.showingInfoWindow } >
+
+                        <Fragment>
+                            <Typography variant = "display1" gutterBottom>
+                                { this.state.selectedPlace.title }
+                            </Typography>
+                            <Typography variant = "subheading" gutterBottom>
+                                { this.state.selectedPlace.name }
+                            </Typography>
+                        </Fragment>
+                    </InfoWindow>
+                </Map>
+            </div>
         );
     }
 }

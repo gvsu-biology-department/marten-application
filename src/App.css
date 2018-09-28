@@ -2,6 +2,6 @@ body {
     margin: 0;
 }
 
-header + div > div {
+.google-map-container > div {
     height: 92% !important;
 }

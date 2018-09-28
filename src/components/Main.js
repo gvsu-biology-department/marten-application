@@ -9,6 +9,7 @@ import Home from '../pages/Home';
 import Map from '../pages/Map';
 import Quiz from '../pages/Quiz';
 import Sighting from '../pages/Sighting';
+import Report from '../pages/Report';
 import Info from '../pages/Info';
 
 function TabContainer(props) {
@@ -43,24 +44,26 @@ class SimpleTabs extends React.Component {
         const { classes } = this.props;
         const { value } = this.state;
 
-        return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Tabs value={value} onChange={this.handleChange} centered>
-                    <Tab label="Home" />
-                    <Tab label="Sightings" />
-                    <Tab label="Trail-Cam Quiz" />
-                    <Tab label="View Map" />
-                    <Tab label="Marten Info" />
-                </Tabs>
-            </AppBar>
-            {value === 0 && <Home/>}
-            {value === 1 && <Sighting/>}
-            {value === 2 && <Quiz/>}
-            {value === 3 && <Map/>}
-            {value === 4 && <Info/>}
-        </div>
-        );
+    return (
+    <div className={classes.root}>
+        <AppBar position="static">
+            <Tabs value={value} onChange={this.handleChange} centered>
+                <Tab label="Home" />
+                <Tab label="Report a Sighting"/>
+                <Tab label="Sightings" />
+                <Tab label="Trail-Cam Quiz" />
+                <Tab label="View Map" />
+                <Tab label="Marten Info" />
+            </Tabs>
+        </AppBar>
+        {value === 0 && <Home/>}
+        {value === 1 && <Report/>}
+        {value === 2 && <Sighting/>}
+        {value === 3 && <Quiz/>}
+        {value === 4 && <Map/>}
+        {value === 5 && <Info/>}
+    </div>
+    );
     }
 }
 

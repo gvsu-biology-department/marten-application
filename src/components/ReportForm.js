@@ -23,6 +23,7 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
     marginTop: theme.spacing.unit * 2,
     flexBasis: 280,
+    width: '90%'
   },
   button: {
     marginLeft: theme.spacing.unit * 2,

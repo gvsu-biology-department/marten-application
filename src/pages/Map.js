@@ -63,12 +63,17 @@ export class MapContainer extends Component {
             });
         }
 
+        this.setState({
+            markerLatLng: {
+                lat: e.latLng.lat(),
+                lng: e.latLng.lng()
+            }
+        })
+
         let lat = e.latLng.lat();
-        let lng = e.latLng.lng();
-        console.log(`
-            latitude: ${lat}
-            longitude: ${lng}
-        `);
+        let lng =  e.latLng.lng();
+
+        this.props.onClick(lat,lng);
     }
 
     // Set the state of the component to contain user coordinates and initial 
@@ -77,6 +82,10 @@ export class MapContainer extends Component {
         myLatLng: {
             lat: 42.9634,
             lng: 85.6681
+        },
+        markerLatLng: {
+            lat: 0,
+            lng: 0
         },
         showingInfoWindow: false,
         activeMarker: {},
@@ -100,37 +109,20 @@ export class MapContainer extends Component {
                     onClick = { this.onMapClick } >
 
                     <Marker 
+                        position = { this.state.markerLatLng }
+                    />
+
+                    <Marker 
                         position = { this.state.myLatLng }
                         onClick = { this.onMarkerClick }
-                        title = { 'Marker One' }
-                        name = { 'blah blah blah' } 
+                        title = { 'You are here' }
+                        name = { '' } 
                         // FIXME: fix custom icon
                         // icon={{
                         //     url: "../images/marten-icon.png",
                         //     anchor: new google.maps.Point(32,32),
                         //     scaledSize: new google.maps.Size(64,64)
                         // }}
-                    />
-
-                    <Marker 
-                        position = {{ lat: 42.755011162859724, lng: -84.57320350394787 }}
-                        onClick = { this.onMarkerClick }
-                        title = { 'Marker Two' }
-                        name = { 'yay another marker' } 
-                    />
-
-                    <Marker 
-                        position = {{ lat: 43.548480610783194, lng: -84.28206580863537 }}
-                        onClick = { this.onMarkerClick }
-                        title = { 'Marker Three' }
-                        name = { 'three markers :D' } 
-                    />
-
-                    <Marker 
-                        position = {{ lat: 42.24878276258738, lng: -85.72127479301037 }}
-                        onClick = { this.onMarkerClick }
-                        title = { 'Marker Four' }
-                        name = { 'YEET' } 
                     />
 
                     <InfoWindow

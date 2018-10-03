@@ -73,7 +73,9 @@ export class MapContainer extends Component {
         let lat = e.latLng.lat();
         let lng =  e.latLng.lng();
 
-        this.props.onClick(lat,lng);
+        if (this.props.onClick) {
+            this.props.onClick(lat,lng);
+        }
     }
 
     // Set the state of the component to contain user coordinates and initial 

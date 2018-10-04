@@ -11,7 +11,6 @@ import Quiz from '../pages/Quiz';
 import SightingList from '../pages/SightingList';
 import Report from '../pages/Report';
 import Info from '../pages/Info';
-import flamelink from 'flamelink';
 
 function TabContainer(props) {
     return (
@@ -30,15 +29,6 @@ const styles = theme => ({
         flexGrow: 1,
         backgroundColor: theme.palette.background.paper,
     },
-});
-
-const flamelinkApp = flamelink({
-          apiKey: "AIzaSyAYf9AbeYwLY892NRiQfn0AMtG9xIFAJbo",
-          authDomain: "marten-application.firebaseapp.com",
-          databaseURL: "https://marten-application.firebaseio.com",
-          projectId: "marten-application",
-          storageBucket: "marten-application.appspot.com",
-          messagingSenderId: "659856510832"
 });
 
 class SimpleTabs extends React.Component {
@@ -71,7 +61,7 @@ class SimpleTabs extends React.Component {
         {value === 2 && <SightingList/>}
         {value === 3 && <Quiz/>}
         {value === 4 && <ViewMap/>}
-        {value === 5 && <Info flamelinkApp={flamelinkApp}/>}
+        {value === 5 && <Info/>}
     </div>
     );
     }

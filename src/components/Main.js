@@ -6,9 +6,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Home from '../pages/Home';
-import Map from '../pages/Map';
+import ViewMap from '../pages/ViewMap';
 import Quiz from '../pages/Quiz';
-import Sighting from '../pages/Sighting';
+import SightingList from '../pages/SightingList';
+import Report from '../pages/Report';
 import Info from '../pages/Info';
 import flamelink from 'flamelink';
 
@@ -50,14 +51,15 @@ class SimpleTabs extends React.Component {
     };
 
     render() {
-    const { classes } = this.props;
-    const { value } = this.state;
+        const { classes } = this.props;
+        const { value } = this.state;
 
     return (
     <div className={classes.root}>
         <AppBar position="static">
             <Tabs value={value} onChange={this.handleChange} centered>
                 <Tab label="Home" />
+                <Tab label="Report a Sighting"/>
                 <Tab label="Sightings" />
                 <Tab label="Trail-Cam Quiz" />
                 <Tab label="View Map" />
@@ -65,10 +67,11 @@ class SimpleTabs extends React.Component {
             </Tabs>
         </AppBar>
         {value === 0 && <Home/>}
-        {value === 1 && <Sighting/>}
-        {value === 2 && <Quiz/>}
-        {value === 3 && <Map/>}
-        {value === 4 && <Info flamelinkApp={flamelinkApp}/>}
+        {value === 1 && <Report/>}
+        {value === 2 && <SightingList/>}
+        {value === 3 && <Quiz/>}
+        {value === 4 && <ViewMap/>}
+        {value === 5 && <Info flamelinkApp={flamelinkApp}/>}
     </div>
     );
     }

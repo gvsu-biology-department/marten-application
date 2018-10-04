@@ -1,3 +1,12 @@
 body {
     margin: 0;
 }
+
+.report-google-map-container > div {
+    height: 92% !important;
+    width: 50% !important;
+}
+
+.sighting-google-map-container > div {
+    height: 92% !important;
+}

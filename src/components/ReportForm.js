@@ -6,7 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import firebase from '../firebase.js';
-import MapContainer from '../pages/Map';
+import GoogleMap from '../components/ReportMap';
 
 /**
  * Styles that the different
@@ -326,7 +326,7 @@ class ReportForm extends React.Component {
                     </Grid>
                         </Grid>
                     <Grid item xs={6}>
-                        <MapContainer onClick={this.getCoordinates}/>
+                        <GoogleMap onClick={this.getCoordinates}/>
                     </Grid>
                 </Grid>
             </form>

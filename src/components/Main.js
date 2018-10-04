@@ -6,9 +6,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Home from '../pages/Home';
-import Map from '../pages/Map';
+import ViewMap from '../pages/ViewMap';
 import Quiz from '../pages/Quiz';
-import Sighting from '../pages/Sighting';
+import SightingList from '../pages/SightingList';
 import Report from '../pages/Report';
 import Info from '../pages/Info';
 
@@ -58,9 +58,9 @@ class SimpleTabs extends React.Component {
         </AppBar>
         {value === 0 && <Home/>}
         {value === 1 && <Report/>}
-        {value === 2 && <Sighting/>}
+        {value === 2 && <SightingList/>}
         {value === 3 && <Quiz/>}
-        {value === 4 && <Map/>}
+        {value === 4 && <ViewMap/>}
         {value === 5 && <Info/>}
     </div>
     );

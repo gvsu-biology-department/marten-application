@@ -101,7 +101,7 @@ export class MapContainer extends Component {
 
         return (
             // Render the Google Map, Marker, and InfoWindow components
-            <div className = "google-map-container">
+            <div className = "report-google-map-container">
                 <Map
                     style = { mapStyles }
                     google = { this.props.google }

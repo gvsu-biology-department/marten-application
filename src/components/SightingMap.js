@@ -39,32 +39,12 @@ export class MapContainer extends Component {
         }
     }
 
-    //DOPE: this converts a firebase snapshot (js object) to an array
-    snapshotToArray = (snapshot) => {
-        var returnArr = [];
-    
-        snapshot.forEach(function(childSnapshot) {
-            var item = childSnapshot.val();
-            item.key = childSnapshot.key;
-    
-            returnArr.push(item);
-        });
-    
-        return returnArr;
-    }
-
     // When the component has mounted to the DOM, get the user's location
     componentDidMount() {
         this.getLocation();
 
-        //DOPE: So initially I was using this to print the array of sightings to the console
         const sightingsRef = firebase.database().ref('sightings');
 
-        sightingsRef.on('value', (snapshot) => {
-            console.log(this.snapshotToArray(snapshot));
-        });
-
-        //DOPE: Instead, make the snapshot into an object and store it in the component state
         sightingsRef.on('value', (snapshot) => {
             let sightings = snapshot.val();
             let newState = [];
@@ -119,10 +99,6 @@ export class MapContainer extends Component {
     }
 
     render() {
-
-        // TODO: This line is used by the custom marker icon
-        //const { google } = this.props;
-
         return (
             // Render the Google Map, Marker, and InfoWindow components
             <div className = "sighting-google-map-container">
@@ -138,15 +114,8 @@ export class MapContainer extends Component {
                         position = { this.state.myLatLng }
                         onClick = { this.onMarkerClick }
                         type = { 'You are here' } 
-                        // FIXME: fix custom icon
-                        // icon={{
-                        //     url: "../images/marten-icon.png",
-                        //     anchor: new google.maps.Point(32,32),
-                        //     scaledSize: new google.maps.Size(64,64)
-                        // }}
                     />
 
-                    {/*DOPE: Then map the data from each sighting in sightings onto Marker props */}
                     { this.state.sightings.map((sighting) => {
                         return (
                             <Marker

@@ -137,8 +137,7 @@ export class MapContainer extends Component {
                     <Marker 
                         position = { this.state.myLatLng }
                         onClick = { this.onMarkerClick }
-                        title = { 'You are here' }
-                        name = { '' } 
+                        type = { 'You are here' } 
                         // FIXME: fix custom icon
                         // icon={{
                         //     url: "../images/marten-icon.png",
@@ -151,7 +150,7 @@ export class MapContainer extends Component {
                     { this.state.sightings.map((sighting) => {
                         return (
                             <Marker
-                                key={sighting.id}
+                                key={ sighting.id }
                                 position={{ lat: sighting.lat, lng:sighting.lng }}
                                 onClick = { this.onMarkerClick }
                                 type = { 'Type: ' + sighting.type }

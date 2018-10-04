@@ -96,9 +96,6 @@ export class MapContainer extends Component {
 
     render() {
 
-        // TODO: This line is used by the custom marker icon
-        //const { google } = this.props;
-
         return (
             // Render the Google Map, Marker, and InfoWindow components
             <div className = "report-google-map-container">
@@ -119,12 +116,6 @@ export class MapContainer extends Component {
                         onClick = { this.onMarkerClick }
                         title = { 'You are here' }
                         name = { '' } 
-                        // FIXME: fix custom icon
-                        // icon={{
-                        //     url: "../images/marten-icon.png",
-                        //     anchor: new google.maps.Point(32,32),
-                        //     scaledSize: new google.maps.Size(64,64)
-                        // }}
                     />
 
                     <InfoWindow

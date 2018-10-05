@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import firebase from '../firebase.js';
+import GoogleMap from '../components/ReportMap';
 
 /**
  * Styles that the different
@@ -22,6 +23,7 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
     marginTop: theme.spacing.unit * 2,
     flexBasis: 280,
+    width: '90%'
   },
   button: {
     marginLeft: theme.spacing.unit * 2,
@@ -138,7 +140,9 @@ class ReportForm extends React.Component {
     time: '00:00',
     type: 'visual',
     confidence: '1',
-    desc: ''
+    desc: '',
+    lat: '',
+    lng: ''
   };
 
   /**
@@ -150,6 +154,20 @@ class ReportForm extends React.Component {
       [name]: event.target.value,
     });
   };
+
+  /*
+  * Get the coordinates 
+  * 
+  */
+ getCoordinates = (lat,lng) => {
+    let latitude = lat;
+    let longitude = lng;
+
+    this.setState({
+        lat: latitude,
+        lng: longitude
+    });
+  }
 
   /**
    * Event listener for form.
@@ -165,7 +183,9 @@ class ReportForm extends React.Component {
       confidence: this.state.confidence,
       date: this.state.date,
       time: this.state.time,
-      desc: this.state.desc
+      desc: this.state.desc,
+      lat: this.state.lat,
+      lng: this.state.lng
     }
     sightingsRef.push(sighting);
     this.setState({
@@ -173,7 +193,9 @@ class ReportForm extends React.Component {
       time: '00:00',
       type: 'visual',
       confidence: '1',
-      desc: ''
+      desc: '',
+      lat: '',
+      lng: ''
     });
   };
   
@@ -188,118 +210,127 @@ class ReportForm extends React.Component {
      * The actual form.
      */
     return (
-      <form className={classes.container} autoComplete="off" onSubmit={this.handleSubmit}>
-        <Grid container spacing={8}>
-                <Grid item xs={12} xl={2}>
-                    <TextField
-                    id="select-sighting-type"
-                    select
-                    required
-                    name="sighting-type"
-                    label="Select"
-                    className={classes.textField}
-                    value={this.state.type}
-                    onChange={this.handleChange('type')}
-                    SelectProps={{
-                        MenuProps: {
-                        className: classes.menu,
-                        },
-                    }}
-                    helperText="Please select type of sighting"
-                    >
-                    {sightingTypes.map(option => (
-                        <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                        </MenuItem>
-                    ))}
-                    </TextField>
-                </Grid>
+        <Fragment>
+            <form className={classes.container} autoComplete="off" onSubmit={this.handleSubmit}>
+                <Grid container>
+                    <Grid item xs={6}>
+                        <Grid container spacing={8}>
+                            <Grid item xs={12}>
+                                <TextField
+                                id="select-sighting-type"
+                                select
+                                required
+                                name="sighting-type"
+                                label="Select"
+                                className={classes.textField}
+                                value={this.state.type}
+                                onChange={this.handleChange('type')}
+                                SelectProps={{
+                                    MenuProps: {
+                                    className: classes.menu,
+                                    },
+                                }}
+                                helperText="Please select type of sighting"
+                                >
+                                {sightingTypes.map(option => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                    </MenuItem>
+                                ))}
+                                </TextField>
+                            </Grid>
 
-                <Grid item xs={12} xl={2}>
-                    <TextField
-                    id="select-confidence"
-                    select
-                    required
-                    name="sighting-confidence"
-                    label="Select"
-                    className={classes.textField}
-                    value={this.state.confidence}
-                    onChange={this.handleChange('confidence')}
-                    SelectProps={{
-                        MenuProps: {
-                        className: classes.menu,
-                        },
-                    }}
-                    helperText="Please select confidence in sighting"
-                    >
-                    {confidenceLevels.map(option => (
-                        <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                        </MenuItem>
-                    ))}
-                    </TextField>
-                </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                id="select-confidence"
+                                select
+                                required
+                                name="sighting-confidence"
+                                label="Select"
+                                className={classes.textField}
+                                value={this.state.confidence}
+                                onChange={this.handleChange('confidence')}
+                                SelectProps={{
+                                    MenuProps: {
+                                    className: classes.menu,
+                                    },
+                                }}
+                                helperText="Please select confidence in sighting"
+                                >
+                                {confidenceLevels.map(option => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                    </MenuItem>
+                                ))}
+                                </TextField>
+                            </Grid>
 
-                <Grid item xs={12}>
-                    <TextField
-                        id="sighting-date"
-                        required
-                        label="Sighting date"
-                        name="sighting-date"
-                        type="date"
-                        value={this.state.date}
-                        className={classes.textField}
-                        onChange={this.handleChange('date')}
-                        InputLabelProps={{
-                        shrink: true,
-                        }}
-                    />
-                </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    id="sighting-date"
+                                    required
+                                    label="Sighting date"
+                                    name="sighting-date"
+                                    type="date"
+                                    value={this.state.date}
+                                    className={classes.textField}
+                                    onChange={this.handleChange('date')}
+                                    InputLabelProps={{
+                                    shrink: true,
+                                    }}
+                                />
+                            </Grid>
 
-                <Grid item xs={12}>
-                    <TextField
-                        id="sighting-time"
-                        required
-                        label="Sighting time"
-                        name="sighting-time"
-                        type="time"
-                        margin="normal"
-                        value={this.state.time}
-                        className={classes.textField}
-                        onChange={this.handleChange('time')}
-                        InputLabelProps={{
-                        shrink: true,
-                        }}
-                    />
-                </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    id="sighting-time"
+                                    required
+                                    label="Sighting time"
+                                    name="sighting-time"
+                                    type="time"
+                                    margin="normal"
+                                    value={this.state.time}
+                                    className={classes.textField}
+                                    onChange={this.handleChange('time')}
+                                    InputLabelProps={{
+                                    shrink: true,
+                                    }}
+                                />
+                            </Grid>
 
-                <Grid item xs={12}>
-                    <TextField
-                    id="sighting-description"
-                    required
-                    label="Description"
-                    name="sighting-desc"
-                    multiline
-                    rows="5"
-                    placeholder="Describe the sighting to the best of your ability."
-                    value={this.state.desc}
-                    className={classes.textField}
-                    onChange={this.handleChange('desc')}
-                    margin="normal"
-                    variant="outlined"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    />
+                            <Grid item xs={12}>
+                                <TextField
+                                id="sighting-description"
+                                required
+                                label="Description"
+                                name="sighting-desc"
+                                multiline
+                                rows="5"
+                                placeholder="Describe the sighting to the best of your ability."
+                                value={this.state.desc}
+                                className={classes.textField}
+                                onChange={this.handleChange('desc')}
+                                margin="normal"
+                                variant="outlined"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                                />
+                            </Grid>
+                            
+                            <Grid item xs={12}>
+                                <Button variant="contained" type="submit" color="primary" className={classes.button}>
+                                    Submit
+                                </Button>
+                            </Grid>
+                    </Grid>
+                        </Grid>
+                    <Grid item xs={6}>
+                        <GoogleMap onClick={this.getCoordinates}/>
+                    </Grid>
                 </Grid>
-                
-                <Grid item xs={12}>
-                    <Button variant="contained" type="submit" color="primary" className={classes.button}>
-                        Submit
-                    </Button>
-                </Grid>
-        </Grid>
-      </form>
+            </form>
+        </Fragment>
     );
   }  
 }

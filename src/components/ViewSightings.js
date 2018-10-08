@@ -139,8 +139,7 @@ class ViewSightings extends React.Component {
     
 
     /**
-     * Handles state change in form
-     * components.
+     * Handles state change.
      */
     handleChange = name => event => {
         this.setState({

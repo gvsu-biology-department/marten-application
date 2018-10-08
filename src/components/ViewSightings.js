@@ -121,7 +121,7 @@ const styles = theme => ({
 
 class ViewSightings extends React.Component {
     constructor(props){
-        super(props);
+       super(props);
 
        this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -154,7 +154,13 @@ class ViewSightings extends React.Component {
         e.preventDefault();
         const itemSighting = firebase.database().ref("sightings/" + this.state.id);
         itemSighting.once("value").then((snapshot) => {
+            // Die if there's no data for that ID.
+            if (!snapshot.exists()) {
+                return;
+            }
+            
             let data = snapshot.val();
+
             this.setState({
                 date: data.date,
                 time: data.time,

@@ -1,14 +1,31 @@
-import { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import Grid from '@material-ui/core/Grid';
 import flamelinkApp from '../flamelink.js';
-
+import Layout from './Layout';
 class Flamelink extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+          schemaDetails: ''
+        }
+      }
+
+    componentDidMount() {
+        // fetch the project name, once it retrieves resolve the promsie and update the state. 
+        flamelinkApp.schemas.getFields('martenSchemaDemo', { fields: [ 'title', 'key' ] })
+        .then(result => this.setState({
+          schemaDetails: result
+        }))
+      }
+
     render() {
 
-        //Grabs data from text field in entry from the martenSchemaDemo
-        flamelinkApp.content.get('martenSchemaDemo')
-        .then(flameData => document.getElementById("flamelinkDemo").innerHTML = flameData.field_1538162314419);
-        
-        return(null);
+        return(
+            <Fragment>
+                <Layout schemaDetails = {this.state.schemaDetails}/>
+            </Fragment>
+        );
     }
 }
 

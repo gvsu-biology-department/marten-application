@@ -6,7 +6,7 @@ import Quiz from 'react-quiz-component';
 class QuizGame extends Component {
 
   quiz = {
-    "quizTitle": "React Quiz Component Demo",
+    "quizTitle": "Trail Cam Quiz",
     "questions": [
       {
         "question": <Fragment>What animal is this?<br /><img src="/quizimages/question1.jpg" alt=""></img></Fragment>,

@@ -7,7 +7,7 @@ class QuizPage extends Component {
   render() {
     return (
       <Typography variant='display1' align='center' gutterBottom>
-        <QuizGame />
+          <QuizGame />
       </Typography>
     );
   }

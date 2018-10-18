@@ -2,10 +2,21 @@ import React, { Fragment } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Quiz from 'react-quiz-component';
 
+function shuffleArray(array) {
+    var j, x, i;
+    for (i = array.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = array[i];
+        array[i] = array[j];
+        array[j] = x;
+    }
+    return array;
+}
+
 class QuizGame extends React.Component {
     quiz = {
         "quizTitle": "Trail Cam Quiz",
-        "questions": [
+        "questions": shuffleArray([
             {
                 "question": <Fragment>What animal is this?<br /><img src="/quizimages/question1.jpg" alt=""></img></Fragment>,
                 "questionType": "text",
@@ -56,7 +67,7 @@ class QuizGame extends React.Component {
                 ],
                 "correctAnswer": "2"
             },
-        ]
+        ])
     };
 
     render() {

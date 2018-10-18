@@ -40,10 +40,8 @@ const styles = theme => ({
 
 /**
  * Function for formatting the
- * date as a string that
- * Material UI can use. We'll
- * also store the date like
- * this string in the database.
+ * year as a string that
+ * Material UI can use.
  * @param {*} date, Date passed in. 
  */
 function getYear(date) {

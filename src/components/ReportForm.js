@@ -146,6 +146,10 @@ const monthTypes = [
 */
 const timeTypes = [
   {
+    value: 'unknown',
+    label: 'Unknown',
+  },
+  {
     value: 'morning',
     label: 'Morning',
   },
@@ -160,10 +164,6 @@ const timeTypes = [
   {
     value: 'night',
     label: 'Night',
-  },
-  {
-    value: 'unknown',
-    label: 'Unknown',
   },
 ];
 
@@ -215,7 +215,7 @@ class ReportForm extends React.Component {
   state = {
     month: '01',
     year: getYear(new Date()),
-    time: 'morning',
+    time: 'unknown',
     type: 'visual',
     confidence: '1',
     desc: '',
@@ -269,7 +269,7 @@ class ReportForm extends React.Component {
     this.setState({
       year: getYear(new Date()),
       month: '01',
-      time: 'morning',
+      time: 'unknown',
       type: 'visual',
       confidence: '1',
       desc: '',

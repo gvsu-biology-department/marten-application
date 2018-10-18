@@ -175,11 +175,11 @@ const timeTypes = [
 const confidenceLevels = [
   {
     value: '1',
-    label: '1 - Strongly unconfident',
+    label: '1 - Not at all confident',
   },
   {
     value: '2',
-    label: '2 - Unconfident',
+    label: '2 - Slightly confident',
   },
   {
     value: '3',
@@ -187,11 +187,11 @@ const confidenceLevels = [
   },
   {
     value: '4',
-    label: '4 - Confident',
+    label: '4 - Fairly confident',
   },
   {
     value: '5',
-    label: '5 - Very confident',
+    label: '5 - Completely confident',
   },
 ];
 

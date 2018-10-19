@@ -175,23 +175,23 @@ const timeTypes = [
 const confidenceLevels = [
   {
     value: '1',
-    label: '1 - Not at all confident',
+    label: '1 - Strongly disagree',
   },
   {
     value: '2',
-    label: '2 - Slightly confident',
+    label: '2 - Disagree',
   },
   {
     value: '3',
-    label: '3 - Somewhat confident',
+    label: '3 - Neutral',
   },
   {
     value: '4',
-    label: '4 - Fairly confident',
+    label: '4 - Agree',
   },
   {
     value: '5',
-    label: '5 - Completely confident',
+    label: '5 - Strongly agree',
   },
 ];
 
@@ -259,7 +259,7 @@ class ReportForm extends React.Component {
     const sighting = {
       type: this.state.type,
       confidence: this.state.confidence,
-      date:  this.state.year + '-' + this.state.month,
+      date: this.state.year + '-' + this.state.month,
       time: this.state.time,
       desc: this.state.desc,
       lat: this.state.lat,
@@ -334,7 +334,7 @@ class ReportForm extends React.Component {
                         className: classes.menu,
                       },
                     }}
-                    helperText="Please select confidence in sighting"
+                    helperText="I am confident of my marten sighting"
                   >
                     {confidenceLevels.map(option => (
                       <MenuItem key={option.value} value={option.value}>
@@ -383,7 +383,6 @@ class ReportForm extends React.Component {
                         className: classes.menu,
                       },
                     }}
-                    helperText="Please select month of sighting"
                   >
                     {monthTypes.map(option => (
                       <MenuItem key={option.value} value={option.value}>
@@ -432,7 +431,7 @@ class ReportForm extends React.Component {
                 <Grid item xs={12}>
                   <Button variant="contained" type="submit" color="primary" className={classes.button}>
                     Submit
-                                </Button>
+                  </Button>
                 </Grid>
               </Grid>
             </Grid>

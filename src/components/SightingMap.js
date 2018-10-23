@@ -85,6 +85,29 @@ export class MapContainer extends Component {
         }
     }
 
+    sightingIcon = (type) => {
+        let pinIcon
+
+        switch(type) {
+            case 'visual':
+                pinIcon = 'https://i.postimg.cc/nhYXGQNp/marten-icon.png'
+                break
+            case 'roadkill':
+                pinIcon = 'https://i.postimg.cc/xdfcx1SH/tire-icon.png'
+                break
+            case 'viewed_tracks':
+                pinIcon = 'https://i.postimg.cc/7P761WCS/paws.png'
+                break
+            case 'trapped':
+                pinIcon = 'https://i.postimg.cc/Y9LSsXdK/cage.png'
+                break
+            default:
+                break
+        }
+
+        return pinIcon
+    }
+
     // Set the state of the component to contain user coordinates and initial 
     // marker and info window information
     state = {
@@ -99,6 +122,8 @@ export class MapContainer extends Component {
     }
 
     render() {
+        const {google} = this.props;
+
         return (
             // Render the Google Map, Marker, and InfoWindow components
             <div className = "sighting-google-map-container">
@@ -117,6 +142,9 @@ export class MapContainer extends Component {
                     />
 
                     { this.state.sightings.map((sighting) => {
+                        
+                        let pinIcon = this.sightingIcon(sighting.type)
+
                         return (
                             <Marker
                                 key={ sighting.id }
@@ -127,6 +155,11 @@ export class MapContainer extends Component {
                                 date = { 'Date: ' + sighting.date }
                                 time = { 'Time: ' + sighting.time }
                                 description = { 'Description: ' + sighting.desc }
+                                icon={{
+                                    url: pinIcon,
+                                    anchor: new google.maps.Point(32,32),
+                                    scaledSize: new google.maps.Size(32,32)
+                                }}
                             />
                         )
                     })}

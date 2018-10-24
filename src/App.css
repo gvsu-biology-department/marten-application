@@ -2,12 +2,23 @@ body {
     margin: 0;
 }
 
-.report-google-map-container > div {
-    width: 50% !important;
+/* #root > div > div {
+    overflow: scroll !important;
+} */
+
+div[class="ResponsiveDrawer-root-1"] {
+    overflow: scroll !important;
+    overflow-x: hidden !important;
 }
 
 @media (min-width: 960px) {
     .sighting-google-map-container > div {
         width: calc(100% - 241px) !important;
+    }
+}
+
+@media (min-width: 960px) {
+    .report-google-map-container > div {
+        width: 50% !important;
     }
 }

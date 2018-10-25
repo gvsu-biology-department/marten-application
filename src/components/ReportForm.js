@@ -16,8 +16,7 @@ import GoogleMap from '../components/ReportMap';
 const styles = theme => ({
   container: {
     display: 'flex',
-    flexWrap: 'wrap',
-    marginTop: '64px'
+    flexWrap: 'wrap'
   },
   textField: {
     marginLeft: theme.spacing.unit * 2,

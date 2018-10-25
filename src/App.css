@@ -2,15 +2,6 @@ body {
     margin: 0;
 }
 
-/* #root > div > div {
-    overflow: scroll !important;
-} */
-
-div[class="ResponsiveDrawer-root-1"] {
-    overflow: scroll !important;
-    overflow-x: hidden !important;
-}
-
 @media (min-width: 960px) {
     .sighting-google-map-container > div {
         width: calc(100% - 241px) !important;

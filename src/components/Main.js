@@ -20,56 +20,63 @@ import ListIcon from '@material-ui/icons/List';
 import SlideshowIcon from '@material-ui/icons/Slideshow';
 import Home from '../pages/Home';
 import ViewMap from '../pages/ViewMap';
-import QuizPage from '../pages/QuizPage';
+import Quiz from '../pages/QuizPage';
 import SightingList from '../pages/SightingList';
 import Report from '../pages/Report';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import Collapse from '@material-ui/core/Collapse';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
     root: {
-        flexGrow: 1,
-        height: '100vh',
-        zIndex: 1,
-        overflow: 'hidden',
-        position: 'relative',
         display: 'flex',
-        width: '100%',
+    },
+    drawer: {
+        [theme.breakpoints.up('sm')]: {
+            width: drawerWidth,
+            flexShrink: 0,
+        },
+    },
+    nested: {
+        paddingLeft: theme.spacing.unit * 4,
     },
     appBar: {
-        position: 'absolute',
         marginLeft: drawerWidth,
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('sm')]: {
             width: `calc(100% - ${drawerWidth}px)`,
         },
     },
-    navIconHide: {
-        [theme.breakpoints.up('md')]: {
+    menuButton: {
+        marginRight: 20,
+        [theme.breakpoints.up('sm')]: {
             display: 'none',
         },
     },
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
         width: drawerWidth,
-        [theme.breakpoints.up('md')]: {
-            position: 'relative',
-        },
     },
     content: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.background.default,
-        padding: theme.spacing.unit * 3,
+        flexGrow: 1
     },
 });
 
 class ResponsiveDrawer extends React.Component {
     state = {
         mobileOpen: false,
-        key: ''
-    }
+        key: '',
+        open: false
+    };
 
     handleDrawerToggle = () => {
         this.setState(state => ({ mobileOpen: !state.mobileOpen }));
+    }
+
+    handleClick = () => {
+        this.setState(state => ({ open: !state.open }));
     }
 
     nav = (text) => {
@@ -87,79 +94,114 @@ class ResponsiveDrawer extends React.Component {
                 <Divider />
                 <List>
                     <ListItem button key='Home' onClick={() => this.nav('Home')}>
-                        <ListItemIcon><HomeIcon/></ListItemIcon>
+                        <ListItemIcon><HomeIcon /></ListItemIcon>
                         <ListItemText primary='Home' />
                     </ListItem>
                     <ListItem button key='Report' onClick={() => this.nav('Report')}>
-                        <ListItemIcon><AssignmentIcon/></ListItemIcon>
+                        <ListItemIcon><AssignmentIcon /></ListItemIcon>
                         <ListItemText primary='Report' />
                     </ListItem>
                     <ListItem button key='Map' onClick={() => this.nav('Map')}>
-                        <ListItemIcon><MapIcon/></ListItemIcon>
+                        <ListItemIcon><MapIcon /></ListItemIcon>
                         <ListItemText primary='Map' />
                     </ListItem>
                     <ListItem button key='List' onClick={() => this.nav('List')}>
-                        <ListItemIcon><ListIcon/></ListItemIcon>
+                        <ListItemIcon><ListIcon /></ListItemIcon>
                         <ListItemText primary='List' />
                     </ListItem>
-                    <ListItem button key='Quiz' onClick={() => this.nav('Quiz')}>
-                        <ListItemIcon><SlideshowIcon/></ListItemIcon>
-                        <ListItemText primary='Quiz' />
+                    <ListItem button onClick={this.handleClick}>
+                        <ListItemIcon>
+                            <SlideshowIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Quiz" />
+                        {this.state.open ? <ExpandLess /> : <ExpandMore />}
                     </ListItem>
+                    <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                            <ListItem button className={classes.nested} onClick={() => this.nav('Easy-Quiz')}>
+                                <ListItemIcon>
+                                    <MapIcon />
+                                </ListItemIcon>
+                                <ListItemText inset primary="Easy" />
+                            </ListItem>
+                            <ListItem button className={classes.nested} onClick={() => this.nav('Medium-Quiz')}>
+                                <ListItemIcon>
+                                    <MapIcon />
+                                </ListItemIcon>
+                                <ListItemText inset primary="Medium" />
+                            </ListItem>
+                            <ListItem button className={classes.nested} onClick={() => this.nav('Hard-Quiz')}>
+                                <ListItemIcon>
+                                    <MapIcon />
+                                </ListItemIcon>
+                                <ListItemText inset primary="Hard" />
+                            </ListItem>
+                        </List>
+                    </Collapse>
                 </List>
+                <Divider />
             </div>
         );
 
         return (
             <div className={classes.root}>
-                <AppBar className={classes.appBar}>
+                <CssBaseline />
+                <AppBar position="fixed" className={classes.appBar}>
                     <Toolbar>
                         <IconButton
                             color="inherit"
                             aria-label="Open drawer"
                             onClick={this.handleDrawerToggle}
-                            className={classes.navIconHide}
+                            className={classes.menuButton}
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Typography variant='title' color="inherit" noWrap>
+                        <Typography variant="title" color="inherit" noWrap>
                             The American Marten
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                <Hidden mdUp>
-                    <Drawer
-                        variant="temporary"
-                        anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                        open={this.state.mobileOpen}
-                        onClose={this.handleDrawerToggle}
-                        classes={{
-                            paper: classes.drawerPaper,
-                        }}
-                        ModalProps={{
-                            keepMounted: true, // Better open performance on mobile.
-                        }}
-                    >
-                        {drawer}
-                    </Drawer>
-                </Hidden>
-                <Hidden smDown implementation="css">
-                    <Drawer
-                        variant="permanent"
-                        open
-                        classes={{
-                            paper: classes.drawerPaper,
-                        }}
-                    >
-                        {drawer}
-                    </Drawer>
-                </Hidden>
+                <nav className={classes.drawer}>
+                    {/* The implementation can be swap with js to avoid SEO duplication of links. */}
+                    <Hidden smUp implementation="css">
+                        <Drawer
+                            container={this.props.container}
+                            variant="temporary"
+                            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+                            open={this.state.mobileOpen}
+                            onClose={this.handleDrawerToggle}
+                            classes={{
+                                paper: classes.drawerPaper,
+                            }}
+                            ModalProps={{
+                                keepMounted: true, // Better open performance on mobile.
+                            }}
+                        >
+                            {drawer}
+                        </Drawer>
+                    </Hidden>
+                    <Hidden xsDown implementation="css">
+                        <Drawer
+                            classes={{
+                                paper: classes.drawerPaper,
+                            }}
+                            variant="permanent"
+                            open
+                        >
+                            {drawer}
+                        </Drawer>
+                    </Hidden>
+                </nav>
+                <main className={classes.content}>
                     <div className={classes.toolbar} />
                     {this.state.key === 'Home' && <Home />}
                     {this.state.key === 'Report' && <Report />}
                     {this.state.key === 'Map' && <ViewMap />}
                     {this.state.key === 'List' && <SightingList />}
-                    {this.state.key === 'Quiz' && <QuizPage />}
+                    {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy'/>}
+                    {this.state.key === 'Medium-Quiz' && <Quiz difficulty='Medium'/>}
+                    {this.state.key === 'Hard-Quiz' && <Quiz difficulty='Hard'/>}
+                </main>
             </div>
         );
     }
@@ -167,6 +209,9 @@ class ResponsiveDrawer extends React.Component {
 
 ResponsiveDrawer.propTypes = {
     classes: PropTypes.object.isRequired,
+    // Injected by the documentation to work in an iframe.
+    // You won't need it on your project.
+    container: PropTypes.object,
     theme: PropTypes.object.isRequired,
 };
 

@@ -16,7 +16,7 @@ import GoogleMap from '../components/ReportMap';
 const styles = theme => ({
   container: {
     display: 'flex',
-    flexWrap: 'wrap',
+    flexWrap: 'wrap'
   },
   textField: {
     marginLeft: theme.spacing.unit * 2,
@@ -292,7 +292,7 @@ class ReportForm extends React.Component {
       <Fragment>
         <form className={classes.container} autoComplete="off" onSubmit={this.handleSubmit}>
           <Grid container>
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
               <Grid container spacing={8}>
                 <Grid item xs={12}>
                   <TextField
@@ -435,7 +435,7 @@ class ReportForm extends React.Component {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
               <GoogleMap onClick={this.getCoordinates} />
             </Grid>
           </Grid>

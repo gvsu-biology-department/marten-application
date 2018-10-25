@@ -119,21 +119,12 @@ class ResponsiveDrawer extends React.Component {
                     <Collapse in={this.state.open} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
                             <ListItem button className={classes.nested} onClick={() => this.nav('Easy-Quiz')}>
-                                <ListItemIcon>
-                                    <MapIcon />
-                                </ListItemIcon>
                                 <ListItemText inset primary="Easy" />
                             </ListItem>
                             <ListItem button className={classes.nested} onClick={() => this.nav('Medium-Quiz')}>
-                                <ListItemIcon>
-                                    <MapIcon />
-                                </ListItemIcon>
                                 <ListItemText inset primary="Medium" />
                             </ListItem>
                             <ListItem button className={classes.nested} onClick={() => this.nav('Hard-Quiz')}>
-                                <ListItemIcon>
-                                    <MapIcon />
-                                </ListItemIcon>
                                 <ListItemText inset primary="Hard" />
                             </ListItem>
                         </List>

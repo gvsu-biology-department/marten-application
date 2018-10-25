@@ -60,7 +60,8 @@ const styles = theme => ({
         width: drawerWidth,
     },
     content: {
-        flexGrow: 1
+        flexGrow: 1,
+        width: '60%'
     },
 });
 
@@ -153,7 +154,6 @@ class ResponsiveDrawer extends React.Component {
                     </Toolbar>
                 </AppBar>
                 <nav className={classes.drawer}>
-                    {/* The implementation can be swap with js to avoid SEO duplication of links. */}
                     <Hidden smUp implementation="css">
                         <Drawer
                             container={this.props.container}

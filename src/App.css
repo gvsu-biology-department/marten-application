@@ -2,14 +2,15 @@ body {
     margin: 0;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 600px) {
     .sighting-google-map-container > div {
-        width: calc(100% - 241px) !important;
+        width: calc(100% - 240px) !important;
+        height: calc(100% - 64px) !important;
     }
 }
 
 @media (min-width: 960px) {
     .report-google-map-container > div {
-        width: 50% !important;
+        width: calc(100% - 50% - 120px) !important;
     }
 }

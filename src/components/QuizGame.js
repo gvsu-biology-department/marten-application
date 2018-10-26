@@ -272,24 +272,20 @@ class QuizGame extends React.Component {
         const { classes } = this.props;
 
         return (
-            <Fragment>
-                {
-                    // Tabs
-                    <div className={classes.root}>
-                        <Typography variant="headline" align="center">
-                            <Grid container justify="center">
-                                <Quiz quiz={this.state.difficulty} key={this.state.key} />
-                            </Grid>
-                        </Typography>
-                    </div>
-                }
+            // Tabs
+            <div className={classes.root}>
+                <Typography variant="headline" align="center">
+                    <Grid container justify="center">
+                        <Quiz quiz={this.state.difficulty} key={this.state.key} />
+                    </Grid>
+                </Typography>
                 <Typography align="center">
                     <Button variant="contained" color="default" className={classes.button} onClick={this.reset}>
                         Reset
-                    <RefreshIcon className={classes.rightIcon} />
+                        <RefreshIcon className={classes.rightIcon} />
                     </Button>
                 </Typography>
-            </Fragment>
+            </div>
         );
     }
 }

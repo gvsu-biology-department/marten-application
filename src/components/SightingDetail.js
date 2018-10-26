@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Disqus from 'disqus-react';
+import Divider from '@material-ui/core/Divider';
 
 class SightingDetail extends Component {
 
@@ -13,7 +14,14 @@ class SightingDetail extends Component {
 
         return (
             <Fragment>
-                <p>{this.props.detail.type}</p>
+                <h1>{`Sighting ${this.props.detail.id}`}</h1>
+                <Divider/>
+                <p>{`Type: ${this.props.detail.type}`}</p>
+                <p>{`Confidence: ${this.props.detail.confidence}`}</p>
+                <p>{`When: ${this.props.detail.date}, ${this.props.detail.time}`}</p>
+                <p>{`Where: ${this.props.detail.lat} degrees N, and ${this.props.detail.lng} degrees E`}</p>
+                <p>{`${this.props.detail.desc}`}</p>
+
                 <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
             </Fragment>
         );

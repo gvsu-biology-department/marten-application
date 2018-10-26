@@ -75,13 +75,14 @@ class ViewSightings extends Component {
                             <List>
                             { 
                                 this.state.sightings.map((sighting) => {
-                                return (
-                                    <ListItem button key={ sighting.id } onClick={() => this.getDetail(sighting.id, sighting.lat, sighting.lng, sighting.desc, sighting.type, sighting.confidence, sighting.date, sighting.time)}>
-                                        <ListItemIcon><HomeIcon/></ListItemIcon>
-                                        <ListItemText primary={`Type: ${sighting.type}`}/>
-                                    </ListItem>
-                                )
-                            })}
+                                    return (
+                                        <ListItem button key={ sighting.id } onClick={() => this.getDetail(sighting.id, sighting.lat, sighting.lng, sighting.desc, sighting.type, sighting.confidence, sighting.date, sighting.time)}>
+                                            <ListItemIcon><HomeIcon/></ListItemIcon>
+                                            <ListItemText primary={`Type: ${sighting.type}`}/>
+                                        </ListItem>
+                                    )
+                                })
+                            }
                             </List>
                         </Fragment>
                     </Grid>

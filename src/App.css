@@ -14,3 +14,7 @@ body {
         width: calc(100% - 50% - 120px) !important;
     }
 }
+
+#disqus_thread {
+    width: 99% !important;
+}

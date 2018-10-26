@@ -9,6 +9,7 @@
     "firebase-admin": "^6.0.0",
     "flamelink": "^0.19.2",
     "google-maps-react": "^2.0.2",
+    "moment": "^2.22.2",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-quiz-component": "0.2.0",

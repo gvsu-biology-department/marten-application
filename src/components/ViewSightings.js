@@ -78,7 +78,7 @@ class ViewSightings extends Component {
                                     return (
                                         <ListItem button key={ sighting.id } onClick={() => this.getDetail(sighting.id, sighting.lat, sighting.lng, sighting.desc, sighting.type, sighting.confidence, sighting.date, sighting.time)}>
                                             <ListItemIcon><HomeIcon/></ListItemIcon>
-                                            <ListItemText primary={`Type: ${sighting.type}`}/>
+                                            <ListItemText primary={`${sighting.desc}`}/>
                                         </ListItem>
                                     )
                                 })

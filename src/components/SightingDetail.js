@@ -3,10 +3,6 @@ import Disqus from 'disqus-react';
 
 class SightingDetail extends Component {
 
-    componentDidUpdate() {
-        window.history.pushState("", "", this.props.detail.id);
-    }
-
     render() {
         const disqusShortname = 'https-marten-application-netlify-com';
         const disqusConfig = {

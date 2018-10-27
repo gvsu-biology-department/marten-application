@@ -70,7 +70,7 @@ class ViewSightings extends Component {
         return (
             <Fragment>
                 <Grid container>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={6} className='sighting-list'>
                         <Fragment>
                             <List>
                             { 
@@ -86,7 +86,7 @@ class ViewSightings extends Component {
                             </List>
                         </Fragment>
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={6} className='sighting-details'>
                         {this.state.clicked === true && <SightingDetail detail={ this.state.selectedSighting }/>}
                     </Grid>
                 </Grid>

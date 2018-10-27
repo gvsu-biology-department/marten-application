@@ -15,7 +15,7 @@ class SightingDetail extends Component {
         return (
             <Fragment>
                 <SightingDetailMap lat={this.props.detail.lat} lng={this.props.detail.lng}/>
-                <div className='sighting-details'>
+                <div className='sighting-details-content'>
                     <p>{`Confidence: ${this.props.detail.confidence}`}</p>
                     <p>{`When: ${this.props.detail.date}, ${this.props.detail.time}`}</p>
                     <p>{`Where: ${this.props.detail.lat} degrees N, and ${this.props.detail.lng} degrees E`}</p>

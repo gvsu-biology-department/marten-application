@@ -4,6 +4,10 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import Button from '@material-ui/core/Button';
 import firebase from '../firebase.js';
 import GoogleMap from '../components/ReportMap';
@@ -32,6 +36,17 @@ const styles = theme => ({
   },
   dense: {
     marginTop: 30,
+  },
+  close: {
+    padding: theme.spacing.unit / 2,
+  },
+  icon: {
+    fontSize: 20,
+    marginRight: theme.spacing.unit,
+  },
+  message: {
+    display: 'flex',
+    alignItems: 'center',
   },
   menu: {
     width: 200,
@@ -220,7 +235,8 @@ class ReportForm extends React.Component {
     confidence: '1',
     desc: '',
     lat: '',
-    lng: ''
+    lng: '',
+    open: false
   };
 
   /**
@@ -231,6 +247,17 @@ class ReportForm extends React.Component {
     this.setState({
       [name]: event.target.value,
     });
+  };
+
+  /**
+   * Handles closing the toast.
+   */
+  handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    this.setState({ open: false });
   };
 
   /*
@@ -274,7 +301,8 @@ class ReportForm extends React.Component {
       confidence: '1',
       desc: '',
       lat: '',
-      lng: ''
+      lng: '',
+      open: true
     });
   };
 
@@ -440,6 +468,30 @@ class ReportForm extends React.Component {
             </Grid>
           </Grid>
         </form>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.open}
+          autoHideDuration={6000}
+          onClose={this.handleClose}
+          ContentProps={{
+            'aria-describedby': 'message-id',
+          }}
+          message={<span id="message-id" className={classes.message}><CheckCircleIcon className={classes.icon}/>Report received.</span>}
+          action={[
+            <IconButton
+              key="close"
+              aria-label="Close"
+              color="inherit"
+              className={classes.close}
+              onClick={this.handleClose}
+            >
+              <CloseIcon />
+            </IconButton>,
+          ]}
+        />
       </Fragment>
     );
   }

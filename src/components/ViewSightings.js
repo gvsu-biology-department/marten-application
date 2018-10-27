@@ -3,9 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import firebase from '../firebase.js';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import HomeIcon from '@material-ui/icons/Home';
 import SightingDetail from './SightingDetail';
 
 class ViewSightings extends Component {
@@ -77,7 +75,6 @@ class ViewSightings extends Component {
                                 this.state.sightings.map((sighting) => {
                                     return (
                                         <ListItem button key={ sighting.id } onClick={() => this.getDetail(sighting.id, sighting.lat, sighting.lng, sighting.desc, sighting.type, sighting.confidence, sighting.date, sighting.time)}>
-                                            <ListItemIcon><HomeIcon/></ListItemIcon>
                                             <ListItemText primary={`${sighting.desc}`}/>
                                         </ListItem>
                                     )

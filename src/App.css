@@ -29,6 +29,13 @@ body {
 }
 
 .sighting-detail-google-map-container > div {
-    width: calc(100% - 50% - 120px) !important;
-    height: 50% !important;
+    width: 100% !important;
+    height: 30% !important;
+}
+
+@media (min-width: 960px) {
+    .sighting-detail-google-map-container > div {
+        width: calc(100% - 50% - 120px) !important;
+        height: 50% !important;
+    }
 }

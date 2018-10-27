@@ -208,7 +208,10 @@ export class MapContainer extends Component {
         }
     }
 
-<<<<<<< HEAD
+    /**
+     * Determines marker icon based on the
+     * sighting type.
+     */
     sightingIcon = (type) => {
         let pinIcon
 
@@ -230,10 +233,10 @@ export class MapContainer extends Component {
         }
 
         return pinIcon
-=======
+    }
+
     formatDate = date => {
         return (moment(date, "YYYY-MM").format("MMMM YYYY").toString())
->>>>>>> 48273519cbb4fe2cd134adbfa4e7814237f3021a
     }
 
     // Set the state of the component to contain user coordinates and initial 
@@ -267,30 +270,11 @@ export class MapContainer extends Component {
                         position={this.state.myLatLng}
                         onClick={this.onMarkerClick}
                         type={'You are here'}
-                    />
-
-<<<<<<< HEAD
-                    { this.state.sightings.map((sighting) => {
+                    />                    
                         
+                    {this.state.sightings.map((sighting) => {
                         let pinIcon = this.sightingIcon(sighting.type)
 
-                        return (
-                            <Marker
-                                key={ sighting.id }
-                                position={{ lat: sighting.lat, lng:sighting.lng }}
-                                onClick = { this.onMarkerClick }
-                                type = { 'Type: ' + sighting.type }
-                                confidence = { 'Confidence: ' + sighting.confidence }
-                                date = { 'Date: ' + sighting.date }
-                                time = { 'Time: ' + sighting.time }
-                                description = { 'Description: ' + sighting.desc }
-                                icon={{
-                                    url: pinIcon,
-                                    anchor: new google.maps.Point(32,32),
-                                    scaledSize: new google.maps.Size(32,32)
-                                }}
-=======
-                    {this.state.sightings.map((sighting) => {
                         return (
                             <Marker
                                 key = {sighting.id}
@@ -301,7 +285,11 @@ export class MapContainer extends Component {
                                 date = {<Fragment><b>Date:</b> {this.formatDate(sighting.date)}</Fragment>}
                                 time = {<Fragment><b>Time:</b> {getTime(sighting.time)}</Fragment>}
                                 description = {<Fragment><b>Description:</b> {sighting.desc}</Fragment>}
->>>>>>> 48273519cbb4fe2cd134adbfa4e7814237f3021a
+                                icon={{
+                                    url: pinIcon,
+                                    anchor: new google.maps.Point(32,32),
+                                    scaledSize: new google.maps.Size(32,32)
+                                }}
                             />
                         )
                     })}

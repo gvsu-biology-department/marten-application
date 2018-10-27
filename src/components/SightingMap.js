@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import moment from 'moment'
 import Typography from '@material-ui/core/Typography';
 import firebase from '../firebase.js';
 
@@ -12,6 +13,128 @@ const mapStyles = {
     height: '100%'
 }
 
+/** 
+  * Types of sightings. Label is what is
+  * viewed in the application, value is
+  * what is stored in the database.
+  */
+const sightingTypes = [
+    {
+        value: 'visual',
+        label: 'Visual',
+    },
+    {
+        value: 'roadkill',
+        label: 'Roadkill',
+    },
+    {
+        value: 'trapped',
+        label: 'Trapped',
+    },
+    {
+        value: 'viewed_tracks',
+        label: 'Viewed Tracks',
+    },
+    {
+        value: 'photo',
+        label: 'Photo',
+    },
+    {
+        value: 'other',
+        label: 'Other',
+    },
+];
+
+/** 
+ * Types of sightings. Label is what is
+ * viewed in the application, value is
+ * what is stored in the database.
+*/
+const timeTypes = [
+    {
+        value: 'unknown',
+        label: 'Unknown',
+    },
+    {
+        value: 'morning',
+        label: 'Morning',
+    },
+    {
+        value: 'midday',
+        label: 'Midday',
+    },
+    {
+        value: 'evening',
+        label: 'Evening',
+    },
+    {
+        value: 'night',
+        label: 'Night',
+    },
+];
+
+/** 
+ * Levels of confidence. Label is what is
+ * viewed in the application, value is
+ * what is stored in the database.
+*/
+const confidenceLevels = [
+    {
+        value: '1',
+        label: '1 - Strongly unconfident',
+    },
+    {
+        value: '2',
+        label: '2 - Unconfident',
+    },
+    {
+        value: '3',
+        label: '3 - Somewhat confident',
+    },
+    {
+        value: '4',
+        label: '4 - Confident',
+    },
+    {
+        value: '5',
+        label: '5 - Very confident',
+    },
+];
+
+/**
+ * Gets formatted confidence value.
+ */
+function getConfidence(item) {
+    for (var i = 0; i < confidenceLevels.length; i++) {
+        if (confidenceLevels[i].value === item) {
+            return confidenceLevels[i].label;
+        }
+    }
+
+}
+
+/**
+ * Gets formatted time value.
+ */
+function getTime(item) {
+    for (var i = 0; i < timeTypes.length; i++) {
+        if (timeTypes[i].value === item) {
+            return timeTypes[i].label;
+        }
+    }
+}
+
+/**
+ * Gets formatted type value.
+ */
+function getType(item) {
+    for (var i = 0; i < sightingTypes.length; i++) {
+        if (sightingTypes[i].value === item) {
+            return sightingTypes[i].label;
+        }
+    }
+}
+
 export class MapContainer extends Component {
 
     // Get the user's location using Google's geolocation
@@ -19,22 +142,22 @@ export class MapContainer extends Component {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 this.setState({
-                        myLatLng: {
-                            lat: position.coords.latitude,
-                            lng: position.coords.longitude
-                        }
+                    myLatLng: {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
                     }
+                }
                 );
             })
         } else {
             // If browser doesn't support geolocation or if user does not allow it, 
             // center map on Grand Rapids, Michigan
             this.setState({
-                    myLatLng: {
-                        lat: 42.9634,
-                        lng: 85.6681
-                    }
+                myLatLng: {
+                    lat: 42.9634,
+                    lng: 85.6681
                 }
+            }
             );
         }
     }
@@ -85,6 +208,7 @@ export class MapContainer extends Component {
         }
     }
 
+<<<<<<< HEAD
     sightingIcon = (type) => {
         let pinIcon
 
@@ -106,6 +230,10 @@ export class MapContainer extends Component {
         }
 
         return pinIcon
+=======
+    formatDate = date => {
+        return (moment(date, "YYYY-MM").format("MMMM YYYY").toString())
+>>>>>>> 48273519cbb4fe2cd134adbfa4e7814237f3021a
     }
 
     // Set the state of the component to contain user coordinates and initial 
@@ -126,21 +254,22 @@ export class MapContainer extends Component {
 
         return (
             // Render the Google Map, Marker, and InfoWindow components
-            <div className = "sighting-google-map-container">
+            <div className="sighting-google-map-container">
                 <Map
-                    style = { mapStyles }
-                    google = { this.props.google }
-                    initialCenter = { this.state.myLatLng }
-                    center = { this.state.myLatLng }
-                    defaultZoom = { 15 }
-                    onClick = { this.onMapClick } >
+                    style={mapStyles}
+                    google={this.props.google}
+                    initialCenter={this.state.myLatLng}
+                    center={this.state.myLatLng}
+                    defaultZoom={15}
+                    onClick={this.onMapClick} >
 
-                    <Marker 
-                        position = { this.state.myLatLng }
-                        onClick = { this.onMarkerClick }
-                        type = { 'You are here' } 
+                    <Marker
+                        position={this.state.myLatLng}
+                        onClick={this.onMarkerClick}
+                        type={'You are here'}
                     />
 
+<<<<<<< HEAD
                     { this.state.sightings.map((sighting) => {
                         
                         let pinIcon = this.sightingIcon(sighting.type)
@@ -160,29 +289,42 @@ export class MapContainer extends Component {
                                     anchor: new google.maps.Point(32,32),
                                     scaledSize: new google.maps.Size(32,32)
                                 }}
+=======
+                    {this.state.sightings.map((sighting) => {
+                        return (
+                            <Marker
+                                key = {sighting.id}
+                                position = {{ lat: sighting.lat, lng: sighting.lng }}
+                                onClick = {this.onMarkerClick}
+                                type = {'Type: ' + getType(sighting.type)}
+                                confidence = {<Fragment><b>Confidence:</b> {getConfidence(sighting.confidence)}</Fragment>}
+                                date = {<Fragment><b>Date:</b> {this.formatDate(sighting.date)}</Fragment>}
+                                time = {<Fragment><b>Time:</b> {getTime(sighting.time)}</Fragment>}
+                                description = {<Fragment><b>Description:</b> {sighting.desc}</Fragment>}
+>>>>>>> 48273519cbb4fe2cd134adbfa4e7814237f3021a
                             />
                         )
                     })}
 
                     <InfoWindow
-                        marker = { this.state.activeMarker }
-                        visible = { this.state.showingInfoWindow } >
+                        marker={this.state.activeMarker}
+                        visible={this.state.showingInfoWindow} >
 
                         <Fragment>
-                            <Typography variant = "display1" gutterBottom>
-                                { this.state.selectedPlace.type }
+                            <Typography variant="display1" gutterBottom>
+                                {this.state.selectedPlace.type}
                             </Typography>
-                            <Typography variant = "subheading" gutterBottom>
-                                { this.state.selectedPlace.confidence }
+                            <Typography variant="subheading" gutterBottom>
+                                {this.state.selectedPlace.confidence}
                             </Typography>
-                            <Typography variant = "subheading" gutterBottom>
-                                { this.state.selectedPlace.date }
+                            <Typography variant="subheading" gutterBottom>
+                                {this.state.selectedPlace.date}
                             </Typography>
-                            <Typography variant = "subheading" gutterBottom>
-                                { this.state.selectedPlace.time }
+                            <Typography variant="subheading" gutterBottom>
+                                {this.state.selectedPlace.time}
                             </Typography>
-                            <Typography variant = "subheading" gutterBottom>
-                                { this.state.selectedPlace.description }
+                            <Typography variant="subheading" gutterBottom>
+                                {this.state.selectedPlace.description}
                             </Typography>
                         </Fragment>
                     </InfoWindow>

@@ -53,19 +53,6 @@ const styles = theme => ({
   },
 });
 
-/**
- * Function for formatting the
- * year as a string that
- * Material UI can use.
- * @param {*} date, Date passed in. 
- */
-function getYear(date) {
-  var d = new Date(date),
-    year = d.getFullYear();
-
-  return year;
-}
-
 /** 
  * Types of sightings. Label is what is
  * viewed in the application, value is
@@ -228,8 +215,8 @@ class ReportForm extends React.Component {
    * State of form components.
    */
   state = {
-    month: '01',
-    year: getYear(new Date()),
+    month: this.getMonth(new Date()),
+    year: this.getYear(new Date()),
     time: 'unknown',
     type: 'visual',
     confidence: '1',
@@ -248,6 +235,38 @@ class ReportForm extends React.Component {
       [name]: event.target.value,
     });
   };
+
+  /**
+  * Function for formatting the
+  * year as a string that
+  * Material UI can use.
+  * @param {*} date, Date passed in. 
+  */
+  getYear = date => {
+    var d = new Date(date),
+      year = d.getFullYear();
+
+    return year;
+  }
+
+  /**
+  * Function for formatting the
+  * month as a string that
+  * Material UI can use.
+  * @param {*} date, Date passed in. 
+  */
+  getMonth = date => {
+    var d = new Date(date),
+    month = d.getMonth();
+
+    month = month.toString();
+
+    if (month.length == 1) {
+      month = "0" + month;
+    }
+
+    return month;
+  }
 
   /**
    * Handles closing the toast.
@@ -294,8 +313,8 @@ class ReportForm extends React.Component {
     }
     sightingsRef.push(sighting);
     this.setState({
-      year: getYear(new Date()),
-      month: '01',
+      year: this.getYear(new Date()),
+      month: this.getMonth(new Date()),
       time: 'unknown',
       type: 'visual',
       confidence: '1',
@@ -479,7 +498,7 @@ class ReportForm extends React.Component {
           ContentProps={{
             'aria-describedby': 'message-id',
           }}
-          message={<span id="message-id" className={classes.message}><CheckCircleIcon className={classes.icon}/>Report received.</span>}
+          message={<span id="message-id" className={classes.message}><CheckCircleIcon className={classes.icon} />Report received.</span>}
           action={[
             <IconButton
               key="close"

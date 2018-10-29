@@ -101,40 +101,6 @@ const confidenceLevels = [
     },
 ];
 
-/**
- * Gets formatted confidence value.
- */
-function getConfidence(item) {
-    for (var i = 0; i < confidenceLevels.length; i++) {
-        if (confidenceLevels[i].value === item) {
-            return confidenceLevels[i].label;
-        }
-    }
-
-}
-
-/**
- * Gets formatted time value.
- */
-function getTime(item) {
-    for (var i = 0; i < timeTypes.length; i++) {
-        if (timeTypes[i].value === item) {
-            return timeTypes[i].label;
-        }
-    }
-}
-
-/**
- * Gets formatted type value.
- */
-function getType(item) {
-    for (var i = 0; i < sightingTypes.length; i++) {
-        if (sightingTypes[i].value === item) {
-            return sightingTypes[i].label;
-        }
-    }
-}
-
 export class MapContainer extends Component {
 
     // Get the user's location using Google's geolocation
@@ -160,6 +126,41 @@ export class MapContainer extends Component {
             }
             );
         }
+    }
+
+    /**
+    * Gets formatted type value.
+    */
+    getType = item => {
+        for (var i = 0; i < sightingTypes.length; i++) {
+            if (sightingTypes[i].value === item) {
+                return sightingTypes[i].label;
+            }
+        }
+    }
+
+
+    /**
+     * Gets formatted time value.
+     */
+    getTime = item => {
+        for (var i = 0; i < timeTypes.length; i++) {
+            if (timeTypes[i].value === item) {
+                return timeTypes[i].label;
+            }
+        }
+    }
+
+    /**
+    * Gets formatted confidence value.
+    */
+    getConfidence = item => {
+        for (var i = 0; i < confidenceLevels.length; i++) {
+            if (confidenceLevels[i].value === item) {
+                return confidenceLevels[i].label;
+            }
+        }
+
     }
 
     // When the component has mounted to the DOM, get the user's location
@@ -246,14 +247,14 @@ export class MapContainer extends Component {
                     {this.state.sightings.map((sighting) => {
                         return (
                             <Marker
-                                key = {sighting.id}
-                                position = {{ lat: sighting.lat, lng: sighting.lng }}
-                                onClick = {this.onMarkerClick}
-                                type = {'Type: ' + getType(sighting.type)}
-                                confidence = {<Fragment><b>Confidence:</b> {getConfidence(sighting.confidence)}</Fragment>}
-                                date = {<Fragment><b>Date:</b> {this.formatDate(sighting.date)}</Fragment>}
-                                time = {<Fragment><b>Time:</b> {getTime(sighting.time)}</Fragment>}
-                                description = {<Fragment><b>Description:</b> {sighting.desc}</Fragment>}
+                                key={sighting.id}
+                                position={{ lat: sighting.lat, lng: sighting.lng }}
+                                onClick={this.onMarkerClick}
+                                type={'Type: ' + this.getType(sighting.type)}
+                                confidence={<Fragment><b>Confidence:</b> {this.getConfidence(sighting.confidence)}</Fragment>}
+                                date={<Fragment><b>Date:</b> {this.formatDate(sighting.date)}</Fragment>}
+                                time={<Fragment><b>Time:</b> {this.getTime(sighting.time)}</Fragment>}
+                                description={<Fragment><b>Description:</b> {sighting.desc}</Fragment>}
                             />
                         )
                     })}

@@ -212,6 +212,38 @@ class ReportForm extends React.Component {
   }
 
   /**
+  * Function for formatting the
+  * year as a string that
+  * Material UI can use.
+  * @param {*} date, Date passed in. 
+  */
+ getYear = date => {
+  var d = new Date(date),
+    year = d.getFullYear();
+
+  return year;
+}
+
+/**
+* Function for formatting the
+* month as a string that
+* Material UI can use.
+* @param {*} date, Date passed in. 
+*/
+getMonth = date => {
+  var d = new Date(date),
+  month = d.getMonth() + 1;
+
+  month = month.toString();
+
+  if (month.length === 1) {
+    month = "0" + month;
+  }
+
+  return month;
+}
+
+  /**
    * State of form components.
    */
   state = {
@@ -235,38 +267,6 @@ class ReportForm extends React.Component {
       [name]: event.target.value,
     });
   };
-
-  /**
-  * Function for formatting the
-  * year as a string that
-  * Material UI can use.
-  * @param {*} date, Date passed in. 
-  */
-  getYear = date => {
-    var d = new Date(date),
-      year = d.getFullYear();
-
-    return year;
-  }
-
-  /**
-  * Function for formatting the
-  * month as a string that
-  * Material UI can use.
-  * @param {*} date, Date passed in. 
-  */
-  getMonth = date => {
-    var d = new Date(date),
-    month = d.getMonth();
-
-    month = month.toString();
-
-    if (month.length == 1) {
-      month = "0" + month;
-    }
-
-    return month;
-  }
 
   /**
    * Handles closing the toast.

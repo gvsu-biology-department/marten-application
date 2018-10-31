@@ -266,7 +266,7 @@ getMonth = date => {
     this.setState({
       [name]: event.target.value,
     });
-  };
+  }
 
   /**
    * Handles closing the toast.
@@ -277,7 +277,7 @@ getMonth = date => {
     }
 
     this.setState({ open: false });
-  };
+  }
 
   /*
   * Get the coordinates 
@@ -323,7 +323,7 @@ getMonth = date => {
       lng: '',
       open: true
     });
-  };
+  }
 
 
   /**

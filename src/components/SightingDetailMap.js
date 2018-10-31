@@ -8,23 +8,23 @@ const API_KEY = 'AIzaSyAZ_0J01bA6wCbIPK4UBq2RUBC-hIqG4mM';
 const mapStyles = {
     width: '100%',
     height: '100%'
-}
+};
 
 export class MapContainer extends Component {
 
     render() {
         return (
             // Render the Google Map, Marker, and InfoWindow components
-            <div className = "sighting-detail-google-map-container">
+            <div className="sighting-detail-google-map-container">
                 <Map
-                    style = { mapStyles }
-                    google = { this.props.google }
-                    initialCenter = {{ lat: this.props.lat, lng: this.props.lng }}
-                    center = {{ lat: this.props.lat, lng: this.props.lng }}
-                    defaultZoom = { 15 }>
+                    style={mapStyles}
+                    google={this.props.google}
+                    initialCenter={{ lat: this.props.lat, lng: this.props.lng }}
+                    center={{ lat: this.props.lat, lng: this.props.lng }}
+                    defaultZoom={15}>
 
-                    <Marker 
-                        position = {{ lat: this.props.lat, lng: this.props.lng }}
+                    <Marker
+                        position={{ lat: this.props.lat, lng: this.props.lng }}
                     />
                 </Map>
             </div>
@@ -33,6 +33,4 @@ export class MapContainer extends Component {
 }
 
 // Send the Google Map API Key with the MapContainer component
-export default GoogleApiWrapper({
-    apiKey: (API_KEY)
-})(MapContainer)
+export default GoogleApiWrapper({ apiKey: (API_KEY) })(MapContainer);

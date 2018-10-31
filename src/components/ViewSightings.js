@@ -16,7 +16,7 @@ class ViewSightings extends Component {
             let newState = [];
 
             for (let sighting in sightings) {
-                newState.push({
+                newState.unshift({
                     id: sighting,
                     lat: sightings[sighting].lat,
                     lng: sightings[sighting].lng,
@@ -62,7 +62,7 @@ class ViewSightings extends Component {
             time: null
         },
         clicked: false
-    }
+    };
 
     render() {
         return (
@@ -77,7 +77,7 @@ class ViewSightings extends Component {
                                         <ListItem button key={ sighting.id } onClick={() => this.getDetail(sighting.id, sighting.lat, sighting.lng, sighting.desc, sighting.type, sighting.confidence, sighting.date, sighting.time)}>
                                             <ListItemText primary={`${sighting.desc}`}/>
                                         </ListItem>
-                                    )
+                                    );
                                 })
                             }
                             </List>

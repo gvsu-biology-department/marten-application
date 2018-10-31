@@ -1,13 +1,16 @@
-import * as admin from 'firebase-admin';
+import firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebase/storage';
 
-var serviceAccount = require('./keys/marten-application-firebase-adminsdk-zvjmp-c177ac648f.json');
-
-const firebaseConfig = {
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://marten-application.firebaseio.com",
-  storageBucket: "marten-application.appspot.com"      
+const config = {
+    apiKey: "AIzaSyAYf9AbeYwLY892NRiQfn0AMtG9xIFAJbo",
+    authDomain: "marten-application.firebaseapp.com",
+    databaseURL: "https://marten-application.firebaseio.com",
+    projectId: "marten-application",
+    storageBucket: "marten-application.appspot.com",
+    messagingSenderId: "659856510832"
 };
 
-const firebaseApp = admin.initializeApp(firebaseConfig);
+firebase.initializeApp(config);
 
-export default 'firebase-admin';
+export default firebase;

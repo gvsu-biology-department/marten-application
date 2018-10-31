@@ -1,8 +1,9 @@
-import React, { Component, Fragment} from 'react';
+import React, { Component} from 'react';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import flamelinkApp from '../flamelink.js';
+import FlameLinkImage from './FlameLinkImage';
+
 
 class FlameLinkStructure extends Component {
     constructor() {
@@ -16,18 +17,37 @@ class FlameLinkStructure extends Component {
         .then(result => this.setState({
           schemaContent: result
         }))
+ 
       }
 
-    getContent(key, type){
-        if (type == 'text'){
-            return this.state.schemaContent[key]
-        }
-        if (type == 'media'){
-            for (var val in this.state.schemaContent[key]){
-                console.log(this.state.schemaContent[key][val]);
-                flamelinkApp.storage.getURL(this.state.schemaContent[key][val])
-                    .then(url => console.log('File URL:', url))
+    getContent(key, type, description){
+        if (type === 'text'){
+            if(description === 'h1'){
+                return  (
+                        <Typography variant="display2" id={this.props.field.key}>
+                        {this.state.schemaContent[key]}
+                        </Typography>
+                        )                
             }
+            if(description === 'h2'){
+                return  (
+                        <Typography variant="display3" id={this.props.field.key}>
+                        {this.state.schemaContent[key]}
+                        </Typography>
+                        )                
+            }
+            else{
+                return  (
+                        <Typography component="p" id={this.props.field.key}>
+                        {this.state.schemaContent[key]}
+                        </Typography>
+                        )
+            }
+        }
+        if (type === 'media'){
+            for (var val in this.state.schemaContent[key]){
+                return <FlameLinkImage content={this.state.schemaContent[key][val]}/>
+            } 
         }
     }
 
@@ -38,14 +58,7 @@ class FlameLinkStructure extends Component {
         const xs = this.props.field.gridColumns.xs;
         return(
             <Grid item lg={lg} md={md} sm={sm} xs={xs}>
-                <Paper>
-                    <Typography variant="h5" component="h3">
-                      HEADER
-                    </Typography>
-                    <Typography component="p">
-                      {this.getContent(this.props.field.key, this.props.type)}
-                    </Typography>
-                </Paper>
+                      {this.getContent(this.props.field.key, this.props.type, this.props.field.description)}
             </Grid>
         );
     }

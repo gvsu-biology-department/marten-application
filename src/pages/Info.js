@@ -11,7 +11,7 @@ class Info extends Component {
           schemaDetails: '',
         }
 
-        flamelinkApp.schemas.getFields('martenSchemaDemo', { fields: [ 'title', 'key', 'type', 'gridColumns' ] })
+        flamelinkApp.schemas.getFields('martenSchemaDemo', { fields: [ 'title', 'key', 'type', 'gridColumns', 'description' ] })
         .then(result => this.setState({
           schemaDetails: result
         }))

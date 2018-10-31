@@ -1,7 +1,6 @@
 import React, { Component} from 'react';
 import FlameLinkStructure from './FlameLinkStructure';
 import Grid from '@material-ui/core/Grid';
-import flamelinkApp from '../flamelink.js';
 
 class Layout extends Component {
 
@@ -14,7 +13,7 @@ class Layout extends Component {
     }
 
     createComponents(num){
-        return <FlameLinkStructure field={this[num]} type={this[num].type}/>
+        return <FlameLinkStructure field={this[num]} type={this[num].type} key={this[num].key}/>
     }
 
     render() {

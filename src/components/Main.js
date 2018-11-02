@@ -68,7 +68,7 @@ const styles = theme => ({
 class ResponsiveDrawer extends React.Component {
     state = {
         mobileOpen: false,
-        key: '',
+        key: 'Home',
         open: false
     };
 

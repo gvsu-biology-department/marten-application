@@ -239,33 +239,33 @@ class QuizGame extends React.Component {
      * @param {*} difficulty The difficulty setting passed in.
      */
     pickDifficulty = difficulty => {
-        let level
+        let level;
 
         switch (difficulty) {
             case 'Easy':
-                this.easy.questions = this.shuffleArray(this.easy.questions)
-                level = this.easy
-                break
+                this.easy.questions = this.shuffleArray(this.easy.questions);
+                level = this.easy;
+                break;
             case 'Medium':
-                this.medium.questions = this.shuffleArray(this.medium.questions)
-                level = this.medium
-                break
+                this.medium.questions = this.shuffleArray(this.medium.questions);
+                level = this.medium;
+                break;
             case 'Hard':
-                this.hard.questions = this.shuffleArray(this.hard.questions)
-                level = this.hard
-                break
+                this.hard.questions = this.shuffleArray(this.hard.questions);
+                level = this.hard;
+                break;
             default:
-                break
+                break;
         }
 
-        return level
+        return level;
     }
 
     // The state of the component.
     state = {
         difficulty: this.pickDifficulty(this.props.difficulty),
         key: Math.random()
-    }
+    };
 
     // Renders the quiz component.
     render() {

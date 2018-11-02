@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import moment from 'moment'
+import moment from 'moment';
 import Typography from '@material-ui/core/Typography';
 import firebase from '../firebase.js';
 
@@ -11,7 +11,7 @@ const API_KEY = 'AIzaSyAZ_0J01bA6wCbIPK4UBq2RUBC-hIqG4mM';
 const mapStyles = {
     width: '100%',
     height: '100%'
-}
+};
 
 /** 
   * Types of sightings. Label is what is
@@ -81,23 +81,23 @@ const timeTypes = [
 const confidenceLevels = [
     {
         value: '1',
-        label: '1 - Strongly unconfident',
+        label: '1 - Strongly disagree',
     },
     {
         value: '2',
-        label: '2 - Unconfident',
+        label: '2 - Disagree',
     },
     {
         value: '3',
-        label: '3 - Somewhat confident',
+        label: '3 - Neutral',
     },
     {
         value: '4',
-        label: '4 - Confident',
+        label: '4 - Agree',
     },
     {
         value: '5',
-        label: '5 - Very confident',
+        label: '5 - Strongly agree',
     },
 ];
 
@@ -112,9 +112,8 @@ export class MapContainer extends Component {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     }
-                }
-                );
-            })
+                });
+            });
         } else {
             // If browser doesn't support geolocation or if user does not allow it, 
             // center map on Grand Rapids, Michigan
@@ -123,8 +122,7 @@ export class MapContainer extends Component {
                     lat: 42.9634,
                     lng: 85.6681
                 }
-            }
-            );
+            });
         }
     }
 
@@ -210,7 +208,7 @@ export class MapContainer extends Component {
     }
 
     formatDate = date => {
-        return (moment(date, "YYYY-MM").format("MMMM YYYY").toString())
+        return (moment(date, "YYYY-MM").format("MMMM YYYY").toString());
     }
 
     // Set the state of the component to contain user coordinates and initial 
@@ -224,7 +222,7 @@ export class MapContainer extends Component {
         activeMarker: {},
         selectedPlace: {},
         sightings: []
-    }
+    };
 
     render() {
         return (
@@ -236,7 +234,8 @@ export class MapContainer extends Component {
                     initialCenter={this.state.myLatLng}
                     center={this.state.myLatLng}
                     defaultZoom={15}
-                    onClick={this.onMapClick} >
+                    onClick={this.onMapClick}
+                >
 
                     <Marker
                         position={this.state.myLatLng}
@@ -251,9 +250,9 @@ export class MapContainer extends Component {
                                 position={{ lat: sighting.lat, lng: sighting.lng }}
                                 onClick={this.onMarkerClick}
                                 type={'Type: ' + this.getType(sighting.type)}
-                                confidence={<Fragment><b>Confidence:</b> {this.getConfidence(sighting.confidence)}</Fragment>}
                                 date={<Fragment><b>Date:</b> {this.formatDate(sighting.date)}</Fragment>}
                                 time={<Fragment><b>Time:</b> {this.getTime(sighting.time)}</Fragment>}
+                                confidence={<Fragment><b>I am confident of my sighting:</b> {this.getConfidence(sighting.confidence)}</Fragment>}
                                 description={<Fragment><b>Description:</b> {sighting.desc}</Fragment>}
                             />
                         )
@@ -268,13 +267,13 @@ export class MapContainer extends Component {
                                 {this.state.selectedPlace.type}
                             </Typography>
                             <Typography variant="subheading" gutterBottom>
-                                {this.state.selectedPlace.confidence}
-                            </Typography>
-                            <Typography variant="subheading" gutterBottom>
                                 {this.state.selectedPlace.date}
                             </Typography>
                             <Typography variant="subheading" gutterBottom>
                                 {this.state.selectedPlace.time}
+                            </Typography>
+                            <Typography variant="subheading" gutterBottom>
+                                {this.state.selectedPlace.confidence}
                             </Typography>
                             <Typography variant="subheading" gutterBottom>
                                 {this.state.selectedPlace.description}
@@ -288,6 +287,4 @@ export class MapContainer extends Component {
 }
 
 // Send the Google Map API Key with the MapContainer component
-export default GoogleApiWrapper({
-    apiKey: (API_KEY)
-})(MapContainer)
+export default GoogleApiWrapper({ apiKey: (API_KEY) })(MapContainer);

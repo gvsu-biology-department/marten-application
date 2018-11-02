@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import FlameLinkStructure from './FlameLinkStructure';
 import Grid from '@material-ui/core/Grid';
 
-class Layout extends Component {
+class FlameLinkComponentCreations extends Component {
 
     getSchemaFieldData(schemaData){
         var arr = [];
@@ -13,7 +13,7 @@ class Layout extends Component {
     }
 
     createComponents(num){
-        return <FlameLinkStructure field={this[num]} type={this[num].type} key={this[num].key}/>
+        return <FlameLinkStructure schemaData={this} field={this[num]} type={this[num].type} key={this[num].key} />
     }
 
     render() {
@@ -25,4 +25,4 @@ class Layout extends Component {
     }
 }
 
-export default Layout;
+export default FlameLinkComponentCreations;

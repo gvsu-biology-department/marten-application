@@ -15,7 +15,7 @@ class FlameLinkImage extends Component {
                     .then(url => this.setState({
                       mediaURL: url
                     }))
-            return <img src={this.state.mediaURL} width="100%" alt='' />
+            return <img src={this.state.mediaURL} width='100%' alt='' />
     }
 
     render() {

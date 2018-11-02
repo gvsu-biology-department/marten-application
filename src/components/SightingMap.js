@@ -235,7 +235,8 @@ export class MapContainer extends Component {
                     google={this.props.google}
                     initialCenter={this.state.myLatLng}
                     center={this.state.myLatLng}
-                    defaultZoom={15}
+                    minZoom={6}
+                    zoom={6}
                     onClick={this.onMapClick} >
 
                     <Marker

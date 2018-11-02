@@ -7,7 +7,7 @@ class Home extends Component {
     constructor() {
         super();
 
-        global.schemaName = 'martenInfo';
+        global.schemaName = 'martenHome';
 
         this.state = {
           schemaDetails: '',

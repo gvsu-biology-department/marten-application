@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import flamelinkApp from '../flamelink.js';
 
+
 class FlameLinkImage extends Component {
     constructor() {
         super();
@@ -15,13 +16,13 @@ class FlameLinkImage extends Component {
                     .then(url => this.setState({
                       mediaURL: url
                     }))
-            return <img src={this.state.mediaURL} width='100%' alt='' />
+            return <img src={this.state.mediaURL} max-width="500" width="100%" alt='' />
     }
 
     render() {
         return(
                 <div>
-                {this.getImage(this.props.content)}
+                    {this.getImage(this.props.content)}
                 </div>
         );
     }

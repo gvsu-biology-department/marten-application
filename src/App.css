@@ -14,3 +14,37 @@ body {
         width: calc(100% - 50% - 120px) !important;
     }
 }
+
+#disqus_thread {
+    width: 89% !important;
+    margin: 0 auto;
+}
+
+.sighting-list {
+    height: calc(50vh - 64px);
+    overflow-y: scroll;
+}
+
+@media (min-width: 960px) {
+    .sighting-list {
+        height: calc(100vh - 64px);
+        overflow-y: scroll;
+    }
+}
+
+.sighting-details-content {
+    width: 89%;
+    margin: 330px auto 0 auto;
+}
+
+.sighting-detail-google-map-container > div {
+    width: 100% !important;
+    height: 300px !important;
+}
+
+@media (min-width: 960px) {
+    .sighting-detail-google-map-container > div {
+        width: calc(100% - 50% - 120px) !important;
+        height: 300px !important;
+    }
+}

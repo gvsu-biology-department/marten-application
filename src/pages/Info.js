@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import Typography from '@material-ui/core/Typography';
 import FlameLinkComponentCreations from '../components/FlameLinkComponentCreations';
 import flamelinkApp from '../flamelink.js';
 
@@ -23,11 +22,6 @@ class Info extends Component {
         
         return (
             <div>
-                
-                <Typography variant='display1' align='center' gutterBottom>
-                    Info
-                </Typography>
-
                 <Fragment>
                     <FlameLinkComponentCreations schemaDetails = {this.state.schemaDetails}/>
                 </Fragment>

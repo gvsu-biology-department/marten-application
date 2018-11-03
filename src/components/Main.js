@@ -112,9 +112,9 @@ class ResponsiveDrawer extends React.Component {
                         <ListItemIcon><ListIcon /></ListItemIcon>
                         <ListItemText primary='List' />
                     </ListItem>
-                    <ListItem button key='Info' onClick={() => this.nav('Info')}>
+                    <ListItem button key='About' onClick={() => this.nav('About')}>
                         <ListItemIcon><InfoIcon /></ListItemIcon>
-                        <ListItemText primary='Info' />
+                        <ListItemText primary='About' />
                     </ListItem>
                     <ListItem button onClick={this.handleClick}>
                         <ListItemIcon>

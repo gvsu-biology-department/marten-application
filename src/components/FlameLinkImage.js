@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Typography from '@material-ui/core/Typography';
 import flamelinkApp from '../flamelink.js';
 
 
@@ -9,21 +10,18 @@ class FlameLinkImage extends Component {
         this.state = {
           mediaURL: '',
         }
-      }
 
-    getImage(imagePath){
-            flamelinkApp.storage.getURL(imagePath)
+        flamelinkApp.storage.getURL(global.mediaID)
                     .then(url => this.setState({
                       mediaURL: url
                     }))
-            return <img src={this.state.mediaURL} max-width="500" width="100%" alt='' />
-    }
+      }
 
     render() {
         return(
-                <div>
-                    {this.getImage(this.props.content)}
-                </div>
+                <Typography align='center'>
+                    <img src={this.state.mediaURL} width="70%" alt='' />
+                </Typography>
         );
     }
 }

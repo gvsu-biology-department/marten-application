@@ -17,6 +17,8 @@ const styles = theme => ({
 class FlameLinkStructure extends Component {
     constructor() {
         super();
+        
+        global.mediaID = '';
 
         this.state = {
           schemaContent: '',
@@ -89,7 +91,8 @@ class FlameLinkStructure extends Component {
         }
         if (type === 'media'){
             for (var val in this.state.schemaContent[key]){
-                return <FlameLinkImage content={this.state.schemaContent[key][val]}/>
+                global.mediaID = this.state.schemaContent[key][val];
+                return <FlameLinkImage/>
             } 
         }
         if (type === 'fieldset'){

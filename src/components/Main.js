@@ -199,9 +199,6 @@ class ResponsiveDrawer extends React.Component {
                     {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy'/>}
                     {this.state.key === 'Medium-Quiz' && <Quiz difficulty='Medium'/>}
                     {this.state.key === 'Hard-Quiz' && <Quiz difficulty='Hard'/>}
-                    {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy' />}
-                    {this.state.key === 'Medium-Quiz' && <Quiz difficulty='Medium' />}
-                    {this.state.key === 'Hard-Quiz' && <Quiz difficulty='Hard' />}
                 </main>
             </div>
         );

@@ -155,7 +155,7 @@ class ResponsiveDrawer extends React.Component {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="title" color="inherit" noWrap>
-                            The American Marten
+                            Marten Tracker
                         </Typography>
                     </Toolbar>
                 </AppBar>

@@ -207,8 +207,44 @@ export class MapContainer extends Component {
         }
     }
 
+    /**
+     * Determines marker icon based on the
+     * sighting type.
+     */
+    sightingIcon = (type) => {
+        let pinIcon;
+
+        switch(type) {
+            case 'visual':
+                pinIcon = '/mapicons/marten-icon.png';
+                break;
+            case 'roadkill':
+                pinIcon = '/mapicons/tire-icon.png';
+                break;
+            case 'viewed_tracks':
+                pinIcon = '/mapicons/paws.png';
+                break;
+            case 'trapped':
+                pinIcon = '/mapicons/cage.png';
+                break;
+            case 'photo':
+                pinIcon = '/mapicons/photo-icon.png';
+                break;
+            case 'other':
+                pinIcon = '/mapicons/other-icon.png';
+                break;
+            default:
+                break;
+        }
+
+        return pinIcon;
+    }
+
+    /**
+     * Formats date using Moment.js.
+     */
     formatDate = date => {
-        return (moment(date, "YYYY-MM").format("MMMM YYYY").toString());
+        return (moment(date, "YYYY-MM").format("MMMM YYYY").toString())
     }
 
     // Set the state of the component to contain user coordinates and initial 
@@ -225,6 +261,8 @@ export class MapContainer extends Component {
     };
 
     render() {
+        const {google} = this.props;
+
         return (
             // Render the Google Map, Marker, and InfoWindow components
             <div className="sighting-google-map-container">
@@ -244,6 +282,9 @@ export class MapContainer extends Component {
                     />
 
                     {this.state.sightings.map((sighting) => {
+
+                        let pinIcon = this.sightingIcon(sighting.type)
+                        
                         return (
                             <Marker
                                 key={sighting.id}
@@ -254,6 +295,11 @@ export class MapContainer extends Component {
                                 time={<Fragment><b>Time:</b> {this.getTime(sighting.time)}</Fragment>}
                                 confidence={<Fragment><b>I am confident of my sighting:</b> {this.getConfidence(sighting.confidence)}</Fragment>}
                                 description={<Fragment><b>Description:</b> {sighting.desc}</Fragment>}
+                                icon={{
+                                    url: pinIcon,
+                                    anchor: new google.maps.Point(32,32),
+                                    scaledSize: new google.maps.Size(32,32)
+                                }}
                             />
                         )
                     })}

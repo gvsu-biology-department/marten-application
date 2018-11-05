@@ -234,12 +234,15 @@ export class MapContainer extends Component {
                 pinIcon = '/mapicons/other-icon.png'
                 break;
             default:
-                break
+                break;
         }
-        
+
         return pinIcon;
     }
 
+    /**
+     * Formats date using Moment.js.
+     */
     formatDate = date => {
         return (moment(date, "YYYY-MM").format("MMMM YYYY").toString())
     }

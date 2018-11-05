@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from 'react';
-import Typography from '@material-ui/core/Typography';
+import React, { Component } from 'react';
 import FlameLinkComponentCreations from '../components/FlameLinkComponentCreations';
-import flamelinkApp from '../flamelink.js';
+import flamelinkApp from '../flamelink';
 
 class Home extends Component {
     constructor() {
@@ -10,25 +9,18 @@ class Home extends Component {
         global.schemaName = 'martenHome';
 
         this.state = {
-          schemaDetails: '',
+            schemaDetails: '',
         }
 
-        flamelinkApp.schemas.getFields(global.schemaName, { fields: [ 'title', 'key', 'type', 'gridColumns', 'description', 'options' ] })
-        .then(result => this.setState({
-          schemaDetails: result
-        }))
-      }
+        flamelinkApp.schemas.getFields(global.schemaName, { fields: ['title', 'key', 'type', 'gridColumns', 'description', 'options'] })
+            .then(result => this.setState({
+                schemaDetails: result
+            }))
+    }
 
     render() {
         return (
-            <div>
-                <Typography variant='display1' align='center' gutterBottom>
-                    Home
-                </Typography>
-                <Fragment>
-                    <FlameLinkComponentCreations schemaDetails = {this.state.schemaDetails}/>
-                </Fragment>
-            </div>
+            <FlameLinkComponentCreations schemaDetails={this.state.schemaDetails} />
         );
     }
 }

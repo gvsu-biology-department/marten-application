@@ -68,7 +68,7 @@ const styles = theme => ({
 class ResponsiveDrawer extends React.Component {
     state = {
         mobileOpen: false,
-        key: '',
+        key: 'Home',
         open: false
     };
 
@@ -83,7 +83,7 @@ class ResponsiveDrawer extends React.Component {
     nav = (text) => {
         this.setState({
             key: text
-        })
+        });
     }
 
     render() {
@@ -149,7 +149,7 @@ class ResponsiveDrawer extends React.Component {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="title" color="inherit" noWrap>
-                            The American Marten
+                            Marten Tracker
                         </Typography>
                     </Toolbar>
                 </AppBar>
@@ -189,9 +189,9 @@ class ResponsiveDrawer extends React.Component {
                     {this.state.key === 'Report' && <Report />}
                     {this.state.key === 'Map' && <ViewMap />}
                     {this.state.key === 'List' && <SightingList />}
-                    {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy'/>}
-                    {this.state.key === 'Medium-Quiz' && <Quiz difficulty='Medium'/>}
-                    {this.state.key === 'Hard-Quiz' && <Quiz difficulty='Hard'/>}
+                    {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy' />}
+                    {this.state.key === 'Medium-Quiz' && <Quiz difficulty='Medium' />}
+                    {this.state.key === 'Hard-Quiz' && <Quiz difficulty='Hard' />}
                 </main>
             </div>
         );

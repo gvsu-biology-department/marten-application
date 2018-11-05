@@ -228,10 +228,10 @@ export class MapContainer extends Component {
                 pinIcon = '/mapicons/cage.png';
                 break;
             case 'photo':
-                pinIcon = '/mapicons/photo-icon.png'
+                pinIcon = '/mapicons/photo-icon.png';
                 break;
             case 'other':
-                pinIcon = '/mapicons/other-icon.png'
+                pinIcon = '/mapicons/other-icon.png';
                 break;
             default:
                 break;

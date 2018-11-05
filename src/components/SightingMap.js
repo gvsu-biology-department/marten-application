@@ -212,25 +212,32 @@ export class MapContainer extends Component {
      * sighting type.
      */
     sightingIcon = (type) => {
-        let pinIcon
+        let pinIcon;
 
         switch(type) {
             case 'visual':
-                pinIcon = 'https://i.postimg.cc/nhYXGQNp/marten-icon.png'
-                break
+                pinIcon = '/mapicons/marten-icon.png';
+                break;
             case 'roadkill':
-                pinIcon = 'https://i.postimg.cc/xdfcx1SH/tire-icon.png'
-                break
+                pinIcon = '/mapicons/tire-icon.png';
+                break;
             case 'viewed_tracks':
-                pinIcon = 'https://i.postimg.cc/7P761WCS/paws.png'
-                break
+                pinIcon = '/mapicons/paws.png';
+                break;
             case 'trapped':
-                pinIcon = 'https://i.postimg.cc/Y9LSsXdK/cage.png'
-                break
+                pinIcon = '/mapicons/cage.png';
+                break;
+            case 'photo':
+                pinIcon = '/mapicons/photo-icon.png'
+                break;
+            case 'other':
+                pinIcon = '/mapicons/other-icon.png'
+                break;
             default:
                 break
         }
-        return pinIcon
+        
+        return pinIcon;
     }
 
     formatDate = date => {

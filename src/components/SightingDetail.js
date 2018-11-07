@@ -133,7 +133,7 @@ class SightingDetail extends Component {
     }
 
     render() {
-        const disqusShortname = 'https-marten-application-netlify-com';
+        const disqusShortname = 'marten-tracker';
         const disqusConfig = {
             url: `http://localhost:3000/${this.props.detail.id}`,
             identifier: this.props.detail.id,

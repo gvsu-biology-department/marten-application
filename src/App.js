@@ -3,6 +3,10 @@ import Main from './components/Main';
 import './App.css';
 
 class App extends Component {
+    componentDidMount() {
+        document.title = 'Marten Tracker';
+    }
+
     render() {
         return (
         <div>

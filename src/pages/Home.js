@@ -18,6 +18,10 @@ class Home extends Component {
             }))
     }
 
+    componentDidMount() {
+        document.title = 'Marten Tracker | Home';
+    }
+
     render() {
         return (
             <FlameLinkComponentCreations schemaDetails={this.state.schemaDetails} />

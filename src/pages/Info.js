@@ -9,23 +9,27 @@ class Info extends Component {
         global.schemaName = 'martenSchemaDemo';
 
         this.state = {
-          schemaDetails: '',
+            schemaDetails: '',
         }
 
-        flamelinkApp.schemas.getFields(global.schemaName, { fields: [ 'title', 'key', 'type', 'gridColumns', 'description', 'options' ] })
-        .then(result => this.setState({
-          schemaDetails: result
-        }))
-      }
+        flamelinkApp.schemas.getFields(global.schemaName, { fields: ['title', 'key', 'type', 'gridColumns', 'description', 'options'] })
+            .then(result => this.setState({
+                schemaDetails: result
+            }))
+    }
+
+    componentDidMount() {
+        document.title = 'Marten Tracker | Info';
+    }
 
     render() {
-        
+
         return (
             <div>
                 <Fragment>
-                    <FlameLinkComponentCreations schemaDetails = {this.state.schemaDetails}/>
+                    <FlameLinkComponentCreations schemaDetails={this.state.schemaDetails} />
                 </Fragment>
-          
+
             </div>
         );
     }

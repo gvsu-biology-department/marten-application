@@ -6,4 +6,6 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<App/>, document.getElementById('root'));
 
+document.title = "Marten Tracker | Home";
+
 registerServiceWorker();

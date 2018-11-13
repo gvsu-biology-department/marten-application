@@ -21,11 +21,11 @@ class FlameLinkFieldSetContent extends Component {
                         )
         }
         if(type === 'textarea'){
-            return  (
-                    <Typography variant='body2' component="p" id={this.props.field.key} gutterBottom>
-                    {fieldsetContent[key]}
-                    </Typography>
-                    )               
+                return  (
+                        <Typography variant='body2' component="p" id={this.props.field.key} gutterBottom>
+                        {fieldsetContent[key]}
+                        </Typography>
+                        ) 
         }
         if (type === 'media'){
             for (var val in fieldsetContent[key]){

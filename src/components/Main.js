@@ -21,7 +21,7 @@ import ListIcon from '@material-ui/icons/List';
 import SlideshowIcon from '@material-ui/icons/Slideshow';
 import Home from '../pages/Home';
 import ViewMap from '../pages/ViewMap';
-import Info from '../pages/Info';
+import About from '../pages/About';
 import Quiz from '../pages/QuizPage';
 import SightingList from '../pages/SightingList';
 import Report from '../pages/Report';
@@ -195,7 +195,7 @@ class ResponsiveDrawer extends React.Component {
                     {this.state.key === 'Report' && <Report />}
                     {this.state.key === 'Map' && <ViewMap />}
                     {this.state.key === 'List' && <SightingList />}
-                    {this.state.key === 'About' && <Info />}
+                    {this.state.key === 'About' && <About />}
                     {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy'/>}
                     {this.state.key === 'Medium-Quiz' && <Quiz difficulty='Medium'/>}
                     {this.state.key === 'Hard-Quiz' && <Quiz difficulty='Hard'/>}

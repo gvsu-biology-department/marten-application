@@ -9,7 +9,7 @@
     "disqus-react": "^1.0.5",
     "firebase": "^5.5.2",
     "firebase-admin": "^6.1.0",
-    "flamelink": "^0.19.2",
+    "flamelink": "^0.19.6",
     "google-maps-react": "^2.0.2",
     "grpc": "^1.15.1",
     "material-ui": "^1.0.0-beta.16",

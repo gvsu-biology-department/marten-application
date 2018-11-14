@@ -16,10 +16,12 @@ import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import MapIcon from '@material-ui/icons/Map';
+import InfoIcon from '@material-ui/icons/Info';
 import ListIcon from '@material-ui/icons/List';
 import SlideshowIcon from '@material-ui/icons/Slideshow';
 import Home from '../pages/Home';
 import ViewMap from '../pages/ViewMap';
+import Info from '../pages/Info';
 import Quiz from '../pages/QuizPage';
 import SightingList from '../pages/SightingList';
 import Report from '../pages/Report';
@@ -68,7 +70,7 @@ const styles = theme => ({
 class ResponsiveDrawer extends React.Component {
     state = {
         mobileOpen: false,
-        key: '',
+        key: 'Home',
         open: false
     };
 
@@ -83,7 +85,7 @@ class ResponsiveDrawer extends React.Component {
     nav = (text) => {
         this.setState({
             key: text
-        })
+        });
     }
 
     render() {
@@ -109,6 +111,10 @@ class ResponsiveDrawer extends React.Component {
                     <ListItem button key='List' onClick={() => this.nav('List')}>
                         <ListItemIcon><ListIcon /></ListItemIcon>
                         <ListItemText primary='List' />
+                    </ListItem>
+                    <ListItem button key='About' onClick={() => this.nav('About')}>
+                        <ListItemIcon><InfoIcon /></ListItemIcon>
+                        <ListItemText primary='About' />
                     </ListItem>
                     <ListItem button onClick={this.handleClick}>
                         <ListItemIcon>
@@ -189,6 +195,7 @@ class ResponsiveDrawer extends React.Component {
                     {this.state.key === 'Report' && <Report />}
                     {this.state.key === 'Map' && <ViewMap />}
                     {this.state.key === 'List' && <SightingList />}
+                    {this.state.key === 'About' && <Info />}
                     {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy'/>}
                     {this.state.key === 'Medium-Quiz' && <Quiz difficulty='Medium'/>}
                     {this.state.key === 'Hard-Quiz' && <Quiz difficulty='Hard'/>}

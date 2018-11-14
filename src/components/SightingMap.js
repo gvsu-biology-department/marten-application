@@ -119,8 +119,8 @@ export class MapContainer extends Component {
             // center map on Grand Rapids, Michigan
             this.setState({
                 myLatLng: {
-                    lat: 42.9634,
-                    lng: 85.6681
+                    lat: 43.8666776,
+                    lng: -85.9667325 
                 }
             });
         }
@@ -251,8 +251,8 @@ export class MapContainer extends Component {
     // marker and info window information
     state = {
         myLatLng: {
-            lat: 42.9634,
-            lng: 85.6681
+            lat: 43.8666776,
+            lng: -85.9667325 
         },
         showingInfoWindow: false,
         activeMarker: {},
@@ -271,9 +271,9 @@ export class MapContainer extends Component {
                     google={this.props.google}
                     initialCenter={this.state.myLatLng}
                     center={this.state.myLatLng}
-                    defaultZoom={15}
-                    onClick={this.onMapClick}
-                >
+                    minZoom={6}
+                    zoom={6}
+                    onClick={this.onMapClick} >
 
                     <Marker
                         position={this.state.myLatLng}

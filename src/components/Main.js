@@ -14,6 +14,7 @@ import Hidden from '@material-ui/core/Hidden';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
+import EmailIcon from '@material-ui/icons/Email';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import MapIcon from '@material-ui/icons/Map';
 import InfoIcon from '@material-ui/icons/Info';
@@ -23,6 +24,7 @@ import Home from '../pages/Home';
 import ViewMap from '../pages/ViewMap';
 import Info from '../pages/Info';
 import Quiz from '../pages/QuizPage';
+import Contact from '../pages/Contact';
 import SightingList from '../pages/SightingList';
 import Report from '../pages/Report';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -112,10 +114,6 @@ class ResponsiveDrawer extends React.Component {
                         <ListItemIcon><ListIcon /></ListItemIcon>
                         <ListItemText primary='List' />
                     </ListItem>
-                    <ListItem button key='About' onClick={() => this.nav('About')}>
-                        <ListItemIcon><InfoIcon /></ListItemIcon>
-                        <ListItemText primary='About' />
-                    </ListItem>
                     <ListItem button onClick={this.handleClick}>
                         <ListItemIcon>
                             <SlideshowIcon />
@@ -136,6 +134,14 @@ class ResponsiveDrawer extends React.Component {
                             </ListItem>
                         </List>
                     </Collapse>
+                    <ListItem button key='Contact' onClick={() => this.nav('Contact')}>
+                        <ListItemIcon><EmailIcon /></ListItemIcon>
+                        <ListItemText primary='Contact' />
+                    </ListItem>
+                    <ListItem button key='About' onClick={() => this.nav('About')}>
+                        <ListItemIcon><InfoIcon /></ListItemIcon>
+                        <ListItemText primary='About' />
+                    </ListItem>
                 </List>
                 <Divider />
             </div>
@@ -196,6 +202,7 @@ class ResponsiveDrawer extends React.Component {
                     {this.state.key === 'Map' && <ViewMap />}
                     {this.state.key === 'List' && <SightingList />}
                     {this.state.key === 'About' && <Info />}
+                    {this.state.key === 'Contact' && <Contact />}
                     {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy'/>}
                     {this.state.key === 'Medium-Quiz' && <Quiz difficulty='Medium'/>}
                     {this.state.key === 'Hard-Quiz' && <Quiz difficulty='Hard'/>}

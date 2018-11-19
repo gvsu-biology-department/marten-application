@@ -18,6 +18,7 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import MapIcon from '@material-ui/icons/Map';
 import InfoIcon from '@material-ui/icons/Info';
 import ListIcon from '@material-ui/icons/List';
+import ContactIcon from '@material-ui/icons/MailOutline';
 import SlideshowIcon from '@material-ui/icons/Slideshow';
 import Home from '../pages/Home';
 import ViewMap from '../pages/ViewMap';
@@ -25,6 +26,7 @@ import Info from '../pages/Info';
 import Quiz from '../pages/QuizPage';
 import SightingList from '../pages/SightingList';
 import Report from '../pages/Report';
+import Contact from '../pages/ContactPage';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
@@ -116,6 +118,10 @@ class ResponsiveDrawer extends React.Component {
                         <ListItemIcon><InfoIcon /></ListItemIcon>
                         <ListItemText primary='About' />
                     </ListItem>
+                    <ListItem button key='Contact' onClick={() => this.nav('Contact')}>
+                        <ListItemIcon><ContactIcon /></ListItemIcon>
+                        <ListItemText primary='Contact' />
+                    </ListItem>
                     <ListItem button onClick={this.handleClick}>
                         <ListItemIcon>
                             <SlideshowIcon />
@@ -196,6 +202,7 @@ class ResponsiveDrawer extends React.Component {
                     {this.state.key === 'Map' && <ViewMap />}
                     {this.state.key === 'List' && <SightingList />}
                     {this.state.key === 'About' && <Info />}
+                    {this.state.key === 'Contact' && <Contact />}
                     {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy'/>}
                     {this.state.key === 'Medium-Quiz' && <Quiz difficulty='Medium'/>}
                     {this.state.key === 'Hard-Quiz' && <Quiz difficulty='Hard'/>}

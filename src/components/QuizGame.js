@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -6,6 +6,9 @@ import Quiz from 'react-quiz-component';
 import { Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import advancedQuiz from '../quiz/advancedQuiz.js'
+import easyQuiz from '../quiz/easyQuiz.js'
+import intermediateQuiz from '../quiz/intermediateQuiz.js'
 
 // Style for the tabs.
 const styles = theme => ({
@@ -18,7 +21,7 @@ const styles = theme => ({
     },
     rightIcon: {
         marginLeft: theme.spacing.unit,
-    },
+    }
 });
 
 class QuizGame extends React.Component {
@@ -49,189 +52,6 @@ class QuizGame extends React.Component {
         });
     }
 
-    easy = {
-        "quizTitle": "Trail Cam Quiz: Easy",
-        "questions": [
-            {
-                "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/question1.jpg" alt=""></img></Fragment>,
-                "questionType": "text",
-                "answers": [
-                    "Black bear",
-                    "Common wombat",
-                    "Raccoon",
-                    "White-tailed deer"
-                ],
-                "correctAnswer": "1"
-            },
-            {
-                "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/question2.jpg" alt=""></img></Fragment>,
-                "questionType": "text",
-                "answers": [
-                    "American beaver",
-                    "Muskrat",
-                    "Porcupine",
-                    "Woodchuck"
-                ],
-                "correctAnswer": "3"
-            },
-            {
-                "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/question3.jpg" alt=""></img></Fragment>,
-                "questionType": "text",
-                "answers": [
-                    "American badger",
-                    "Raccoon",
-                    "Striped skunk",
-                    "Virginia opossum"
-                ],
-                "correctAnswer": "2"
-            },
-            {
-                "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/question4.jpg" alt=""></img></Fragment>,
-                "questionType": "text",
-                "answers": [
-                    "Eastern fox squirrel",
-                    "Eastern gray squirrel",
-                    "Red squirrel",
-                    "Southern flying squirrel"
-                ],
-                "correctAnswer": "3"
-            },
-            {
-                "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/question5.jpg" alt=""></img></Fragment>,
-                "questionType": "text",
-                "answers": [
-                    "American Crow",
-                    "Black Vulture",
-                    "Turkey Vulture",
-                    "Northern Raven"
-                ],
-                "correctAnswer": "3"
-            },
-        ]
-    }
-
-    medium = {
-        "quizTitle": "Trail Cam Quiz: Medium",
-        "questions": [
-            {
-                "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/question1.jpg" alt=""></img></Fragment>,
-                "questionType": "text",
-                "answers": [
-                    "Black bear",
-                    "Common wombat",
-                    "Raccoon",
-                    "White-tailed deer"
-                ],
-                "correctAnswer": "1"
-            },
-            {
-                "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/question2.jpg" alt=""></img></Fragment>,
-                "questionType": "text",
-                "answers": [
-                    "American beaver",
-                    "Muskrat",
-                    "Porcupine",
-                    "Woodchuck"
-                ],
-                "correctAnswer": "3"
-            },
-            {
-                "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/question3.jpg" alt=""></img></Fragment>,
-                "questionType": "text",
-                "answers": [
-                    "American badger",
-                    "Raccoon",
-                    "Striped skunk",
-                    "Virginia opossum"
-                ],
-                "correctAnswer": "2"
-            },
-            {
-                "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/question4.jpg" alt=""></img></Fragment>,
-                "questionType": "text",
-                "answers": [
-                    "Eastern fox squirrel",
-                    "Eastern gray squirrel",
-                    "Red squirrel",
-                    "Southern flying squirrel"
-                ],
-                "correctAnswer": "3"
-            },
-            {
-                "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/question5.jpg" alt=""></img></Fragment>,
-                "questionType": "text",
-                "answers": [
-                    "American Crow",
-                    "Black Vulture",
-                    "Turkey Vulture",
-                    "Northern Raven"
-                ],
-                "correctAnswer": "3"
-            },
-        ]
-    }
-
-    hard = {
-        "quizTitle": "Trail Cam Quiz: Hard",
-        "questions": [
-            {
-                "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/question1.jpg" alt=""></img></Fragment>,
-                "questionType": "text",
-                "answers": [
-                    "Black bear",
-                    "Common wombat",
-                    "Raccoon",
-                    "White-tailed deer"
-                ],
-                "correctAnswer": "1"
-            },
-            {
-                "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/question2.jpg" alt=""></img></Fragment>,
-                "questionType": "text",
-                "answers": [
-                    "American beaver",
-                    "Muskrat",
-                    "Porcupine",
-                    "Woodchuck"
-                ],
-                "correctAnswer": "3"
-            },
-            {
-                "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/question3.jpg" alt=""></img></Fragment>,
-                "questionType": "text",
-                "answers": [
-                    "American badger",
-                    "Raccoon",
-                    "Striped skunk",
-                    "Virginia opossum"
-                ],
-                "correctAnswer": "2"
-            },
-            {
-                "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/question4.jpg" alt=""></img></Fragment>,
-                "questionType": "text",
-                "answers": [
-                    "Eastern fox squirrel",
-                    "Eastern gray squirrel",
-                    "Red squirrel",
-                    "Southern flying squirrel"
-                ],
-                "correctAnswer": "3"
-            },
-            {
-                "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/question5.jpg" alt=""></img></Fragment>,
-                "questionType": "text",
-                "answers": [
-                    "American Crow",
-                    "Black Vulture",
-                    "Turkey Vulture",
-                    "Northern Raven"
-                ],
-                "correctAnswer": "3"
-            },
-        ]
-    }
-
     /**
      * This function returns the
      * quiz data based on the difficulty
@@ -243,16 +63,16 @@ class QuizGame extends React.Component {
 
         switch (difficulty) {
             case 'Easy':
-                this.easy.questions = this.shuffleArray(this.easy.questions);
-                level = this.easy;
+                easyQuiz.questions = this.shuffleArray(easyQuiz.questions);
+                level = easyQuiz;
                 break;
-            case 'Medium':
-                this.medium.questions = this.shuffleArray(this.medium.questions);
-                level = this.medium;
+            case 'Intermediate':
+                intermediateQuiz.questions = this.shuffleArray(intermediateQuiz.questions);
+                level = intermediateQuiz;
                 break;
-            case 'Hard':
-                this.hard.questions = this.shuffleArray(this.hard.questions);
-                level = this.hard;
+            case 'Advanced':
+                advancedQuiz.questions = this.shuffleArray(advancedQuiz.questions);
+                level = advancedQuiz;
                 break;
             default:
                 break;
@@ -274,7 +94,7 @@ class QuizGame extends React.Component {
         return (
             // Tabs
             <div className={classes.root}>
-                <Typography variant="headline" align="center">
+                <Typography variant="title" align="center">
                     <Grid container justify="center">
                         <Quiz quiz={this.state.difficulty} key={this.state.key} />
                     </Grid>

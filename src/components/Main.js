@@ -128,11 +128,11 @@ class ResponsiveDrawer extends React.Component {
                             <ListItem button className={classes.nested} onClick={() => this.nav('Easy-Quiz')}>
                                 <ListItemText inset primary="Easy" />
                             </ListItem>
-                            <ListItem button className={classes.nested} onClick={() => this.nav('Medium-Quiz')}>
-                                <ListItemText inset primary="Medium" />
+                            <ListItem button className={classes.nested} onClick={() => this.nav('Intermediate-Quiz')}>
+                                <ListItemText inset primary="Intermediate" />
                             </ListItem>
-                            <ListItem button className={classes.nested} onClick={() => this.nav('Hard-Quiz')}>
-                                <ListItemText inset primary="Hard" />
+                            <ListItem button className={classes.nested} onClick={() => this.nav('Advanced-Quiz')}>
+                                <ListItemText inset primary="Advanced" />
                             </ListItem>
                         </List>
                     </Collapse>
@@ -197,8 +197,8 @@ class ResponsiveDrawer extends React.Component {
                     {this.state.key === 'List' && <SightingList />}
                     {this.state.key === 'About' && <Info />}
                     {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy'/>}
-                    {this.state.key === 'Medium-Quiz' && <Quiz difficulty='Medium'/>}
-                    {this.state.key === 'Hard-Quiz' && <Quiz difficulty='Hard'/>}
+                    {this.state.key === 'Intermediate-Quiz' && <Quiz difficulty='Intermediate'/>}
+                    {this.state.key === 'Advanced-Quiz' && <Quiz difficulty='Advanced'/>}
                 </main>
             </div>
         );

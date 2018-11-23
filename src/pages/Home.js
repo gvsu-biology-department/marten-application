@@ -10,11 +10,17 @@ class Home extends Component {
 
         this.state = {
             schemaDetails: '',
+            schemaType: '',
         }
 
-        flamelinkApp.schemas.getFields(global.schemaName, { fields: ['title', 'key', 'type', 'gridColumns', 'description', 'options'] })
+        flamelinkApp.schemas.getFields(global.schemaName, { fields: [ 'title', 'key', 'type', 'gridColumns', 'description', 'options'] })
             .then(result => this.setState({
                 schemaDetails: result
+            }))
+
+        flamelinkApp.schemas.get(global.schemaName)
+            .then(result => this.setState({
+              schemaType: result.type
             }))
     }
 
@@ -24,7 +30,7 @@ class Home extends Component {
 
     render() {
         return (
-            <FlameLinkComponentCreations schemaDetails={this.state.schemaDetails} />
+            <FlameLinkComponentCreations schemaDetails={this.state.schemaDetails} schemaType = {this.state.schemaType}/>
         );
     }
 }

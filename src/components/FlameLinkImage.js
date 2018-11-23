@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import flamelinkApp from '../flamelink.js';
-
+import '../css/FlameLinkImage.css';
 
 class FlameLinkImage extends Component {
     constructor() {
@@ -20,7 +20,7 @@ class FlameLinkImage extends Component {
     render() {
         return(
                 <Typography align='center'>
-                    <img src={this.state.mediaURL} width="70%" alt='' />
+                    <img src={this.state.mediaURL} className='flamelinkImage' alt='' />
                 </Typography>
         );
     }

@@ -6,26 +6,31 @@ class About extends Component {
     constructor() {
         super();
 
-        global.schemaName = 'martenSchemaDemo';
+        global.schemaName = 'martenAbout';
 
         this.state = {
           schemaDetails: '',
+          schemaType: '',
         }
 
         flamelinkApp.schemas.getFields(global.schemaName, { fields: [ 'title', 'key', 'type', 'gridColumns', 'description', 'options' ] })
         .then(result => this.setState({
           schemaDetails: result
         }))
-      }
+        
+        flamelinkApp.schemas.get(global.schemaName)
+        .then(result => this.setState({
+          schemaType: result.type
+        }))
+    }
 
     render() {
         
         return (
             <div>
                 <Fragment>
-                    <FlameLinkComponentCreations schemaDetails = {this.state.schemaDetails}/>
+                    <FlameLinkComponentCreations schemaDetails = {this.state.schemaDetails} schemaType = {this.state.schemaType}/>
                 </Fragment>
-          
             </div>
         );
     }

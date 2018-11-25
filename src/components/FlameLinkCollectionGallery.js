@@ -18,6 +18,10 @@ const styles = theme => ({
         flamelinkGallery: {
             marginRight: "auto",
             marginLeft: "auto",
+        },
+
+        flamelinkGalleryContainer: {
+            backgroundColor: 'black',
             marginTop: 20,
         },
     });
@@ -44,6 +48,7 @@ class FlameLinkCollectionGallery extends Component {
             .then(result => this.setState({
               schemaContent: result
             }))
+
         if(this.props.showTitle === false){
         }
         else{
@@ -65,7 +70,6 @@ class FlameLinkCollectionGallery extends Component {
                 global.mediaIDs.push(schemaContent[val1][key][val2]);
             }
         }
-        console.log('Global Media IDs: ', global.mediaIDs)
         for (var val3 in global.mediaIDs){
                 mediaNums.push(val3)
         }   
@@ -85,7 +89,7 @@ class FlameLinkCollectionGallery extends Component {
                     <Typography variant='display3' className={classes.flamelinkItem}>
                         {this.state.schemaDescription}
                     </Typography>
-                    <Grid container>
+                    <Grid container className={classes.flamelinkGalleryContainer}>
                         <Grid item lg={8} md={8} sm={12} xs={12} className={classes.flamelinkGallery} >
                             <RenderGallery/>
                         </Grid>

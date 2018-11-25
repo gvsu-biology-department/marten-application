@@ -12,7 +12,7 @@ class FlameLinkCollectionGalleryContent extends Component {
             mediaURL: '',
         }
 
-        flamelinkApp.storage.getURL(global.mediaIDs[this.props.num])
+        flamelinkApp.storage.getURL(this.props.mediaIDs[this.props.num])
             .then(url => this.setState({
                 mediaURL: url
             }))

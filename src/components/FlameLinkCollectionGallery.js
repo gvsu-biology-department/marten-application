@@ -31,7 +31,7 @@ class FlameLinkCollectionGallery extends Component {
         super(props);
 
         global.mediaURLs = [];
-        global.mediaIDs = [];
+        //global.mediaIDs = [];
 
         this.state = {
             schemaDetails: '',
@@ -60,25 +60,26 @@ class FlameLinkCollectionGallery extends Component {
 
     getGalleryInfo(schemaDetails, schemaContent) {
         var key;
-        var mediaNums = []
+        var mediaNums = [];
+        var mediaIDs = [];
         
         for (var val in schemaDetails) {
             key = schemaDetails[val].key
         }
         for (var val1 in schemaContent) {
             for (var val2 in schemaContent[val1][key]) {
-                global.mediaIDs.push(schemaContent[val1][key][val2]);
+                mediaIDs.push(schemaContent[val1][key][val2]);
             }
         }
-        for (var val3 in global.mediaIDs) {
+        for (var val3 in mediaIDs) {
             mediaNums.push(val3)
         }
         
-        return mediaNums.map(this.createGallery);
+        return mediaNums.map(this.createGallery, mediaIDs);
     }
 
-    createGallery = num => {
-        return <FlameLinkCollectionGalleryContent num={num} key={global.mediaIDs[num]} />
+    createGallery(num) {
+        return <FlameLinkCollectionGalleryContent mediaIDs={this} num={num} key={this[num]} />
     }
 
     render() {
@@ -92,7 +93,7 @@ class FlameLinkCollectionGallery extends Component {
                 </Typography>
                 <Grid container className={classes.flamelinkGalleryContainer}>
                     <Grid item lg={8} md={8} sm={12} xs={12} className={classes.flamelinkGallery} >
-                        <RenderGallery key={Math.random()} />
+                        <RenderGallery />
                     </Grid>
                 </Grid>
             </Grid>

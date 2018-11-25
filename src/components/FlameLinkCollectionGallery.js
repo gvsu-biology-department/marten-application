@@ -75,7 +75,7 @@ class FlameLinkCollectionGallery extends Component {
         return mediaNums.map(this.createGallery, mediaIDs);
     }
 
-    createGallery(num) {
+    createGallery (num) {
         if(num === '0'){
                 global.galleryImages = [];
         }
@@ -93,7 +93,7 @@ class FlameLinkCollectionGallery extends Component {
                 </Typography>
                 <Grid container className={classes.flamelinkGalleryContainer}>
                     <Grid item lg={8} md={8} sm={12} xs={12} className={classes.flamelinkGallery} >
-                        <RenderGallery />
+                        <RenderGallery key={Math.random()}/>
                     </Grid>
                 </Grid>
             </Grid>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
+import ImageGallery from 'react-image-gallery';
 import flamelinkApp from '../flamelink.js';
 import FlameLinkCollectionGalleryContent from './FlameLinkCollectionGalleryContent';
 import "react-image-gallery/styles/css/image-gallery.css";
@@ -72,6 +73,21 @@ class FlameLinkCollectionGallery extends Component {
     render() {
         const { classes } = this.props;
 
+        const images = [
+      {
+        original: 'http://lorempixel.com/1000/600/nature/1/',
+        thumbnail: 'http://lorempixel.com/250/150/nature/1/',
+      },
+      {
+        original: 'http://lorempixel.com/1000/600/nature/2/',
+        thumbnail: 'http://lorempixel.com/250/150/nature/2/'
+      },
+      {
+        original: 'http://lorempixel.com/1000/600/nature/3/',
+        thumbnail: 'http://lorempixel.com/250/150/nature/3/'
+      }
+    ]
+
         return(
                 <Grid item lg={8} md={8} sm={12} xs={12} className={classes.flamelinkItem}>
                     <Typography variant='display3'>
@@ -79,6 +95,7 @@ class FlameLinkCollectionGallery extends Component {
                     </Typography>
                     {this.getGalleryInfo(this.state.schemaDetails, this.state.schemaContent)}
                     {console.log('Gallery Images: ', global.galleryImages)}
+                    <ImageGallery items={global.galleryImages} />
                 </Grid>
         );
     }

@@ -30,9 +30,6 @@ class FlameLinkCollectionGallery extends Component {
     constructor(props) {
         super(props);
 
-        global.mediaURLs = [];
-        //global.mediaIDs = [];
-
         this.state = {
             schemaDetails: '',
             schemaContent: '',
@@ -79,6 +76,9 @@ class FlameLinkCollectionGallery extends Component {
     }
 
     createGallery(num) {
+        if(num === '0'){
+                global.galleryImages = [];
+        }
         return <FlameLinkCollectionGalleryContent mediaIDs={this} num={num} key={this[num]} />
     }
 

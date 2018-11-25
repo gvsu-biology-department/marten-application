@@ -20,7 +20,8 @@ class FlameLinkCollectionGalleryContent extends Component {
 
     addURLs = () => {
         if (this.state.mediaURL === '') {
-        } else {
+        } 
+        else {
             var element = {}
             element.original = this.state.mediaURL;
             global.galleryImages.push(element);

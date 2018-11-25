@@ -153,13 +153,13 @@ class ResponsiveDrawer extends React.Component {
                     <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
                             <ListItem button className={classes.nested} onClick={() => this.nav('Gallery1')}>
-                                <ListItemText inset primary="Gallery1" />
+                                <ListItemText inset primary="Martens and Kits" />
                             </ListItem>
                             <ListItem button className={classes.nested} onClick={() => this.nav('Gallery2')}>
-                                <ListItemText inset primary="Gallery2" />
+                                <ListItemText inset primary="Martens at Night" />
                             </ListItem>
                             <ListItem button className={classes.nested} onClick={() => this.nav('Gallery3')}>
-                                <ListItemText inset primary="Gallery3" />
+                                <ListItemText inset primary="Martens Being Martens" />
                             </ListItem>
                         </List>
                     </Collapse>
@@ -226,9 +226,9 @@ class ResponsiveDrawer extends React.Component {
                     {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy'/>}
                     {this.state.key === 'Intermediate-Quiz' && <Quiz difficulty='Intermediate'/>}
                     {this.state.key === 'Advanced-Quiz' && <Quiz difficulty='Advanced'/>}
-                    {this.state.key === 'Gallery1' && <FlameLinkCollectionGallery galleryName={'martenGallery'}/>}
-                    {this.state.key === 'Gallery2' && <FlameLinkCollectionGallery galleryName={'martenGallery'}/>}
-                    {this.state.key === 'Gallery3' && <FlameLinkCollectionGallery galleryName={'martenGallery'}/>}
+                    {this.state.key === 'Gallery1' && <FlameLinkCollectionGallery galleryName={'martensAndKits'}/>}
+                    {this.state.key === 'Gallery2' && <FlameLinkCollectionGallery galleryName={'martensAtNight'}/>}
+                    {this.state.key === 'Gallery3' && <FlameLinkCollectionGallery galleryName={'martensBeingMartens'}/>}
                 </main>
             </div>
         );

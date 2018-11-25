@@ -44,11 +44,14 @@ class FlameLinkCollectionGallery extends Component {
             .then(result => this.setState({
               schemaContent: result
             }))
-
-        flamelinkApp.schemas.get(this.props.galleryName)
-            .then(result => this.setState({
-              schemaDescription: result.title
-            }))
+        if(this.props.showTitle === false){
+        }
+        else{
+            flamelinkApp.schemas.get(this.props.galleryName)
+                .then(result => this.setState({
+                  schemaDescription: result.title
+                }))
+        }
     }
 
     getGalleryInfo(schemaDetails, schemaContent){

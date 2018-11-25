@@ -33,7 +33,7 @@ class Home extends Component {
     render() {
         return (
             <Grid container>
-                <FlameLinkCollectionGallery galleryName={'martenGallery'}/>
+                <FlameLinkCollectionGallery galleryName={'martenHomeGallery'} showTitle={false}/>
                 <FlameLinkComponentCreations schemaDetails={this.state.schemaDetails} schemaType = {this.state.schemaType}/>
             </Grid>
         );

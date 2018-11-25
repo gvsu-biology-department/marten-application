@@ -8,29 +8,28 @@ class RenderGallery extends Component {
         super();
 
         this.state = {
-          showThumbnails: false,
-          showIndex: true,
-          showBullets: true,
-          mounted: false,
+            showThumbnails: false,
+            showIndex: true,
+            showBullets: true,
+            mounted: false,
         }
-      }
-
-        componentDidMount(){
-        this.setState({mounted: true})
     }
-    
-    _onImageLoad(event) {
-    console.debug('loaded image', event.target.src);
-  }
+
+    componentDidMount() {
+        this.setState({ mounted: true })
+    }
+
+    _onImageLoad = event => {
+        console.debug('loaded image', event.target.src);
+    }
 
     render() {
-
-        return(
-            <ImageGallery  
-                items={global.galleryImages} 
-                showThumbnails={this.state.showThumbnails} 
-                showIndex={this.state.showIndex} 
-                showBullets={this.state.showBullets} 
+        return (
+            <ImageGallery
+                items={global.galleryImages}
+                showThumbnails={this.state.showThumbnails}
+                showIndex={this.state.showIndex}
+                showBullets={this.state.showBullets}
                 onImageLoad={this._onImageLoad}
             />
         );

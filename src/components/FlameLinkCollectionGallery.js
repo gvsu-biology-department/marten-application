@@ -61,6 +61,7 @@ class FlameLinkCollectionGallery extends Component {
     getGalleryInfo(schemaDetails, schemaContent) {
         var key;
         var mediaNums = []
+        
         for (var val in schemaDetails) {
             key = schemaDetails[val].key
         }
@@ -72,10 +73,11 @@ class FlameLinkCollectionGallery extends Component {
         for (var val3 in global.mediaIDs) {
             mediaNums.push(val3)
         }
+        
         return mediaNums.map(this.createGallery);
     }
 
-    createGallery(num) {
+    createGallery = num => {
         return <FlameLinkCollectionGalleryContent num={num} key={global.mediaIDs[num]} />
     }
 
@@ -85,7 +87,7 @@ class FlameLinkCollectionGallery extends Component {
         return (
             <Grid container>
                 {this.getGalleryInfo(this.state.schemaDetails, this.state.schemaContent)}
-                <Typography variant='display3' className={classes.flamelinkItem}>
+                <Typography variant='display2' className={classes.flamelinkItem}>
                     {this.state.schemaDescription}
                 </Typography>
                 <Grid container className={classes.flamelinkGalleryContainer}>

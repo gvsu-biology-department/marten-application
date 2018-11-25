@@ -9,23 +9,23 @@ class FlameLinkCollectionGalleryContent extends Component {
         global.galleryImages = [];
 
         this.state = {
-          mediaURL: '',
+            mediaURL: '',
         }
 
         flamelinkApp.storage.getURL(global.mediaIDs[this.props.num])
-                    .then(url => this.setState({
-                      mediaURL: url
-                    }))
-      }
+            .then(url => this.setState({
+                mediaURL: url
+            }))
+    }
 
-    addURLs(){
-        if(this.state.mediaURL === ''){
-        }
-        else{
+    addURLs = () => {
+        if (this.state.mediaURL === '') {
+        } else {
             var element = {}
             element.original = this.state.mediaURL;
             global.galleryImages.push(element);
         }
+        
         return null;
     }
 

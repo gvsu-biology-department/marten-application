@@ -272,9 +272,8 @@ export class MapContainer extends Component {
                     initialCenter={this.state.myLatLng}
                     center={this.state.myLatLng}
                     minZoom={6}
-                    zoom={6}
+                    zoom={7}
                     onClick={this.onMapClick}
-                    defaultZoom={15}
                 >
                     <Marker
                         position={this.state.myLatLng}

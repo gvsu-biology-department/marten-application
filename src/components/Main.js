@@ -14,11 +14,8 @@ import Hidden from '@material-ui/core/Hidden';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
-<<<<<<< HEAD
 import EmailIcon from '@material-ui/icons/Email';
-=======
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
->>>>>>> ce9f5e9c512de50492974fc8bc0d368750fb8307
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import MapIcon from '@material-ui/icons/Map';
 import InfoIcon from '@material-ui/icons/Info';
@@ -231,12 +228,8 @@ class ResponsiveDrawer extends React.Component {
                     {this.state.key === 'Report' && <Report />}
                     {this.state.key === 'Map' && <ViewMap />}
                     {this.state.key === 'List' && <SightingList />}
-<<<<<<< HEAD
-                    {this.state.key === 'About' && <Info />}
-                    {this.state.key === 'Contact' && <Contact />}
-=======
                     {this.state.key === 'About' && <About />}
->>>>>>> ce9f5e9c512de50492974fc8bc0d368750fb8307
+                    {this.state.key === 'Contact' && <Contact />}
                     {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy'/>}
                     {this.state.key === 'Intermediate-Quiz' && <Quiz difficulty='Intermediate'/>}
                     {this.state.key === 'Advanced-Quiz' && <Quiz difficulty='Advanced'/>}

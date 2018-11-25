@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import ImageGallery from 'react-image-gallery';
+import RenderGallery from './RenderGallery';
 import flamelinkApp from '../flamelink.js';
 import FlameLinkCollectionGalleryContent from './FlameLinkCollectionGalleryContent';
 import "react-image-gallery/styles/css/image-gallery.css";
@@ -14,35 +14,38 @@ const styles = theme => ({
             marginLeft: 20,
             marginTop: 20,
         },
+
+        flamelinkGallery: {
+            marginRight: "auto",
+            marginLeft: "auto",
+            marginTop: 20,
+        },
     });
 
 class FlameLinkCollectionGallery extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         global.mediaURLs = [];
         global.mediaIDs = [];
-        global.galleryImages = [];
 
         this.state = {
             schemaDetails: '',
             schemaContent: '',
             schemaDescription: '',
-            showThumbnails: false,
-            showIndex: true,
         }
 
-        flamelinkApp.schemas.getFields(global.galleryName, { fields: [ 'title', 'key', 'type', 'gridColumns', 'description', 'options'] })
+        flamelinkApp.schemas.getFields(this.props.galleryName, { fields: [ 'title', 'key', 'type', 'gridColumns', 'description', 'options'] })
                     .then(result => this.setState({
                         schemaDetails: result
                     }))
 
-        flamelinkApp.content.get(global.galleryName)
+        flamelinkApp.content.get(this.props.galleryName)
             .then(result => this.setState({
               schemaContent: result
             }))
 
-        flamelinkApp.schemas.get(global.galleryName)
+        flamelinkApp.schemas.get(this.props.galleryName)
             .then(result => this.setState({
               schemaDescription: result.title
             }))
@@ -73,29 +76,17 @@ class FlameLinkCollectionGallery extends Component {
     render() {
         const { classes } = this.props;
 
-        const images = [
-      {
-        original: 'http://lorempixel.com/1000/600/nature/1/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/1/',
-      },
-      {
-        original: 'http://lorempixel.com/1000/600/nature/2/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/2/'
-      },
-      {
-        original: 'http://lorempixel.com/1000/600/nature/3/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/3/'
-      }
-    ]
-
         return(
-                <Grid item lg={8} md={8} sm={12} xs={12} className={classes.flamelinkItem}>
-                    <Typography variant='display3'>
+                <Grid container>
+                    {this.getGalleryInfo(this.state.schemaDetails, this.state.schemaContent)}
+                    <Typography variant='display3' className={classes.flamelinkItem}>
                         {this.state.schemaDescription}
                     </Typography>
-                    {this.getGalleryInfo(this.state.schemaDetails, this.state.schemaContent)}
-                    {console.log('Gallery Images: ', global.galleryImages)}
-                    <ImageGallery items={global.galleryImages} />
+                    <Grid container>
+                        <Grid item lg={8} md={8} sm={12} xs={12} className={classes.flamelinkGallery} >
+                            <RenderGallery/>
+                        </Grid>
+                    </Grid>
                 </Grid>
         );
     }

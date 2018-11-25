@@ -9,7 +9,6 @@ class Home extends Component {
         super();
 
         global.schemaName = 'martenHome';
-        global.galleryName = 'martenGallery';
 
         this.state = {
             schemaDetails: '',
@@ -34,7 +33,7 @@ class Home extends Component {
     render() {
         return (
             <Grid container>
-                <FlameLinkCollectionGallery />
+                <FlameLinkCollectionGallery galleryName={'martenGallery'}/>
                 <FlameLinkComponentCreations schemaDetails={this.state.schemaDetails} schemaType = {this.state.schemaType}/>
             </Grid>
         );

@@ -3,20 +3,20 @@ import flamelinkApp from '../flamelink.js';
 import '../css/FlameLink.css';
 
 class FlameLinkCollectionGalleryContent extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
+        global.galleryImages = [];
 
         this.state = {
           mediaURL: '',
         }
-      }
 
-    componentDidMount(){
         flamelinkApp.storage.getURL(global.mediaIDs[this.props.num])
                     .then(url => this.setState({
                       mediaURL: url
                     }))
-    }
+      }
 
     addURLs(){
         if(this.state.mediaURL === ''){

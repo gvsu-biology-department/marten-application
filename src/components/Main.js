@@ -14,6 +14,7 @@ import Hidden from '@material-ui/core/Hidden';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
+import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import MapIcon from '@material-ui/icons/Map';
 import InfoIcon from '@material-ui/icons/Info';
@@ -29,6 +30,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
+import FlameLinkCollectionGallery from '../components/FlameLinkCollectionGallery';
 
 const drawerWidth = 240;
 
@@ -143,20 +145,20 @@ class ResponsiveDrawer extends React.Component {
                     </Collapse>
                     <ListItem button onClick={this.handleClick2}>
                         <ListItemIcon>
-                            <SlideshowIcon />
+                            <PhotoLibraryIcon />
                         </ListItemIcon>
                         <ListItemText inset primary="Galleries" />
                         {this.state.open2 ? <ExpandLess /> : <ExpandMore />}
                     </ListItem>
                     <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            <ListItem button className={classes.nested} onClick={() => this.nav('Easy-Quiz')}>
+                            <ListItem button className={classes.nested} onClick={() => this.nav('Gallery1')}>
                                 <ListItemText inset primary="Gallery1" />
                             </ListItem>
-                            <ListItem button className={classes.nested} onClick={() => this.nav('Intermediate-Quiz')}>
+                            <ListItem button className={classes.nested} onClick={() => this.nav('Gallery2')}>
                                 <ListItemText inset primary="Gallery2" />
                             </ListItem>
-                            <ListItem button className={classes.nested} onClick={() => this.nav('Advanced-Quiz')}>
+                            <ListItem button className={classes.nested} onClick={() => this.nav('Gallery3')}>
                                 <ListItemText inset primary="Gallery3" />
                             </ListItem>
                         </List>
@@ -224,6 +226,9 @@ class ResponsiveDrawer extends React.Component {
                     {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy'/>}
                     {this.state.key === 'Intermediate-Quiz' && <Quiz difficulty='Intermediate'/>}
                     {this.state.key === 'Advanced-Quiz' && <Quiz difficulty='Advanced'/>}
+                    {this.state.key === 'Gallery1' && <FlameLinkCollectionGallery galleryName={'martenGallery'}/>}
+                    {this.state.key === 'Gallery2' && <FlameLinkCollectionGallery galleryName={'martenGallery'}/>}
+                    {this.state.key === 'Gallery3' && <FlameLinkCollectionGallery galleryName={'martenGallery'}/>}
                 </main>
             </div>
         );

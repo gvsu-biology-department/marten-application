@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import FlameLinkComponentCreations from '../components/FlameLinkComponentCreations';
+import FlameLinkCollectionGallery from '../components/FlameLinkCollectionGallery';
 import flamelinkApp from '../flamelink';
+import Grid from '@material-ui/core/Grid';
 
 class Home extends Component {
     constructor() {
         super();
 
         global.schemaName = 'martenHome';
+        global.galleryName = 'martenGallery';
 
         this.state = {
             schemaDetails: '',
@@ -30,7 +33,10 @@ class Home extends Component {
 
     render() {
         return (
-            <FlameLinkComponentCreations schemaDetails={this.state.schemaDetails} schemaType = {this.state.schemaType}/>
+            <Grid container>
+                <FlameLinkCollectionGallery />
+                <FlameLinkComponentCreations schemaDetails={this.state.schemaDetails} schemaType = {this.state.schemaType}/>
+            </Grid>
         );
     }
 }

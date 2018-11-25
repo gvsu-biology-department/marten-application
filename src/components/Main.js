@@ -71,7 +71,8 @@ class ResponsiveDrawer extends React.Component {
     state = {
         mobileOpen: false,
         key: 'Home',
-        open: false
+        open: false,
+        open2: false,
     };
 
     handleDrawerToggle = () => {
@@ -80,6 +81,10 @@ class ResponsiveDrawer extends React.Component {
 
     handleClick = () => {
         this.setState(state => ({ open: !state.open }));
+    }
+
+    handleClick2 = () => {
+        this.setState(state => ({ open2: !state.open2 }));
     }
 
     nav = (text) => {
@@ -133,6 +138,26 @@ class ResponsiveDrawer extends React.Component {
                             </ListItem>
                             <ListItem button className={classes.nested} onClick={() => this.nav('Advanced-Quiz')}>
                                 <ListItemText inset primary="Advanced" />
+                            </ListItem>
+                        </List>
+                    </Collapse>
+                    <ListItem button onClick={this.handleClick2}>
+                        <ListItemIcon>
+                            <SlideshowIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Galleries" />
+                        {this.state.open2 ? <ExpandLess /> : <ExpandMore />}
+                    </ListItem>
+                    <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                            <ListItem button className={classes.nested} onClick={() => this.nav('Easy-Quiz')}>
+                                <ListItemText inset primary="Gallery1" />
+                            </ListItem>
+                            <ListItem button className={classes.nested} onClick={() => this.nav('Intermediate-Quiz')}>
+                                <ListItemText inset primary="Gallery2" />
+                            </ListItem>
+                            <ListItem button className={classes.nested} onClick={() => this.nav('Advanced-Quiz')}>
+                                <ListItemText inset primary="Gallery3" />
                             </ListItem>
                         </List>
                     </Collapse>

@@ -24,6 +24,10 @@ class About extends Component {
         }))
     }
 
+    componentDidMount() {
+        document.title = 'Marten Tracker | About';
+    }
+
     render() {
         
         return (

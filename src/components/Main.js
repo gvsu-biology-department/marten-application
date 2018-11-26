@@ -167,6 +167,9 @@ class ResponsiveDrawer extends React.Component {
                             <ListItem button className={classes.nested} onClick={() => this.nav('Gallery3')}>
                                 <ListItemText inset primary="Martens Being Martens" />
                             </ListItem>
+                            <ListItem button className={classes.nested} onClick={() => this.nav('Gallery4')}>
+                                <ListItemText inset primary="Species Similar to Martens" />
+                            </ListItem>
                         </List>
                     </Collapse>
                 </List>
@@ -236,6 +239,7 @@ class ResponsiveDrawer extends React.Component {
                     {this.state.key === 'Gallery1' && <FlameLinkCollectionGallery galleryName={'martensAndKits'}/>}
                     {this.state.key === 'Gallery2' && <FlameLinkCollectionGallery galleryName={'martensAtNight'}/>}
                     {this.state.key === 'Gallery3' && <FlameLinkCollectionGallery galleryName={'martensBeingMartens'}/>}
+                    {this.state.key === 'Gallery4' && <FlameLinkCollectionGallery galleryName={'similarSpecies'}/>}
                 </main>
             </div>
         );

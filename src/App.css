@@ -42,6 +42,11 @@ body {
     height: 300px !important;
 }
 
+.contact-form {
+    max-width: 100%;
+    overflow: hidden;
+}
+
 @media (min-width: 960px) {
     .sighting-detail-google-map-container > div {
         width: calc(100% - 50% - 120px) !important;

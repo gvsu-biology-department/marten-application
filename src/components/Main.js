@@ -35,7 +35,6 @@ import Collapse from '@material-ui/core/Collapse';
 import FlameLinkCollectionGallery from '../components/FlameLinkCollectionGallery';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
-import indigo from '@material-ui/core/colors/indigo';
 
 const drawerWidth = 240;
 
@@ -85,8 +84,7 @@ class ResponsiveDrawer extends React.Component {
                 useNextVariants: true,
             },
             palette: {
-                primary: indigo,
-                secondary: indigo
+                type: 'light'
             }
         }),
         themeName: 'light',
@@ -133,8 +131,7 @@ class ResponsiveDrawer extends React.Component {
                         useNextVariants: true,
                     },
                     palette: {
-                        primary: indigo,
-                        secondary: indigo
+                        type: 'light'
                     }
                 })
             })
@@ -145,7 +142,7 @@ class ResponsiveDrawer extends React.Component {
         const { classes } = this.props;
 
         const drawer = (
-            <div>
+            <Typography component="div">
                 <div className={classes.toolbar} />
                 <Divider />
                 <List>
@@ -218,7 +215,7 @@ class ResponsiveDrawer extends React.Component {
                     </Collapse>
                 </List>
                 <Divider />
-            </div>
+            </Typography>
         );
 
         return (

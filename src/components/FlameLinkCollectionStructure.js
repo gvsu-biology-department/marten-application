@@ -103,11 +103,6 @@ class FlameLinkCollectionStructure extends Component {
                     return <FlameLinkFieldSet field={content[key]} field2={field.options}/>
                 }
             }
-        console.log('Content: ', content)
-        console.log('Field: ', field)
-        console.log('Key: ', key)
-        console.log('Type: ', type)
-        console.log('Description: ', description)
     }
 
     render() {

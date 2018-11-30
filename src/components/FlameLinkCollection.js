@@ -6,7 +6,6 @@ class FlameLinkCollection extends Component {
     constructor() {
         super();
         
-        global.mediaID = '';
 
         this.state = {
           schemaContent: '',
@@ -22,7 +21,7 @@ class FlameLinkCollection extends Component {
         var arr2 = [];
         var collectionInfo = [schemaData, this.state.schemaContent];
         for (var val in this.state.schemaContent){
-            arr2.push(val);
+            arr2[this.state.schemaContent[val]['order']] = val;
         }
         return arr2.map(this.getCollectionComponentInfo, collectionInfo);
     }
@@ -34,6 +33,17 @@ class FlameLinkCollection extends Component {
         }
         return <FlameLinkCollectionComponentCreations schemaData={this[0]} schemaContent={this[1][num]} arr={arr3} key={num} />
     }
+
+    countProperties(obj) {
+    var count = 0;
+
+    for(var prop in obj) {
+        if(obj.hasOwnProperty(prop))
+            ++count;
+    }
+
+    return count;
+}
 
     render() {
         return(

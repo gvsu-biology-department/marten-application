@@ -20,6 +20,13 @@ body {
     margin: 0 auto;
 }
 
+#disqus_thread a,
+.comments .nav ul li a,
+.comments .nav ul li div a
+{
+    color: #2aafc7
+}
+
 .sighting-list {
     height: calc(50vh - 64px);
     overflow-y: scroll;

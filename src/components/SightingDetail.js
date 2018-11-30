@@ -2,13 +2,19 @@ import React, { Component, Fragment } from 'react';
 import Disqus from 'disqus-react';
 import moment from 'moment';
 import SightingDetailMap from './SightingDetailMap';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+
+const styles = theme => ({
+});
 
 /** 
   * Types of sightings. Label is what is
   * viewed in the application, value is
   * what is stored in the database.
   */
- const sightingTypes = [
+const sightingTypes = [
     {
         value: 'visual',
         label: 'Visual',
@@ -143,18 +149,24 @@ class SightingDetail extends Component {
         return (
             <Fragment>
                 <SightingDetailMap lat={this.props.detail.lat} lng={this.props.detail.lng} />
+                <Typography component="div">
                 <div className='sighting-details-content'>
                     <p><b>Type:</b> {this.getType(this.props.detail.type)}</p>
                     <p><b>When:</b> {this.formatDate(this.props.detail.date)}, {this.getTime(this.props.detail.time)}</p>
                     <p><b>Where:</b> {this.props.detail.lat} degrees N, and {this.props.detail.lng} degrees E</p>
                     <p><b>I am confident of my sighting:</b> {this.getConfidence(this.props.detail.confidence)}</p>
-                    <hr/>
+                    <hr />
                     <p>{`${this.props.detail.desc}`}</p>
                 </div>
-                <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+                    <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+                </Typography>
             </Fragment>
         );
     }
 }
 
-export default SightingDetail;
+SightingDetail.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(SightingDetail);

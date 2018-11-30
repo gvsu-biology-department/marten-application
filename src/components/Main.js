@@ -96,11 +96,11 @@ class ResponsiveDrawer extends React.Component {
     }
 
     handleClick = () => {
-        this.setState(state => ({ open: !state.open }));
+        this.setState(state => ({ open: !state.open, open2: false }));
     }
 
     handleClick2 = () => {
-        this.setState(state => ({ open2: !state.open2 }));
+        this.setState(state => ({ open2: !state.open2, open: false }));
     }
 
     nav = (text) => {

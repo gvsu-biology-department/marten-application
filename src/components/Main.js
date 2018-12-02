@@ -32,7 +32,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
-import FlameLinkCollectionGallery from '../components/FlameLinkCollectionGallery';
+import FlameLinkCollectionGallery from '../components/flamelink/FlameLinkCollectionGallery';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 
@@ -278,7 +278,7 @@ class ResponsiveDrawer extends React.Component {
                         {this.state.key === 'Home' && <Home />}
                         {this.state.key === 'Report' && <Report />}
                         {this.state.key === 'Map' && <ViewMap />}
-                        {this.state.key === 'List' && <SightingList key={this.state.themeName} />}
+                        {this.state.key === 'List' && <SightingList themeName={this.state.themeName} />}
                         {this.state.key === 'About' && <About />}
                         {this.state.key === 'Contact' && <Contact />}
                         {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy' />}

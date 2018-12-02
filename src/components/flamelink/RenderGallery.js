@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
-import '../css/FlameLink.css';
+import '../../css/FlameLink.css';
 
 class RenderGallery extends Component {
     constructor() {

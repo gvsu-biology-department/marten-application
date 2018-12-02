@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import FlameLinkComponentCreations from '../components/FlameLinkComponentCreations';
-import FlameLinkCollectionGallery from '../components/FlameLinkCollectionGallery';
+import FlameLinkComponentCreations from '../components/flamelink/FlameLinkComponentCreations';
+import FlameLinkCollectionGallery from '../components/flamelink/FlameLinkCollectionGallery';
 import flamelinkApp from '../flamelink';
 import Grid from '@material-ui/core/Grid';
 

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import FlameLinkComponentCreations from '../components/FlameLinkComponentCreations';
+import FlameLinkComponentCreations from '../components/flamelink/FlameLinkComponentCreations';
 import flamelinkApp from '../flamelink.js';
 
 class About extends Component {

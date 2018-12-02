@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import flamelinkApp from '../../flamelink.js';
+import flamelinkApp from '../../utilities/flamelink.js';
 import '../../css/FlameLink.css';
 
 class FlameLinkCollectionGalleryContent extends Component {

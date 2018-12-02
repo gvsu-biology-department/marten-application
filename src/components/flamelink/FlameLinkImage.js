@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
-import flamelinkApp from '../../flamelink.js';
+import flamelinkApp from '../../utilities/flamelink.js';
 import '../../css/FlameLink.css';
 
 class FlameLinkImage extends Component {

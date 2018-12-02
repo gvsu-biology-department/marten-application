@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Grid from '@material-ui/core/Grid';
-import firebase from '../../firebase.js';
+import firebase from '../../utilities/firebase.js';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';

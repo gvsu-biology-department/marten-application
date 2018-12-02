@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import moment from 'moment';
 import Typography from '@material-ui/core/Typography';
-import firebase from '../firebase.js';
+import firebase from '../utilities/firebase.js';
 
 // Google Maps API Key
 const API_KEY = 'AIzaSyAZ_0J01bA6wCbIPK4UBq2RUBC-hIqG4mM';
@@ -216,22 +216,22 @@ export class MapContainer extends Component {
 
         switch(type) {
             case 'visual':
-                pinIcon = '/mapicons/marten-icon.png';
+                pinIcon = '/map-icons/marten-icon.png';
                 break;
             case 'roadkill':
-                pinIcon = '/mapicons/tire-icon.png';
+                pinIcon = '/map-icons/tire-icon.png';
                 break;
             case 'viewed_tracks':
-                pinIcon = '/mapicons/paws.png';
+                pinIcon = '/map-icons/paws.png';
                 break;
             case 'trapped':
-                pinIcon = '/mapicons/cage.png';
+                pinIcon = '/map-icons/cage.png';
                 break;
             case 'photo':
-                pinIcon = '/mapicons/photo-icon.png';
+                pinIcon = '/map-icons/photo-icon.png';
                 break;
             case 'other':
-                pinIcon = '/mapicons/other-icon.png';
+                pinIcon = '/map-icons/other-icon.png';
                 break;
             default:
                 break;

@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import RenderGallery from './RenderGallery';
-import flamelinkApp from '../../flamelink.js';
+import flamelinkApp from '../../utilities/flamelink.js';
 import FlameLinkCollectionGalleryContent from './FlameLinkCollectionGalleryContent';
 import "react-image-gallery/styles/css/image-gallery.css";
 import '../../css/FlameLink.css';

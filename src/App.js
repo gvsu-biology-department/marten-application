@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Main from './components/Main';
 import './css/App.css';
+import { CookiesProvider } from 'react-cookie';
 
 class App extends Component {
     componentDidMount() {
@@ -9,9 +10,11 @@ class App extends Component {
 
     render() {
         return (
-        <div>
-            <Main/>
-        </div>
+            <CookiesProvider>
+                <div>
+                    <Main />
+                </div>
+            </CookiesProvider>
         );
     }
 }

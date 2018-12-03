@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { instanceOf } from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -35,6 +35,7 @@ import Collapse from '@material-ui/core/Collapse';
 import FlameLinkCollectionGallery from '../components/flamelink/FlameLinkCollectionGallery';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
+import { withCookies, Cookies } from 'react-cookie';
 
 const drawerWidth = 240;
 
@@ -74,22 +75,60 @@ const styles = theme => ({
 });
 
 class ResponsiveDrawer extends React.Component {
-    state = {
-        mobileOpen: false,
-        key: 'Home',
-        open: false,
-        open2: false,
-        theme: createMuiTheme({
-            typography: {
-                useNextVariants: true,
-            },
-            palette: {
-                type: 'light'
+    componentWillMount() {
+        const { cookies } = this.props;
+
+        var newName, newTheme, newChecked;
+
+        if (cookies.get('themeName') === undefined) {
+            newName = 'light'
+            newTheme = createMuiTheme({
+                typography: {
+                    useNextVariants: true,
+                },
+                palette: {
+                    type: 'light'
+                }
+            });
+            newChecked = true;
+
+            cookies.set('themeName', newName, { path: '/' });
+        } else {
+            if (cookies.get('themeName') === 'light') {
+                newName = 'light'
+                newTheme = createMuiTheme({
+                    typography: {
+                        useNextVariants: true,
+                    },
+                    palette: {
+                        type: 'light'
+                    }
+                });
+                newChecked = true;
+            } else {
+                newName = 'dark'
+                newTheme = createMuiTheme({
+                    typography: {
+                        useNextVariants: true,
+                    },
+                    palette: {
+                        type: 'dark'
+                    }
+                });
+                newChecked = false;
             }
-        }),
-        themeName: 'light',
-        themeChecked: true
-    };
+        }
+
+        this.setState({
+            mobileOpen: false,
+            key: 'Home',
+            open: false,
+            open2: false,
+            theme: newTheme,
+            themeName: newName,
+            themeChecked: newChecked
+        });
+    }
 
     handleDrawerToggle = () => {
         this.setState(state => ({ mobileOpen: !state.mobileOpen }));
@@ -110,32 +149,42 @@ class ResponsiveDrawer extends React.Component {
     }
 
     handleChange = name => event => {
+        const { cookies } = this.props;
+
         this.setState({ [name]: event.target.checked });
+
+        var newTheme, newName;
+
         if (this.state.themeName === 'light') {
-            this.setState({
-                themeName: 'dark',
-                theme: createMuiTheme({
-                    typography: {
-                        useNextVariants: true,
-                    },
-                    palette: {
-                        type: 'dark'
-                    }
-                })
-            })
+            newTheme = createMuiTheme({
+                typography: {
+                    useNextVariants: true,
+                },
+                palette: {
+                    type: 'dark'
+                }
+            });
+
+            newName = 'dark';
         } else {
-            this.setState({
-                themeName: 'light',
-                theme: createMuiTheme({
-                    typography: {
-                        useNextVariants: true,
-                    },
-                    palette: {
-                        type: 'light'
-                    }
-                })
-            })
+            newTheme = createMuiTheme({
+                typography: {
+                    useNextVariants: true,
+                },
+                palette: {
+                    type: 'light'
+                }
+            });
+
+            newName = 'light';
         }
+
+        this.setState({
+            themeName: newName,
+            theme: newTheme
+        })
+
+        cookies.set('themeName', newName, { path: '/' });
     };
 
     render() {
@@ -297,10 +346,9 @@ class ResponsiveDrawer extends React.Component {
 
 ResponsiveDrawer.propTypes = {
     classes: PropTypes.object.isRequired,
-    // Injected by the documentation to work in an iframe.
-    // You won't need it on your project.
     container: PropTypes.object,
     theme: PropTypes.object.isRequired,
+    cookies: instanceOf(Cookies).isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(ResponsiveDrawer);
+export default withStyles(styles, { withTheme: true })(withCookies(ResponsiveDrawer));

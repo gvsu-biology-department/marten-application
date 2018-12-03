@@ -11,10 +11,10 @@ class App extends Component {
     render() {
         return (
             <CookiesProvider>
-        <div>
-            <Main/>
-        </div>
-         </CookiesProvider>
+                <div>
+                    <Main />
+                </div>
+            </CookiesProvider>
         );
     }
 }

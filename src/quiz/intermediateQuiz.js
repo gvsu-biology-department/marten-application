@@ -4,7 +4,7 @@ const intermediateQuiz = {
     "quizTitle": "Trail Cam Quiz: Intermediate",
     "questions": [
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question1.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question1.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American badger",
@@ -15,7 +15,7 @@ const intermediateQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question2.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question2.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American marten",
@@ -26,7 +26,7 @@ const intermediateQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question3.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question3.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American marten",
@@ -37,7 +37,7 @@ const intermediateQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question4.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question4.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American marten",
@@ -48,7 +48,7 @@ const intermediateQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question5.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question5.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American Robin",
@@ -59,7 +59,7 @@ const intermediateQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question6.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question6.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Black bear",
@@ -70,7 +70,7 @@ const intermediateQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question7.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question7.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Bobcat",
@@ -81,7 +81,7 @@ const intermediateQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question8.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question8.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Bobcat",
@@ -92,7 +92,7 @@ const intermediateQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question9.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question9.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American Crow",
@@ -103,7 +103,7 @@ const intermediateQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question10.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question10.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Coyote",
@@ -114,7 +114,7 @@ const intermediateQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question11.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question11.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Eastern chipmunk",
@@ -125,7 +125,7 @@ const intermediateQuiz = {
             "correctAnswer": "3"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question12.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question12.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Eastern chipmunk",
@@ -136,7 +136,7 @@ const intermediateQuiz = {
             "correctAnswer": "3"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question13.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question13.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American beaver",
@@ -147,7 +147,7 @@ const intermediateQuiz = {
             "correctAnswer": "3"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question14.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question14.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American badger",
@@ -158,7 +158,7 @@ const intermediateQuiz = {
             "correctAnswer": "2"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question15.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question15.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American badger",
@@ -169,7 +169,7 @@ const intermediateQuiz = {
             "correctAnswer": "2"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question16.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question16.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Coyote",
@@ -180,7 +180,7 @@ const intermediateQuiz = {
             "correctAnswer": "4"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question17.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question17.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Eastern fox squirrel",
@@ -191,7 +191,7 @@ const intermediateQuiz = {
             "correctAnswer": "4"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question18.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question18.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Eastern chipmunk",
@@ -202,7 +202,7 @@ const intermediateQuiz = {
             "correctAnswer": "4"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question19.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question19.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American Woodcock",
@@ -213,7 +213,7 @@ const intermediateQuiz = {
             "correctAnswer": "4"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/intermediate/question20.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question20.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Elk",

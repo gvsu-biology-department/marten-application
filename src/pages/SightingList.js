@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ViewSightings from '../components/ViewSightings.js';
+import ViewSightings from '../components/list/ViewSightings.js';
 
 class Sighting extends Component {
     componentDidMount() {
@@ -8,7 +8,7 @@ class Sighting extends Component {
 
     render() {
         return (
-            <ViewSightings/>
+            <ViewSightings themeName={this.props.themeName}/>
         );
     }
 }

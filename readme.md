@@ -24,5 +24,6 @@ The application allows for users to post marten sightings. They can attach photo
 * Material-UI
 * Google API
 * Netlify
+* Disqus
 * Flamelink CMS
 * EmailJS

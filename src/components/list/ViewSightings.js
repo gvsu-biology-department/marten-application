@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Grid from '@material-ui/core/Grid';
-import firebase from '../firebase.js';
+import firebase from '../../utilities/firebase.js';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -64,6 +64,24 @@ class ViewSightings extends Component {
         clicked: false
     };
 
+    componentDidUpdate(props) {
+        if (this.props.themeName !== props.themeName) {
+            this.setState({
+                selectedSighting: {
+                    id: null,
+                    lat: null,
+                    lng: null,
+                    desc: null,
+                    type: null,
+                    confidence: null,
+                    date: null,
+                    time: null
+                },
+                clicked: false
+            });
+        }
+    }
+
     render() {
         return (
             <Fragment>
@@ -71,20 +89,20 @@ class ViewSightings extends Component {
                     <Grid item xs={12} md={6} className='sighting-list'>
                         <Fragment>
                             <List>
-                            { 
-                                this.state.sightings.map((sighting) => {
-                                    return (
-                                        <ListItem button key={ sighting.id } onClick={() => this.getDetail(sighting.id, sighting.lat, sighting.lng, sighting.desc, sighting.type, sighting.confidence, sighting.date, sighting.time)}>
-                                            <ListItemText primary={`${sighting.desc}`}/>
-                                        </ListItem>
-                                    );
-                                })
-                            }
+                                {
+                                    this.state.sightings.map((sighting) => {
+                                        return (
+                                            <ListItem button key={sighting.id} onClick={() => this.getDetail(sighting.id, sighting.lat, sighting.lng, sighting.desc, sighting.type, sighting.confidence, sighting.date, sighting.time)}>
+                                                <ListItemText primary={`${sighting.desc}`} />
+                                            </ListItem>
+                                        );
+                                    })
+                                }
                             </List>
                         </Fragment>
                     </Grid>
                     <Grid item xs={12} md={6} className='sighting-details'>
-                        {this.state.clicked === true && <SightingDetail detail={ this.state.selectedSighting }/>}
+                        {this.state.clicked === true && <SightingDetail detail={this.state.selectedSighting} />}
                     </Grid>
                 </Grid>
             </Fragment>

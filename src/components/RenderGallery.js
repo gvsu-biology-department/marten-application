@@ -12,6 +12,7 @@ class RenderGallery extends Component {
             showIndex: true,
             showBullets: true,
             mounted: false,
+            autoPlay: true,
         }
     }
 
@@ -31,6 +32,7 @@ class RenderGallery extends Component {
                 showIndex={this.state.showIndex}
                 showBullets={this.state.showBullets}
                 onImageLoad={this._onImageLoad}
+                autoPlay={this.state.autoPlay}
             />
         );
     }

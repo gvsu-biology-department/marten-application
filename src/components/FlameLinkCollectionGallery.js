@@ -16,13 +16,27 @@ const styles = theme => ({
     },
 
     flamelinkGallery: {
-        marginRight: "auto",
-        marginLeft: "auto",
+        marginRight: 'auto',
+        marginLeft: 'auto',
+        backgroundImage: 'url(../images/galleryBackgroundImage.png)',
+        overflow: 'hidden',
+        minHeight: 300,
+        minWidth:  300,
+        width:     'auto',
+        height:    'auto',
     },
 
     flamelinkGalleryContainer: {
         backgroundColor: 'black',
         marginTop: 20,
+    },
+    flamelinkGalleryInnerContainer: {
+        maxHeight:   1000,
+        minHeight:   250,
+        height:      'auto',
+        width:       'auto',
+        marginRight: 'auto',
+        marginLeft:  'auto',
     },
 });
 
@@ -43,6 +57,10 @@ class FlameLinkCollectionGallery extends Component {
                 break;
         }
     }
+    
+    state = {
+        active: false,
+    }
 
     constructor(props) {
         super(props);
@@ -51,7 +69,7 @@ class FlameLinkCollectionGallery extends Component {
             schemaDetails: '',
             schemaContent: '',
             schemaDescription: '',
-        }
+        };
 
         flamelinkApp.schemas.getFields(this.props.galleryName, { fields: ['title', 'key', 'type', 'gridColumns', 'description', 'options'] })
             .then(result => this.setState({
@@ -72,6 +90,10 @@ class FlameLinkCollectionGallery extends Component {
         }
 
         this.getPageTitle(this.props.galleryName);
+    }
+
+    toggleClass = () => {
+        this.setState(state => ({ active: !state.active }));
     }
 
     getGalleryInfo(schemaDetails, schemaContent) {
@@ -111,8 +133,12 @@ class FlameLinkCollectionGallery extends Component {
                     {this.state.schemaDescription}
                 </Typography>
                 <Grid container className={classes.flamelinkGalleryContainer}>
-                    <Grid item lg={8} md={8} sm={12} xs={12} className={classes.flamelinkGallery} >
-                        <RenderGallery key={Math.random()} />
+                    <Grid container className={classes.flamelinkGalleryInnerContainer}>
+                        <Grid item lg={8} md={8} sm={12} xs={12} className={classes.flamelinkGallery} onClick={this.toggleClass}>
+                            <div onClick={this.toggleClass}>
+                                <RenderGallery key={Math.random()} />
+                            </div>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>

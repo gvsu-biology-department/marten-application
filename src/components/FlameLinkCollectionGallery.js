@@ -20,7 +20,7 @@ const styles = theme => ({
         marginLeft: 'auto',
         backgroundImage: 'url(../images/galleryBackgroundImage.png)',
         overflow: 'hidden',
-        minHeight: 300,
+        minHeight: 180,
         minWidth:  300,
         width:     'auto',
         height:    'auto',
@@ -32,7 +32,7 @@ const styles = theme => ({
     },
     flamelinkGalleryInnerContainer: {
         maxHeight:   1000,
-        minHeight:   250,
+        minHeight:   180,
         height:      'auto',
         width:       'auto',
         marginRight: 'auto',
@@ -56,10 +56,6 @@ class FlameLinkCollectionGallery extends Component {
                 document.title = 'Marten Tracker | Galleries';
                 break;
         }
-    }
-    
-    state = {
-        active: false,
     }
 
     constructor(props) {
@@ -90,10 +86,6 @@ class FlameLinkCollectionGallery extends Component {
         }
 
         this.getPageTitle(this.props.galleryName);
-    }
-
-    toggleClass = () => {
-        this.setState(state => ({ active: !state.active }));
     }
 
     getGalleryInfo(schemaDetails, schemaContent) {
@@ -134,8 +126,8 @@ class FlameLinkCollectionGallery extends Component {
                 </Typography>
                 <Grid container className={classes.flamelinkGalleryContainer}>
                     <Grid container className={classes.flamelinkGalleryInnerContainer}>
-                        <Grid item lg={8} md={8} sm={12} xs={12} className={classes.flamelinkGallery} onClick={this.toggleClass}>
-                            <div onClick={this.toggleClass}>
+                        <Grid item lg={8} md={8} sm={12} xs={12} className={classes.flamelinkGallery}>
+                            <div>
                                 <RenderGallery key={Math.random()} />
                             </div>
                         </Grid>

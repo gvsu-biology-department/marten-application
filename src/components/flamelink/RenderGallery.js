@@ -9,9 +9,9 @@ class RenderGallery extends Component {
 
         this.state = {
             showThumbnails: false,
-            showIndex: true,
-            showBullets: true,
             mounted: false,
+            autoPlay: true,
+            slideInterval: 6000,
         }
     }
 
@@ -28,9 +28,9 @@ class RenderGallery extends Component {
             <ImageGallery
                 items={global.galleryImages}
                 showThumbnails={this.state.showThumbnails}
-                showIndex={this.state.showIndex}
-                showBullets={this.state.showBullets}
                 onImageLoad={this._onImageLoad}
+                autoPlay={this.state.autoPlay}
+                slideInterval={this.state.slideInterval}
             />
         );
     }

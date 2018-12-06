@@ -9,8 +9,8 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Button from '@material-ui/core/Button';
-import firebase from '../firebase.js';
-import GoogleMap from '../components/ReportMap';
+import firebase from '../../utilities/firebase.js';
+import GoogleMap from './ReportMap';
 import Modal from '@material-ui/core/Modal';
 import Typography from '@material-ui/core/Typography';
 

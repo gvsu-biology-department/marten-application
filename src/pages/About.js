@@ -16,7 +16,7 @@ const styles = theme => ({
 class About extends Component {
     state = {
         researcherSchemaName: 'martenAbout',
-        developerSchemaName: 'martenAboutDev',
+        developerSchemaName: 'martenAboutDevelopers',
         researcherSchemaDetails: '',
         researcherSchemaType: '',
         developerSchemaDetails: '',

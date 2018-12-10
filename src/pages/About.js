@@ -15,8 +15,11 @@ const styles = theme => ({
 
 class About extends Component {
     state = {
+        summarySchemaName: 'martenAboutSummary',
         researcherSchemaName: 'martenAbout',
         developerSchemaName: 'martenAboutDevelopers',
+        summarySchemaDetails: '',
+        summarySchemaType: '',
         researcherSchemaDetails: '',
         researcherSchemaType: '',
         developerSchemaDetails: '',
@@ -25,6 +28,18 @@ class About extends Component {
 
     componentDidMount() {
         document.title = 'Marten Tracker | About';
+
+
+        // Pulling in schema details for summary
+        flamelinkApp.schemas.getFields(this.state.summarySchemaName, { fields: ['title', 'key', 'type', 'gridColumns', 'description', 'options'] })
+            .then(result => this.setState({
+                summarySchemaDetails: result
+            }))
+
+        flamelinkApp.schemas.get(this.state.summarySchemaName)
+            .then(result => this.setState({
+                summarySchemaType: result.type
+            }))
         
         
         // Pulling in schema details for researchers
@@ -56,6 +71,8 @@ class About extends Component {
 
         return (
             <Fragment>
+                <Typography variant="display1" className={classes.header}>Introduction</Typography>
+                <FlameLinkComponentCreations schemaDetails={this.state.summarySchemaDetails} schemaType={this.state.summarySchemaType} schemaName={this.state.summarySchemaName} />
                 <Typography variant="display1" className={classes.header}>Researchers</Typography>
                 <FlameLinkComponentCreations schemaDetails={this.state.researcherSchemaDetails} schemaType={this.state.researcherSchemaType} schemaName={this.state.researcherSchemaName} />
                 <Typography variant="display1" className={classes.header}>Developers</Typography>

@@ -4,7 +4,7 @@ const easyQuiz = {
     "quizTitle": "Trail Cam Quiz: Easy",
     "questions": [
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question1.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question1.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Black bear",
@@ -15,7 +15,7 @@ const easyQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question2.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question2.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American beaver",
@@ -26,7 +26,7 @@ const easyQuiz = {
             "correctAnswer": "3"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question3.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question3.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American badger",
@@ -37,7 +37,7 @@ const easyQuiz = {
             "correctAnswer": "2"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question4.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question4.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Eastern fox squirrel",
@@ -48,7 +48,7 @@ const easyQuiz = {
             "correctAnswer": "3"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question5.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question5.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American Crow",
@@ -59,7 +59,7 @@ const easyQuiz = {
             "correctAnswer": "3"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question6.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question6.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American marten",
@@ -70,7 +70,7 @@ const easyQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question7.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question7.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American marten",
@@ -81,7 +81,7 @@ const easyQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question8.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question8.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American Robin",
@@ -92,7 +92,7 @@ const easyQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question9.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question9.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Black bear",
@@ -103,7 +103,7 @@ const easyQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question10.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question10.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Bobcat",
@@ -114,7 +114,7 @@ const easyQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question11.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question11.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Coyote",
@@ -125,7 +125,7 @@ const easyQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question12.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question12.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Eastern chipmunk",
@@ -136,7 +136,7 @@ const easyQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question13.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question13.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Eastern chipmunk",
@@ -147,7 +147,7 @@ const easyQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question14.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question14.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Raccoon",
@@ -158,7 +158,7 @@ const easyQuiz = {
             "correctAnswer": "1"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question15.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question15.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American beaver",
@@ -169,7 +169,7 @@ const easyQuiz = {
             "correctAnswer": "3"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question16.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question16.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American badger",
@@ -180,7 +180,7 @@ const easyQuiz = {
             "correctAnswer": "2"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question17.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question17.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "American badger",
@@ -191,7 +191,7 @@ const easyQuiz = {
             "correctAnswer": "3"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question18.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question18.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Elk",
@@ -202,7 +202,7 @@ const easyQuiz = {
             "correctAnswer": "4"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question19.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question19.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Elk",
@@ -213,7 +213,7 @@ const easyQuiz = {
             "correctAnswer": "4"
         },
         {
-            "question": <Fragment>What animal is this?<br /><br /><img src="/quizimages/easy/question20.jpg" alt=""></img></Fragment>,
+            "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/easy/question20.jpg" alt=""></img></Fragment>,
             "questionType": "text",
             "answers": [
                 "Elk",

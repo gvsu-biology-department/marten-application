@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { instanceOf } from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -32,7 +32,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
-import FlameLinkCollectionGallery from '../components/FlameLinkCollectionGallery';
+import FlameLinkCollectionGallery from '../components/flamelink/FlameLinkCollectionGallery';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Switch from '@material-ui/core/Switch';
+import { withCookies, Cookies } from 'react-cookie';
 
 const drawerWidth = 240;
 
@@ -72,23 +75,71 @@ const styles = theme => ({
 });
 
 class ResponsiveDrawer extends React.Component {
-    state = {
-        mobileOpen: false,
-        key: 'Home',
-        open: false,
-        open2: false,
-    };
+    componentWillMount() {
+        const { cookies } = this.props;
+
+        var newName, newTheme, newChecked;
+
+        if (cookies.get('themeName') === undefined) {
+            newName = 'light'
+            newTheme = createMuiTheme({
+                typography: {
+                    useNextVariants: true,
+                },
+                palette: {
+                    type: 'light'
+                }
+            });
+            newChecked = true;
+
+            cookies.set('themeName', newName, { path: '/' });
+        } else {
+            if (cookies.get('themeName') === 'light') {
+                newName = 'light'
+                newTheme = createMuiTheme({
+                    typography: {
+                        useNextVariants: true,
+                    },
+                    palette: {
+                        type: 'light'
+                    }
+                });
+                newChecked = true;
+            } else {
+                newName = 'dark'
+                newTheme = createMuiTheme({
+                    typography: {
+                        useNextVariants: true,
+                    },
+                    palette: {
+                        type: 'dark'
+                    }
+                });
+                newChecked = false;
+            }
+        }
+
+        this.setState({
+            mobileOpen: false,
+            key: 'Home',
+            open: false,
+            open2: false,
+            theme: newTheme,
+            themeName: newName,
+            themeChecked: newChecked
+        });
+    }
 
     handleDrawerToggle = () => {
         this.setState(state => ({ mobileOpen: !state.mobileOpen }));
     }
 
     handleClick = () => {
-        this.setState(state => ({ open: !state.open }));
+        this.setState(state => ({ open: !state.open, open2: false }));
     }
 
     handleClick2 = () => {
-        this.setState(state => ({ open2: !state.open2 }));
+        this.setState(state => ({ open2: !state.open2, open: false }));
     }
 
     nav = (text) => {
@@ -97,11 +148,50 @@ class ResponsiveDrawer extends React.Component {
         });
     }
 
+    handleChange = name => event => {
+        const { cookies } = this.props;
+
+        this.setState({ [name]: event.target.checked });
+
+        var newTheme, newName;
+
+        if (this.state.themeName === 'light') {
+            newTheme = createMuiTheme({
+                typography: {
+                    useNextVariants: true,
+                },
+                palette: {
+                    type: 'dark'
+                }
+            });
+
+            newName = 'dark';
+        } else {
+            newTheme = createMuiTheme({
+                typography: {
+                    useNextVariants: true,
+                },
+                palette: {
+                    type: 'light'
+                }
+            });
+
+            newName = 'light';
+        }
+
+        this.setState({
+            themeName: newName,
+            theme: newTheme
+        })
+
+        cookies.set('themeName', newName, { path: '/' });
+    };
+
     render() {
-        const { classes, theme } = this.props;
+        const { classes } = this.props;
 
         const drawer = (
-            <div>
+            <Typography component="div">
                 <div className={classes.toolbar} />
                 <Divider />
                 <List>
@@ -174,84 +264,91 @@ class ResponsiveDrawer extends React.Component {
                     </Collapse>
                 </List>
                 <Divider />
-            </div>
+            </Typography>
         );
 
         return (
-            <div className={classes.root}>
-                <CssBaseline />
-                <AppBar position="fixed" className={classes.appBar}>
-                    <Toolbar>
-                        <IconButton
-                            color="inherit"
-                            aria-label="Open drawer"
-                            onClick={this.handleDrawerToggle}
-                            className={classes.menuButton}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography variant="title" color="inherit" noWrap>
-                            Marten Tracker
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-                <nav className={classes.drawer}>
-                    <Hidden smUp implementation="css">
-                        <Drawer
-                            container={this.props.container}
-                            variant="temporary"
-                            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                            open={this.state.mobileOpen}
-                            onClose={this.handleDrawerToggle}
-                            classes={{
-                                paper: classes.drawerPaper,
-                            }}
-                            ModalProps={{
-                                keepMounted: true, // Better open performance on mobile.
-                            }}
-                        >
-                            {drawer}
-                        </Drawer>
-                    </Hidden>
-                    <Hidden xsDown implementation="css">
-                        <Drawer
-                            classes={{
-                                paper: classes.drawerPaper,
-                            }}
-                            variant="permanent"
-                            open
-                        >
-                            {drawer}
-                        </Drawer>
-                    </Hidden>
-                </nav>
-                <main className={classes.content}>
-                    <div className={classes.toolbar} />
-                    {this.state.key === 'Home' && <Home />}
-                    {this.state.key === 'Report' && <Report />}
-                    {this.state.key === 'Map' && <ViewMap />}
-                    {this.state.key === 'List' && <SightingList />}
-                    {this.state.key === 'About' && <About />}
-                    {this.state.key === 'Contact' && <Contact />}
-                    {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy'/>}
-                    {this.state.key === 'Intermediate-Quiz' && <Quiz difficulty='Intermediate'/>}
-                    {this.state.key === 'Advanced-Quiz' && <Quiz difficulty='Advanced'/>}
-                    {this.state.key === 'Gallery1' && <FlameLinkCollectionGallery galleryName={'martensAndKits'}/>}
-                    {this.state.key === 'Gallery2' && <FlameLinkCollectionGallery galleryName={'martensAtNight'}/>}
-                    {this.state.key === 'Gallery3' && <FlameLinkCollectionGallery galleryName={'martensBeingMartens'}/>}
-                    {this.state.key === 'Gallery4' && <FlameLinkCollectionGallery galleryName={'similarSpecies'}/>}
-                </main>
-            </div>
+            <MuiThemeProvider theme={this.state.theme}>
+                <div className={classes.root}>
+                    <CssBaseline />
+                    <AppBar position="fixed" color="primary" className={classes.appBar}>
+                        <Toolbar>
+                            <IconButton
+                                color="inherit"
+                                aria-label="Open drawer"
+                                onClick={this.handleDrawerToggle}
+                                className={classes.menuButton}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <Typography variant="title" color="inherit" noWrap>
+                                Marten Tracker
+                            </Typography>
+                            <Switch
+                                checked={this.state.themeChecked}
+                                onChange={this.handleChange('themeChecked')}
+                                value="themeChecked"
+                                color="default"
+                            />
+                        </Toolbar>
+                    </AppBar>
+                    <nav className={classes.drawer}>
+                        <Hidden smUp implementation="css">
+                            <Drawer
+                                container={this.props.container}
+                                variant="temporary"
+                                anchor={this.state.theme.direction === 'rtl' ? 'right' : 'left'}
+                                open={this.state.mobileOpen}
+                                onClose={this.handleDrawerToggle}
+                                classes={{
+                                    paper: classes.drawerPaper,
+                                }}
+                                ModalProps={{
+                                    keepMounted: true, // Better open performance on mobile.
+                                }}
+                            >
+                                {drawer}
+                            </Drawer>
+                        </Hidden>
+                        <Hidden xsDown implementation="css">
+                            <Drawer
+                                classes={{
+                                    paper: classes.drawerPaper,
+                                }}
+                                variant="permanent"
+                                open
+                            >
+                                {drawer}
+                            </Drawer>
+                        </Hidden>
+                    </nav>
+                    <main className={classes.content}>
+                        <div className={classes.toolbar} />
+                        {this.state.key === 'Home' && <Home />}
+                        {this.state.key === 'Report' && <Report />}
+                        {this.state.key === 'Map' && <ViewMap />}
+                        {this.state.key === 'List' && <SightingList themeName={this.state.themeName} />}
+                        {this.state.key === 'About' && <About />}
+                        {this.state.key === 'Contact' && <Contact />}
+                        {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy' />}
+                        {this.state.key === 'Intermediate-Quiz' && <Quiz difficulty='Intermediate' />}
+                        {this.state.key === 'Advanced-Quiz' && <Quiz difficulty='Advanced' />}
+                        {this.state.key === 'Gallery1' && <FlameLinkCollectionGallery galleryName={'martensAndKits'} />}
+                        {this.state.key === 'Gallery2' && <FlameLinkCollectionGallery galleryName={'martensAtNight'} />}
+                        {this.state.key === 'Gallery3' && <FlameLinkCollectionGallery galleryName={'martensBeingMartens'} />}
+                        {this.state.key === 'Gallery4' && <FlameLinkCollectionGallery galleryName={'similarSpecies'} />}
+                    </main>
+                </div>
+            </MuiThemeProvider>
         );
     }
 }
 
 ResponsiveDrawer.propTypes = {
     classes: PropTypes.object.isRequired,
-    // Injected by the documentation to work in an iframe.
-    // You won't need it on your project.
     container: PropTypes.object,
     theme: PropTypes.object.isRequired,
+    cookies: instanceOf(Cookies).isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(ResponsiveDrawer);
+export default withStyles(styles, { withTheme: true })(withCookies(ResponsiveDrawer));

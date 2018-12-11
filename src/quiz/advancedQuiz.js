@@ -111,7 +111,7 @@ const advancedQuiz = {
                 "Eastern gray squirrel",
                 "Red squirrel"
             ],
-            "correctAnswer": "1"
+            "correctAnswer": "3"
         },
         {
             "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/advanced/question11.jpg" alt=""></img></Fragment>,

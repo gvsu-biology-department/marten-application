@@ -150,6 +150,8 @@ class ResponsiveDrawer extends React.Component {
     handleChange = name => event => {
         const { cookies } = this.props;
 
+        this.setState({ [name]: event.target.checked });
+
         var newTheme, newName;
 
         if (this.state.themeName === 'light') {

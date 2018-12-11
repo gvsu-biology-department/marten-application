@@ -44,25 +44,41 @@ class FlameLinkCollectionGallery extends Component {
     constructor(props) {
         super(props);
 
+        var galleryName, showTitle;
+        
+        if (this.props.galleryName !== undefined) {
+            galleryName = this.props.galleryName;
+        } else {
+            galleryName = this.props.location.state.galleryName;
+        }
+
+        if (this.props.showTitle !== undefined) {
+            showTitle = this.props.showTitle;
+        } else {
+            showTitle = this.props.location.state.showTitle;
+        }
+
         this.state = {
+            galleryName: galleryName,
+            showTitle: showTitle,
             schemaDetails: '',
             schemaContent: '',
             schemaDescription: '',
         };
 
-        flamelinkApp.schemas.getFields(this.props.galleryName, { fields: ['title', 'key', 'type', 'gridColumns', 'description', 'options'] })
+        flamelinkApp.schemas.getFields(this.state.galleryName, { fields: ['title', 'key', 'type', 'gridColumns', 'description', 'options'] })
             .then(result => this.setState({
                 schemaDetails: result
             }))
 
-        flamelinkApp.content.get(this.props.galleryName)
+        flamelinkApp.content.get(this.state.galleryName)
             .then(result => this.setState({
                 schemaContent: result
             }))
 
-        if (this.props.showTitle === false) {
+        if (this.state.showTitle === false) {
         } else {
-            flamelinkApp.schemas.get(this.props.galleryName)
+            flamelinkApp.schemas.get(this.state.galleryName)
                 .then(result => this.setState({
                     schemaDescription: result.title
                 }))

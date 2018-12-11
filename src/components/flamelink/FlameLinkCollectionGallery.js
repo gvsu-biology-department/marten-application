@@ -41,23 +41,6 @@ const styles = theme => ({
 });
 
 class FlameLinkCollectionGallery extends Component {
-    getPageTitle = galleryName => {
-        switch (galleryName) {
-            case 'martensAndKits':
-                document.title = 'Marten Tracker | Martens and Kits';
-                break;
-            case 'martensAtNight':
-                document.title = 'Marten Tracker | Martens at Night';
-                break;
-            case 'martensBeingMartens':
-                document.title = 'Marten Tracker | Martens Being Martens';
-                break;
-            default:
-                document.title = 'Marten Tracker | Galleries';
-                break;
-        }
-    }
-
     constructor(props) {
         super(props);
 
@@ -84,8 +67,10 @@ class FlameLinkCollectionGallery extends Component {
                     schemaDescription: result.title
                 }))
         }
+    }
 
-        this.getPageTitle(this.props.galleryName);
+    componentDidMount() {
+        document.title = 'Marten Tracker | Galleries';
     }
 
     getGalleryInfo(schemaDetails, schemaContent) {

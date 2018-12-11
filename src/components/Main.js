@@ -274,7 +274,7 @@ class ResponsiveDrawer extends React.Component {
                             </Link>
                             <Link to='galleries-martens-by-day'>
                               <ListItem button className={classes.nested}>
-                                  <ListItemText inset primary="Martens Being Martens" />
+                                  <ListItemText inset primary="Martens by Day" />
                               </ListItem>
                             </Link>
                             <Link to='galleries-species-similar-to-martens'>
@@ -360,7 +360,7 @@ class ResponsiveDrawer extends React.Component {
                           <Route path="/galleries-martens-and-kits" component={ () => { return <FlameLinkCollectionGallery galleryName={'martensAndKits'}/> }} />
                           <Route path="/galleries-martens-at-night" component={ () => { return <FlameLinkCollectionGallery galleryName={'martensAtNight'}/> }} />
                           <Route path="/galleries-martens-by-day" component={ () => { return <FlameLinkCollectionGallery galleryName={'martensBeingMartens'}/> }} />
-                          <Route path="/galleries-similar-species" component={ () => { return <FlameLinkCollectionGallery galleryName={'similarSpecies'}/> }} />
+                          <Route path="/galleries-species-similar-to-martens" component={ () => { return <FlameLinkCollectionGallery galleryName={'similarSpecies'}/> }} />
                         </Switch>
                     </main>
                 </div>

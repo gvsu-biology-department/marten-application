@@ -348,19 +348,19 @@ class ResponsiveDrawer extends React.Component {
                     <main className={classes.content}>
                         <div className={classes.toolbar} />
                         <Switch>
-                          <Route path="/" exact={true} component={Home} />
-                          <Route path="/report" component={ () => { return <Report/> }} />
-                          <Route path="/view-map" component={ () => { return <ViewMap/> }} />
-                          <Route path="/sighting-list" component={ () => { return <SightingList themeName={this.state.themeName}/> }} />
-                          <Route path="/about" component={ () => { return <About/> }} />
-                          <Route path="/contact" component={ () => { return <Contact/> }} />
-                          <Route path="/quiz-easy" component={ () => { return <Quiz difficulty='Easy'/> }} />
-                          <Route path="/quiz-intermediate" component={ () => { return <Quiz difficulty='Intermediate'/> }} />
-                          <Route path="/quiz-advanced" component={ () => { return <Quiz difficulty='Advanced'/> }} />
-                          <Route path="/galleries-martens-and-kits" component={ () => { return <FlameLinkCollectionGallery galleryName={'martensAndKits'}/> }} />
-                          <Route path="/galleries-martens-at-night" component={ () => { return <FlameLinkCollectionGallery galleryName={'martensAtNight'}/> }} />
-                          <Route path="/galleries-martens-by-day" component={ () => { return <FlameLinkCollectionGallery galleryName={'martensBeingMartens'}/> }} />
-                          <Route path="/galleries-species-similar-to-martens" component={ () => { return <FlameLinkCollectionGallery galleryName={'similarSpecies'}/> }} />
+                          <Route path="/" exact={true} render={Home} />
+                          <Route path="/report" render={ (props) => { return <Report {...props}/> }} />
+                          <Route path="/view-map" render={ (props) => { return <ViewMap {...props}/> }} />
+                          <Route path="/sighting-list" render={ (props) => { return <SightingList {...props} themeName={this.state.themeName}/> }} />
+                          <Route path="/about" render={ (props) => { return <About {...props}/> }} />
+                          <Route path="/contact" render={ (props) => { return <Contact {...props}/> }} />
+                          <Route path="/quiz-easy" render={ (props) => { return <Quiz {...props} difficulty='Easy'/> }} />
+                          <Route path="/quiz-intermediate" render={ (props) => { return <Quiz {...props} difficulty='Intermediate'/> }} />
+                          <Route path="/quiz-advanced" render={ (props) => { return <Quiz {...props} difficulty='Advanced'/> }} />
+                          <Route path="/galleries-martens-and-kits" render={ (props) => { return <FlameLinkCollectionGallery {...props} galleryName={'martensAndKits'}/> }} />
+                          <Route path="/galleries-martens-at-night" render={ (props) => { return <FlameLinkCollectionGallery {...props} galleryName={'martensAtNight'}/> }} />
+                          <Route path="/galleries-martens-by-day" render={ (props) => { return <FlameLinkCollectionGallery {...props} galleryName={'martensBeingMartens'}/> }} />
+                          <Route path="/galleries-species-similar-to-martens" render={ (props) => { return <FlameLinkCollectionGallery {...props} galleryName={'similarSpecies'}/> }} />
                         </Switch>
                     </main>
                 </div>

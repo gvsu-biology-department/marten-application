@@ -224,17 +224,17 @@ class ResponsiveDrawer extends React.Component {
                     </ListItem>
                       <Collapse in={this.state.open} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            <Link to='/quiz-easy'>
+                            <Link to={{pathname: '/quiz-easy', state: {difficulty: 'Easy'}}}>
                               <ListItem button className={classes.nested}>
                                   <ListItemText inset primary="Easy" />
                               </ListItem>
                             </Link>
-                            <Link to='/quiz-intermediate'>
+                            <Link to={{pathname: '/quiz-intermediate', state: {difficulty: 'Intermediate'}}}>
                               <ListItem button className={classes.nested}>
                                   <ListItemText inset primary="Intermediate" />
                               </ListItem>
                             </Link>
-                            <Link to='/quiz-advanced'>
+                            <Link to={{pathname: '/quiz-advanced', state: {difficulty: 'Advanced'}}}>
                               <ListItem button className={classes.nested}>
                                   <ListItemText inset primary="Advanced" />
                               </ListItem>
@@ -262,22 +262,22 @@ class ResponsiveDrawer extends React.Component {
                     </ListItem>
                       <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            <Link to='galleries-martens-and-kits'>
+                            <Link to={{pathname: 'galleries-martens-and-kits', state: {galleryName: 'martensAndKits'}}}>
                               <ListItem button className={classes.nested}>
                                   <ListItemText inset primary="Martens and Kits" />
                               </ListItem>
                             </Link>
-                            <Link to='galleries-martens-at-night'>
+                            <Link to={{pathname: 'galleries-martens-at-night', state: {galleryName: 'martensAtNight'}}}>
                               <ListItem button className={classes.nested}>
                                   <ListItemText inset primary="Martens at Night" />
                               </ListItem>
                             </Link>
-                            <Link to='galleries-martens-by-day'>
+                            <Link to={{pathname: 'galleries-martens-by-day', state: {galleryName: 'martensBeingMartens'}}}>
                               <ListItem button className={classes.nested}>
                                   <ListItemText inset primary="Martens by Day" />
                               </ListItem>
                             </Link>
-                            <Link to='galleries-species-similar-to-martens'>
+                            <Link to={{pathname: 'galleries-species-similar-to-martens', state: {galleryName: 'similarSpecies'}}}>
                               <ListItem button className={classes.nested}>
                                   <ListItemText inset primary="Species Similar to Martens" />
                               </ListItem>
@@ -348,19 +348,19 @@ class ResponsiveDrawer extends React.Component {
                     <main className={classes.content}>
                         <div className={classes.toolbar} />
                         <Switch>
-                          <Route path="/" exact={true} component={Home} />
-                          <Route path="/report" component={ () => { return <Report/> }} />
-                          <Route path="/view-map" component={ () => { return <ViewMap/> }} />
-                          <Route path="/sighting-list" component={ () => { return <SightingList themeName={this.state.themeName}/> }} />
-                          <Route path="/about" component={ () => { return <About/> }} />
-                          <Route path="/contact" component={ () => { return <Contact/> }} />
-                          <Route path="/quiz-easy" component={ () => { return <Quiz difficulty='Easy'/> }} />
-                          <Route path="/quiz-intermediate" component={ () => { return <Quiz difficulty='Intermediate'/> }} />
-                          <Route path="/quiz-advanced" component={ () => { return <Quiz difficulty='Advanced'/> }} />
-                          <Route path="/galleries-martens-and-kits" component={ () => { return <FlameLinkCollectionGallery galleryName={'martensAndKits'}/> }} />
-                          <Route path="/galleries-martens-at-night" component={ () => { return <FlameLinkCollectionGallery galleryName={'martensAtNight'}/> }} />
-                          <Route path="/galleries-martens-by-day" component={ () => { return <FlameLinkCollectionGallery galleryName={'martensBeingMartens'}/> }} />
-                          <Route path="/galleries-species-similar-to-martens" component={ () => { return <FlameLinkCollectionGallery galleryName={'similarSpecies'}/> }} />
+                          <Route path="/" component={Home} exact={true} />
+                          <Route path="/report" component={Report} />
+                          <Route path="/view-map" component={ViewMap} />
+                          <Route path="/sighting-list" component={SightingList} />
+                          <Route path="/about" component={About} />
+                          <Route path="/contact" component={Contact} />
+                          <Route path="/quiz-easy" component={Quiz} key={"Easy"}/>
+                          <Route path="/quiz-intermediate" component={Quiz} key={"Intermediate"}/>
+                          <Route path="/quiz-advanced" component={Quiz} key={"Advanced"} />
+                          <Route path="/galleries-martens-and-kits" component={FlameLinkCollectionGallery} key={"martensAndKits"}/>
+                          <Route path="/galleries-martens-at-night" component={FlameLinkCollectionGallery} key={"martensAtNight"} />
+                          <Route path="/galleries-martens-by-day" component={FlameLinkCollectionGallery} key={"martensByDay"} />
+                          <Route path="/galleries-species-similar-to-martens" component={FlameLinkCollectionGallery} key={"similarSpecies"} />
                         </Switch>
                     </main>
                 </div>

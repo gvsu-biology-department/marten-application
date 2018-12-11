@@ -3,13 +3,14 @@ import QuizGame from '../components/QuizGame';
 
 
 class QuizPage extends Component {
-    componentDidMount() {
+    componentWillMount() {
         document.title = 'Marten Tracker | Quiz';
+        this.setState({difficulty: this.props.location.state.difficulty});
     }
 
     render() {
         return (
-            <QuizGame difficulty={this.props.difficulty}/>
+            <QuizGame difficulty={this.state.difficulty}/>
         );
     }
 }

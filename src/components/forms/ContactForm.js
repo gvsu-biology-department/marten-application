@@ -130,7 +130,7 @@ class ContactForm extends React.Component {
             <Fragment>
                 <Typography variant="headline" align="center">
                 {<br/>}
-                Send us an email!
+                Feel free to contact us if you have any questions about American martens,{<br/>}encountered any difficulties with the website, or if you have any ideas for future marten research.
 
                 <form className={classes.container} autoComplete="off" onSubmit={this.handleSubmit}>
                     <Grid container className="contact-form">

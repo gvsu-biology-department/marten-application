@@ -2,16 +2,14 @@ body {
     margin: 0;
 }
 
+.sighting-google-map-container > div {
+  height: calc(100% - 64px) !important;
+}
+
 @media (min-width: 600px) {
     .sighting-google-map-container > div {
         width: calc(100% - 240px) !important;
         height: calc(100% - 64px) !important;
-    }
-}
-
-@media (min-width: 960px) {
-    .report-google-map-container > div {
-        width: calc(100% - 50% - 120px) !important;
     }
 }
 
@@ -30,18 +28,38 @@ body {
 .sighting-list {
     height: calc(50vh - 64px);
     overflow-y: scroll;
+
 }
 
 @media (min-width: 960px) {
+
+    .sighting-container {
+        height: calc(100vh - 64px);
+    }
+
     .sighting-list {
         height: calc(100vh - 64px);
         overflow-y: scroll;
+    }
+
+    .sighting-details {
+        height: calc(100vh - 64px);
+        overflow-y: scroll;
+    }
+
+    .report-google-map-container > div {
+      height: calc(100% - 64px) !important;
+      width: calc(100% - 50% - 120px) !important;
+    }
+
+    .sighting-detail-google-map-container > div {
+      height: 300px !important;
     }
 }
 
 .sighting-details-content {
     width: 89%;
-    margin: 330px auto 0 auto;
+    margin: 0 auto 0 auto;
 }
 
 .sighting-detail-google-map-container > div {
@@ -52,11 +70,4 @@ body {
 .contact-form {
     max-width: 100%;
     overflow: hidden;
-}
-
-@media (min-width: 960px) {
-    .sighting-detail-google-map-container > div {
-        width: calc(100% - 50% - 120px) !important;
-        height: 300px !important;
-    }
 }

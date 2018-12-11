@@ -6,7 +6,7 @@ The application allows for users to post marten sightings. They can attach photo
 
 ### URL
 
-[Marten Tracker](https://marten-tracker.netlify.com/ "Click here to see the application in action.")
+[Marten Tracker](https://marten-tracker-capstone.netlify.com/ "Click here to see the application in action.")
 
 ### Features
 * Ability to log marten sightings.

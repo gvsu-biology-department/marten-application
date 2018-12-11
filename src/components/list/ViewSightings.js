@@ -85,7 +85,7 @@ class ViewSightings extends Component {
     render() {
         return (
             <Fragment>
-                <Grid container>
+                <Grid container className='sighting-container'>
                     <Grid item xs={12} md={6} className='sighting-list'>
                         <Fragment>
                             <List>

@@ -2,6 +2,10 @@ body {
     margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 .sighting-google-map-container > div {
   height: calc(100% - 64px) !important;
 }

@@ -297,8 +297,8 @@ export class MapContainer extends Component {
                                 description={<Fragment><b>Description:</b> {sighting.desc}</Fragment>}
                                 icon={{
                                     url: pinIcon,
-                                    anchor: new google.maps.Point(32,32),
-                                    scaledSize: new google.maps.Size(32,32)
+                                    anchor: new google.maps.Point(48,48),
+                                    scaledSize: new google.maps.Size(48,48)
                                 }}
                             />
                         )

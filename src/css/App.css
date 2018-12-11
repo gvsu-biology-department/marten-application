@@ -19,7 +19,7 @@ a {
 
 #disqus_thread {
     width: 89% !important;
-    margin: 100px auto 0 auto;
+    margin: 0 auto 0 auto;
 }
 
 #disqus_thread a,
@@ -67,7 +67,7 @@ a {
 
 .sighting-details-content {
     width: 89%;
-    margin: 0 auto 0 auto;
+    margin: 320px auto 0 auto;
 }
 
 .sighting-detail-google-map-container > div {

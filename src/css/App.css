@@ -2,6 +2,10 @@ body {
     margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 @media (min-width: 600px) {
     .sighting-google-map-container > div {
         width: calc(100% - 240px) !important;

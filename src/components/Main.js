@@ -34,8 +34,14 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
 import FlameLinkCollectionGallery from '../components/flamelink/FlameLinkCollectionGallery';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import Switch from '@material-ui/core/Switch';
+import ThemeSwitch from '@material-ui/core/Switch';
 import { withCookies, Cookies } from 'react-cookie';
+import {
+    BrowserRouter as Router,
+    Route,
+    Link,
+    Switch
+} from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -121,7 +127,6 @@ class ResponsiveDrawer extends React.Component {
 
         this.setState({
             mobileOpen: false,
-            key: 'Home',
             open: false,
             open2: false,
             theme: newTheme,
@@ -140,12 +145,6 @@ class ResponsiveDrawer extends React.Component {
 
     handleClick2 = () => {
         this.setState(state => ({ open2: !state.open2, open: false }));
-    }
-
-    nav = (text) => {
-        this.setState({
-            key: text
-        });
     }
 
     handleChange = name => event => {
@@ -189,28 +188,35 @@ class ResponsiveDrawer extends React.Component {
 
     render() {
         const { classes } = this.props;
-
         const drawer = (
             <Typography component="div">
                 <div className={classes.toolbar} />
                 <Divider />
                 <List>
-                    <ListItem button key='Home' onClick={() => this.nav('Home')}>
-                        <ListItemIcon><HomeIcon /></ListItemIcon>
-                        <ListItemText primary='Home' />
-                    </ListItem>
-                    <ListItem button key='Report' onClick={() => this.nav('Report')}>
-                        <ListItemIcon><AssignmentIcon /></ListItemIcon>
-                        <ListItemText primary='Report' />
-                    </ListItem>
-                    <ListItem button key='Map' onClick={() => this.nav('Map')}>
-                        <ListItemIcon><MapIcon /></ListItemIcon>
-                        <ListItemText primary='Map' />
-                    </ListItem>
-                    <ListItem button key='List' onClick={() => this.nav('List')}>
-                        <ListItemIcon><ListIcon /></ListItemIcon>
-                        <ListItemText primary='List' />
-                    </ListItem>
+                    <Link to='/'>
+                        <ListItem button>
+                            <ListItemIcon><HomeIcon /></ListItemIcon>
+                            <ListItemText primary='Home' />
+                        </ListItem>
+                    </Link>
+                    <Link to='/report'>
+                        <ListItem button>
+                            <ListItemIcon><AssignmentIcon /></ListItemIcon>
+                            <ListItemText primary='Report' />
+                        </ListItem>
+                    </Link>
+                    <Link to='/view-map'>
+                        <ListItem button>
+                            <ListItemIcon><MapIcon /></ListItemIcon>
+                            <ListItemText primary='Map' />
+                        </ListItem>
+                    </Link>
+                    <Link to='/sighting-list'>
+                        <ListItem button>
+                            <ListItemIcon><ListIcon /></ListItemIcon>
+                            <ListItemText primary='List' />
+                        </ListItem>
+                    </Link>
                     <ListItem button onClick={this.handleClick}>
                         <ListItemIcon>
                             <SlideshowIcon />
@@ -220,25 +226,35 @@ class ResponsiveDrawer extends React.Component {
                     </ListItem>
                     <Collapse in={this.state.open} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            <ListItem button className={classes.nested} onClick={() => this.nav('Easy-Quiz')}>
-                                <ListItemText inset primary="Easy" />
-                            </ListItem>
-                            <ListItem button className={classes.nested} onClick={() => this.nav('Intermediate-Quiz')}>
-                                <ListItemText inset primary="Intermediate" />
-                            </ListItem>
-                            <ListItem button className={classes.nested} onClick={() => this.nav('Advanced-Quiz')}>
-                                <ListItemText inset primary="Advanced" />
-                            </ListItem>
+                            <Link to={{ pathname: '/quiz-easy', state: { difficulty: 'Easy' } }}>
+                                <ListItem button className={classes.nested}>
+                                    <ListItemText inset primary="Easy" />
+                                </ListItem>
+                            </Link>
+                            <Link to={{ pathname: '/quiz-intermediate', state: { difficulty: 'Intermediate' } }}>
+                                <ListItem button className={classes.nested}>
+                                    <ListItemText inset primary="Intermediate" />
+                                </ListItem>
+                            </Link>
+                            <Link to={{ pathname: '/quiz-advanced', state: { difficulty: 'Advanced' } }}>
+                                <ListItem button className={classes.nested}>
+                                    <ListItemText inset primary="Advanced" />
+                                </ListItem>
+                            </Link>
                         </List>
                     </Collapse>
-                    <ListItem button key='Contact' onClick={() => this.nav('Contact')}>
-                        <ListItemIcon><EmailIcon /></ListItemIcon>
-                        <ListItemText primary='Contact' />
-                    </ListItem>
-                    <ListItem button key='About' onClick={() => this.nav('About')}>
-                        <ListItemIcon><InfoIcon /></ListItemIcon>
-                        <ListItemText primary='About' />
-                    </ListItem>
+                    <Link to='/contact'>
+                        <ListItem button>
+                            <ListItemIcon><EmailIcon /></ListItemIcon>
+                            <ListItemText primary='Contact' />
+                        </ListItem>
+                    </Link>
+                    <Link to='/about'>
+                        <ListItem button>
+                            <ListItemIcon><InfoIcon /></ListItemIcon>
+                            <ListItemText primary='About' />
+                        </ListItem>
+                    </Link>
                     <ListItem button onClick={this.handleClick2}>
                         <ListItemIcon>
                             <PhotoLibraryIcon />
@@ -248,18 +264,26 @@ class ResponsiveDrawer extends React.Component {
                     </ListItem>
                     <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            <ListItem button className={classes.nested} onClick={() => this.nav('Gallery1')}>
-                                <ListItemText inset primary="Martens and Kits" />
-                            </ListItem>
-                            <ListItem button className={classes.nested} onClick={() => this.nav('Gallery2')}>
-                                <ListItemText inset primary="Martens at Night" />
-                            </ListItem>
-                            <ListItem button className={classes.nested} onClick={() => this.nav('Gallery3')}>
-                                <ListItemText inset primary="Martens Being Martens" />
-                            </ListItem>
-                            <ListItem button className={classes.nested} onClick={() => this.nav('Gallery4')}>
-                                <ListItemText inset primary="Species Similar to Martens" />
-                            </ListItem>
+                            <Link to={{ pathname: 'galleries-martens-and-kits', state: { galleryName: 'martensAndKits' } }}>
+                                <ListItem button className={classes.nested}>
+                                    <ListItemText inset primary="Martens and Kits" />
+                                </ListItem>
+                            </Link>
+                            <Link to={{ pathname: 'galleries-martens-at-night', state: { galleryName: 'martensAtNight' } }}>
+                                <ListItem button className={classes.nested}>
+                                    <ListItemText inset primary="Martens at Night" />
+                                </ListItem>
+                            </Link>
+                            <Link to={{ pathname: 'galleries-martens-by-day', state: { galleryName: 'martensBeingMartens' } }}>
+                                <ListItem button className={classes.nested}>
+                                    <ListItemText inset primary="Martens by Day" />
+                                </ListItem>
+                            </Link>
+                            <Link to={{ pathname: 'galleries-species-similar-to-martens', state: { galleryName: 'similarSpecies' } }}>
+                                <ListItem button className={classes.nested}>
+                                    <ListItemText inset primary="Species Similar to Martens" />
+                                </ListItem>
+                            </Link>
                         </List>
                     </Collapse>
                 </List>
@@ -268,78 +292,82 @@ class ResponsiveDrawer extends React.Component {
         );
 
         return (
-            <MuiThemeProvider theme={this.state.theme}>
-                <div className={classes.root}>
-                    <CssBaseline />
-                    <AppBar position="fixed" color="primary" className={classes.appBar}>
-                        <Toolbar>
-                            <IconButton
-                                color="inherit"
-                                aria-label="Open drawer"
-                                onClick={this.handleDrawerToggle}
-                                className={classes.menuButton}
-                            >
-                                <MenuIcon />
-                            </IconButton>
-                            <Typography variant="title" color="inherit" noWrap>
-                                Marten Tracker
+            <Router>
+                <MuiThemeProvider theme={this.state.theme}>
+                    <div className={classes.root}>
+                        <CssBaseline />
+                        <AppBar position="fixed" color="primary" className={classes.appBar}>
+                            <Toolbar>
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="Open drawer"
+                                    onClick={this.handleDrawerToggle}
+                                    className={classes.menuButton}
+                                >
+                                    <MenuIcon />
+                                </IconButton>
+                                <Typography variant="title" color="inherit" noWrap>
+                                    Marten Tracker
                             </Typography>
-                            <Switch
-                                checked={this.state.themeChecked}
-                                onChange={this.handleChange('themeChecked')}
-                                value="themeChecked"
-                                color="default"
-                            />
-                        </Toolbar>
-                    </AppBar>
-                    <nav className={classes.drawer}>
-                        <Hidden smUp implementation="css">
-                            <Drawer
-                                container={this.props.container}
-                                variant="temporary"
-                                anchor={this.state.theme.direction === 'rtl' ? 'right' : 'left'}
-                                open={this.state.mobileOpen}
-                                onClose={this.handleDrawerToggle}
-                                classes={{
-                                    paper: classes.drawerPaper,
-                                }}
-                                ModalProps={{
-                                    keepMounted: true, // Better open performance on mobile.
-                                }}
-                            >
-                                {drawer}
-                            </Drawer>
-                        </Hidden>
-                        <Hidden xsDown implementation="css">
-                            <Drawer
-                                classes={{
-                                    paper: classes.drawerPaper,
-                                }}
-                                variant="permanent"
-                                open
-                            >
-                                {drawer}
-                            </Drawer>
-                        </Hidden>
-                    </nav>
-                    <main className={classes.content}>
-                        <div className={classes.toolbar} />
-                        {this.state.key === 'Home' && <Home />}
-                        {this.state.key === 'Report' && <Report />}
-                        {this.state.key === 'Map' && <ViewMap />}
-                        {this.state.key === 'List' && <SightingList themeName={this.state.themeName} />}
-                        {this.state.key === 'About' && <About />}
-                        {this.state.key === 'Contact' && <Contact />}
-                        {this.state.key === 'Easy-Quiz' && <Quiz difficulty='Easy' />}
-                        {this.state.key === 'Intermediate-Quiz' && <Quiz difficulty='Intermediate' />}
-                        {this.state.key === 'Advanced-Quiz' && <Quiz difficulty='Advanced' />}
-                        {this.state.key === 'Gallery1' && <FlameLinkCollectionGallery galleryName={'martensAndKits'} />}
-                        {this.state.key === 'Gallery2' && <FlameLinkCollectionGallery galleryName={'martensAtNight'} />}
-                        {this.state.key === 'Gallery3' && <FlameLinkCollectionGallery galleryName={'martensBeingMartens'} />}
-                        {this.state.key === 'Gallery4' && <FlameLinkCollectionGallery galleryName={'similarSpecies'} />}
-                    </main>
-                </div>
-            </MuiThemeProvider>
+                                <ThemeSwitch
+                                    checked={this.state.themeChecked}
+                                    onChange={this.handleChange('themeChecked')}
+                                    value="themeChecked"
+                                    color="default"
+                                />
+                            </Toolbar>
+                        </AppBar>
+                        <nav className={classes.drawer}>
+                            <Hidden smUp implementation="css">
+                                <Drawer
+                                    container={this.props.container}
+                                    variant="temporary"
+                                    anchor={this.state.theme.direction === 'rtl' ? 'right' : 'left'}
+                                    open={this.state.mobileOpen}
+                                    onClose={this.handleDrawerToggle}
+                                    classes={{
+                                        paper: classes.drawerPaper,
+                                    }}
+                                    ModalProps={{
+                                        keepMounted: true, // Better open performance on mobile.
+                                    }}
+                                >
+                                    {drawer}
+                                </Drawer>
+                            </Hidden>
+                            <Hidden xsDown implementation="css">
+                                <Drawer
+                                    classes={{
+                                        paper: classes.drawerPaper,
+                                    }}
+                                    variant="permanent"
+                                    open
+                                >
+                                    {drawer}
+                                </Drawer>
+                            </Hidden>
+                        </nav>
+                        <main className={classes.content}>
+                            <div className={classes.toolbar} />
+                            <Switch>
+                                <Route path="/" component={Home} exact={true} />
+                                <Route path="/report" component={Report} />
+                                <Route path="/view-map" component={ViewMap} />
+                                <Route path="/sighting-list" component={SightingList} key={this.state.themeName} />
+                                <Route path="/about" component={About} />
+                                <Route path="/contact" component={Contact} />
+                                <Route path="/quiz-easy" component={Quiz} key={"Easy"} />
+                                <Route path="/quiz-intermediate" component={Quiz} key={"Intermediate"} />
+                                <Route path="/quiz-advanced" component={Quiz} key={"Advanced"} />
+                                <Route path="/galleries-martens-and-kits" component={FlameLinkCollectionGallery} key={"martensAndKits"} />
+                                <Route path="/galleries-martens-at-night" component={FlameLinkCollectionGallery} key={"martensAtNight"} />
+                                <Route path="/galleries-martens-by-day" component={FlameLinkCollectionGallery} key={"martensByDay"} />
+                                <Route path="/galleries-species-similar-to-martens" component={FlameLinkCollectionGallery} key={"similarSpecies"} />
+                            </Switch>
+                        </main>
+                    </div>
+                </MuiThemeProvider>
+            </Router>
         );
     }
 }

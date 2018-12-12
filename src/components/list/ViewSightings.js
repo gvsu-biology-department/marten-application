@@ -64,28 +64,10 @@ class ViewSightings extends Component {
         clicked: false
     };
 
-    componentDidUpdate(props) {
-        if (this.props.themeName !== props.themeName) {
-            this.setState({
-                selectedSighting: {
-                    id: null,
-                    lat: null,
-                    lng: null,
-                    desc: null,
-                    type: null,
-                    confidence: null,
-                    date: null,
-                    time: null
-                },
-                clicked: false
-            });
-        }
-    }
-
     render() {
         return (
             <Fragment>
-                <Grid container>
+                <Grid container className='sighting-container'>
                     <Grid item xs={12} md={6} className='sighting-list'>
                         <Fragment>
                             <List>

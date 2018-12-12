@@ -100,7 +100,7 @@ const intermediateQuiz = {
                 "Common Grackle",
                 "Common Raven"
             ],
-            "correctAnswer": "1"
+            "correctAnswer": "4"
         },
         {
             "question": <Fragment>What animal is this?<br /><br /><img src="/quiz-images/intermediate/question10.jpg" alt=""></img></Fragment>,

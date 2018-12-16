@@ -15,8 +15,8 @@ const styles = theme => ({
     });
 
 class FlameLinkStructure extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         
         global.mediaID = '';
 
@@ -24,7 +24,7 @@ class FlameLinkStructure extends Component {
           schemaContent: '',
         }
 
-        flamelinkApp.content.get(global.schemaName)
+        flamelinkApp.content.get(this.props.schemaName)
         .then(result => this.setState({
           schemaContent: result
         }))
@@ -114,7 +114,7 @@ class FlameLinkStructure extends Component {
         const xs = this.props.field.gridColumns.xs;
         return(
             <Grid item lg={lg} md={md} sm={sm} xs={xs} className={classes.flamelinkItem}>
-                    {this.getContent(this.props.field, this.props.field.key, this.props.type, this.props.field.description)}
+                {this.getContent(this.props.field, this.props.field.key, this.props.type, this.props.field.description)}
             </Grid>
         );
     }

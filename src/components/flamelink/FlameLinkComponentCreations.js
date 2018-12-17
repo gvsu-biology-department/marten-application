@@ -10,8 +10,7 @@ const styles = theme => ({
         ...theme.mixins.gutters(),
         margin: theme.spacing.unit * 2,
         paddingTop: theme.spacing.unit * 2,
-        paddingBottom: theme.spacing.unit * 2,
-        boxSizing: 'borderBox'
+        paddingBottom: theme.spacing.unit * 2
     },
 });
 

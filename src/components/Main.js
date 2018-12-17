@@ -279,11 +279,6 @@ class ResponsiveDrawer extends React.Component {
                                     <ListItemText inset primary="Martens by Day" />
                                 </ListItem>
                             </Link>
-                            <Link to={{ pathname: 'galleries-species-similar-to-martens', state: { galleryName: 'similarSpecies' } }}>
-                                <ListItem button className={classes.nested}>
-                                    <ListItemText inset primary="Species Similar to Martens" />
-                                </ListItem>
-                            </Link>
                         </List>
                     </Collapse>
                 </List>

@@ -18,7 +18,7 @@ const styles = theme => ({
     flamelinkGallery: {
         marginRight: 'auto',
         marginLeft: 'auto',
-        backgroundImage: 'url(../images/galleryBackgroundImage.png)',
+        backgroundImage: 'url(/galleryBackgroundImage.png)',
         overflow: 'hidden',
         minHeight: 180,
         minWidth:  300,

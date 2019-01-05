@@ -3,7 +3,7 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import Typography from '@material-ui/core/Typography';
 
 // Google Maps API Key
-const API_KEY = 'AIzaSyAZ_0J01bA6wCbIPK4UBq2RUBC-hIqG4mM';
+const API_KEY = 'AIzaSyCSOlH291-dVi3dqYoapwG3st70IzLL6j4';
 
 // Map container styles
 const mapStyles = {

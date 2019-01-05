@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import firebase from '../utilities/firebase.js';
 
 // Google Maps API Key
-const API_KEY = 'AIzaSyAZ_0J01bA6wCbIPK4UBq2RUBC-hIqG4mM';
+const API_KEY = 'AIzaSyCSOlH291-dVi3dqYoapwG3st70IzLL6j4';
 
 // Map container styles
 const mapStyles = {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 // Google Maps API Key
-const API_KEY = 'AIzaSyAZ_0J01bA6wCbIPK4UBq2RUBC-hIqG4mM';
+const API_KEY = 'AIzaSyCSOlH291-dVi3dqYoapwG3st70IzLL6j4';
 
 // Map container styles
 const mapStyles = {
